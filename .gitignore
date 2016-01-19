@@ -1,0 +1,14 @@
+/bin/
+/build/
+/.settings/
+/dist/
+
+.classpath
+.project
+build.xml
+sysProps.xml
+sysProps.xml.orig
+build.properties
+
+*.class
+*.jar
