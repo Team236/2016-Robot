@@ -25,9 +25,9 @@ public class RobotMap {
 		public static final int PWM_RIGHT_BACK = 5;
 
 		public static final int DIO_ENCODER_LEFT_A = 0;
-		public static final int DIO_ENCODER_LEFT_B = 0;
-		public static final int DIO_ENCODER_RIGHT_A = 1;
-		public static final int DIO_ENCODER_RIGHT_B = 1;
+		public static final int DIO_ENCODER_LEFT_B = 1;
+		public static final int DIO_ENCODER_RIGHT_A = 2;
+		public static final int DIO_ENCODER_RIGHT_B = 3;
 
 		public static final boolean INV_LEFT_FRONT = false;
 		public static final boolean INV_LEFT_MID = false;
