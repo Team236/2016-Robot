@@ -2,19 +2,19 @@ package org.usfirst.frc.team236.robot.motionProfile;
 
 import org.usfirst.frc.team236.robot.Robot;
 
-public class DriveSide {
+public class DriveSide implements ProfileSource, ProfileOutput {
 
-	public final String side;
+	public String side;
 	public final String left = "left";
 	public final String right = "right";
 
 	public DriveSide(String side) {
-		if (side == "left") {
-			this.side = "left";
-		} else if (side == "right") {
-			this.side = "right";
+		if (side == left) {
+			side = left;
+		} else if (side == right) {
+			side = right;
 		} else {
-			this.side = null;
+			side = null;
 			throw new IllegalArgumentException("Enter either 'left' or 'right");
 		}
 	}
