@@ -3,6 +3,7 @@ package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.subsystems.Drive;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -19,11 +20,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
+	// Instantiate subsystems
+	public static final Drive drive = new Drive();
+
 	public static OI oi;
-	public static Drive drive = new Drive();
 
 	Command autonomousCommand;
 	SendableChooser chooser;
+
+	CameraServer camera;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -35,6 +40,10 @@ public class Robot extends IterativeRobot {
 		// chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+
+		// Start Camera feed
+		camera = CameraServer.getInstance();
+		camera.startAutomaticCapture();
 	}
 
 	/**
