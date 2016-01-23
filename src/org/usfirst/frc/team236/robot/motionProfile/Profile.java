@@ -55,9 +55,6 @@ public class Profile {
 
 			// Determine where we are within the profile
 
-			if (prevElement.position < params.distance) {
-				break;// We're done
-			}
 			if (prevElement.acceleration < params.maxAccel) {
 				stage = ACCEL_RAMP_UP;
 			}
@@ -106,6 +103,12 @@ public class Profile {
 				e.position = get(i).position + e.speed * dt;
 				// decrement mirror counter
 				j--;
+			}
+			if (stage == CONST_SPEED) {
+				e.jerk = 0;
+				e.acceleration = 0;
+				e.speed = params.maxVelocity;
+				e.position = prevElement.position + (e.speed * dt);
 			}
 			add(e); // Adds the element we just made to the profile
 		}
