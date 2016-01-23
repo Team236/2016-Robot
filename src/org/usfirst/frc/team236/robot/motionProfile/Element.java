@@ -20,6 +20,9 @@ public class Element {
 		this.jerk = jerk;
 	}
 
+	public Element() {
+	}; // You can initialize an element without parameters
+
 	public String toString() {
 		return position + " " + speed + " " + acceleration + " " + jerk;
 	}

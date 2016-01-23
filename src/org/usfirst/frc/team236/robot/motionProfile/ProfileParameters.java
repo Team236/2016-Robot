@@ -8,20 +8,20 @@ package org.usfirst.frc.team236.robot.motionProfile;
  * @param d
  *            The maximum distance of the profile
  * @param v
- *            The maximum allowable velocity
+ *            The maximum allowable maxVelocity
  * @param a
- *            The maximum allowable acceleration
+ *            The maximum allowable maxAccel
  * @param j
- *            The maximum allowable jerk
+ *            The maximum allowable maxJerk
  */
 public class ProfileParameters {
-	public double distance, velocity, acceleration, jerk;
+	public double distance, maxVelocity, maxAccel, maxJerk;
 
 	public ProfileParameters(double d, double v, double a, double j) {
 		distance = d;
-		velocity = v;
-		acceleration = a;
-		jerk = j;
+		maxVelocity = v;
+		maxAccel = a;
+		maxJerk = j;
 	}
 
 }
