@@ -23,7 +23,10 @@ public class Element {
 	public Element() {
 	}; // You can initialize an element without parameters
 
+	/**
+	 * @return a comma-separated list of values
+	 */
 	public String toString() {
-		return position + " " + speed + " " + acceleration + " " + jerk;
+		return position + "," + speed + "," + acceleration + "," + jerk;
 	}
 }

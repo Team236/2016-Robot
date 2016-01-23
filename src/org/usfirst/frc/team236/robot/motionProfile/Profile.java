@@ -1,5 +1,8 @@
 package org.usfirst.frc.team236.robot.motionProfile;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +15,18 @@ public class Profile {
 
 	private ArrayList<Element> list = new ArrayList<Element>();
 	public ProfileParameters constants;
+
+	public Element get(int index) {
+		return list.get(index);
+	}
+
+	private void add(Element e) {
+		list.add(e);
+	}
+
+	public int length() {
+		return list.size();
+	}
 
 	private static final double dt = .02;
 	private static final double maxTime = 30;
@@ -110,15 +125,23 @@ public class Profile {
 		}
 	}
 
-	public Element get(int index) {
-		return list.get(index);
-	}
+	public void store(String filename) {
+		String data = "";
+		String path = "C:\\Users\\samcf_000\\Documents\\" + filename + ".csv";
 
-	private void add(Element e) {
-		list.add(e);
-	}
+		for (int i = 0; i < length(); i++) {
+			data += get(i).toString(); // Appends a list of comma-separated
+										// values
+			data += "\n"; // Creates a new line
+		}
 
-	public int length() {
-		return list.size();
+		try {
+			File file = new File(path);
+			FileWriter writer = new FileWriter(file);
+			writer.write(data);
+			writer.close();
+		} catch (IOException exception) {
+			System.out.println("File creation failed");
+		}
 	}
 }
