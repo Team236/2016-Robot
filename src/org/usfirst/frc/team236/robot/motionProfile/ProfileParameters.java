@@ -6,10 +6,10 @@ package org.usfirst.frc.team236.robot.motionProfile;
  * profile constructor.
  * 
  * @author Sam
- * @param d The maximum distance of the profile
- * @param v The maximum allowable maxVelocity
- * @param a The maximum allowable maxAccel
- * @param j The maximum allowable maxJerk
+ * @param d The maximum distance of the profile (ft)
+ * @param v The maximum allowable maxVelocity (ft/s)
+ * @param a The maximum allowable maxAccel (ft/s/s)
+ * @param j The maximum allowable maxJerk (ft/s/s/s)
  */
 public class ProfileParameters {
 	public double distance, maxVelocity, maxAccel, maxJerk;
