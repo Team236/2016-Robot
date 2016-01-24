@@ -68,13 +68,13 @@ public class Profile {
 					jSet = true;
 				}
 			}
-			if (j <= 0) {
+			if (jSet && j <= 0) {
 				stage = CONST_SPEED;
 			}
 			if (prevElement.speed == params.maxVelocity) {
 				stage = CONST_SPEED;
 			}
-			if (prevElement.position == midpoint) {
+			if (prevElement.position >= midpoint) {
 				stage = MIRROR;
 				atMidpoint = true;
 				break;
@@ -130,11 +130,13 @@ public class Profile {
 
 	public void store(String filename) {
 		String data = "";
-		String path = "C:\\Users\\samcf_000\\Documents\\" + filename + ".csv";
+		String path = filename + ".csv";
+
+		data += "Position, Velocity, Acceleration, Jerk";
+		data += "\n";
 
 		for (int i = 0; i < length(); i++) {
-			data += get(i).toString(); // Appends a list of comma-separated
-										// values
+			data += get(i).toString(); // Appends P, V, A, J on one line
 			data += "\n"; // Creates a new line
 		}
 
