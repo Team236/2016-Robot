@@ -110,6 +110,15 @@ public class Profile {
 				e.speed = params.maxVelocity;
 				e.position = prevElement.position + (e.speed * dt);
 			}
+			if (e.speed < 0) {
+				e.speed = 0;
+			}
+			if (e.speed > params.maxVelocity) {
+				e.speed = params.maxVelocity;
+			}
+			if (e.position > params.distance) {
+				e.position = params.distance;
+			}
 			add(e); // Adds the element we just made to the profile
 		}
 		if (!atMidpoint) {
@@ -130,7 +139,7 @@ public class Profile {
 
 	public void store(String filename) {
 		String data = "";
-		String path = filename + ".csv";
+		String path = "/home/lvuser/" + filename + ".csv";
 
 		data += "Position, Velocity, Acceleration, Jerk";
 		data += "\n";
@@ -142,9 +151,11 @@ public class Profile {
 
 		try {
 			File file = new File(path);
+			file.createNewFile();
 			FileWriter writer = new FileWriter(file);
 			writer.write(data);
 			writer.close();
+			System.out.println("File creation succeeded");
 		} catch (IOException exception) {
 			System.out.println("File creation failed");
 		}
