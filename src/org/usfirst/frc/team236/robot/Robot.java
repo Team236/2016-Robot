@@ -42,8 +42,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 
 		// Start Camera feed
-		camera = CameraServer.getInstance();
-		camera.startAutomaticCapture();
+		// camera = CameraServer.getInstance();
+		// camera.startAutomaticCapture();
+
 	}
 
 	/**
@@ -52,7 +53,6 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
 	 */
 	public void disabledInit() {
-
 	}
 
 	public void disabledPeriodic() {
@@ -113,5 +113,8 @@ public class Robot extends IterativeRobot {
 	 */
 	public void testPeriodic() {
 		LiveWindow.run();
+	}
+
+	public void testInit() {
 	}
 }
