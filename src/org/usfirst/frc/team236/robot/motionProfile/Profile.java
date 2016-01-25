@@ -44,8 +44,10 @@ public class Profile {
 		double velocityMidpoint = params.maxVelocity / 2;
 		boolean atMidpoint = false;
 		int maxSteps = (int) (maxTime / dt);
-		int j = 0; // For mirroring
+		int j = 0; // For accel mirror
 		boolean jSet = false;
+		int k = 0; // For complete mirror
+		boolean kSet = false;
 
 		Element initialElement = new Element(0, 0, 0, 0);
 		add(initialElement); // Create inital point in motion profile
@@ -54,7 +56,6 @@ public class Profile {
 			Element prevElement = get(i);
 
 			// Determine where we are within the profile
-
 			if (prevElement.acceleration < params.maxAccel) {
 				stage = ACCEL_RAMP_UP;
 			}
@@ -71,13 +72,13 @@ public class Profile {
 			if (jSet && j <= 0) {
 				stage = CONST_SPEED;
 			}
-			if (prevElement.speed == params.maxVelocity) {
-				stage = CONST_SPEED;
-			}
 			if (prevElement.position >= midpoint) {
 				stage = MIRROR;
 				atMidpoint = true;
-				break;
+				if (!kSet) {
+					k = length() - 1;
+					kSet = true;
+				}
 			}
 
 			Element e = new Element(); // Generate the new element
@@ -110,6 +111,16 @@ public class Profile {
 				e.speed = params.maxVelocity;
 				e.position = prevElement.position + (e.speed * dt);
 			}
+			if (stage == MIRROR) {
+				if (k < 0) {
+					break;
+				}
+				int pSize = length() - 1;
+				e.acceleration = -get(k).acceleration;
+				e.speed = get(pSize).speed + e.acceleration * dt;
+				e.position = get(pSize).position + e.speed * dt;
+				k--;
+			}
 			if (e.speed < 0) {
 				e.speed = 0;
 			}
@@ -124,16 +135,6 @@ public class Profile {
 		if (!atMidpoint) {
 			// If we break out before reaching the midpoint, something's bad.
 			System.out.println("Profile Generation failed");
-		}
-		for (int k = length() - 1; k >= 0; k--) {
-			// This will probably break too
-			Element e = new Element();
-			// e.jerk = p.get(k).jerk;
-			int pSize = length() - 1;
-			e.acceleration = -get(k).acceleration;
-			e.speed = get(pSize).speed + e.acceleration * dt;
-			e.position = get(pSize).position + e.speed * dt;
-			add(e);
 		}
 	}
 
