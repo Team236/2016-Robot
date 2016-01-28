@@ -10,3 +10,6 @@ sysProps.xml.orig
 
 *.class
 *.jar
+
+ExampleCommand.java
+ExampleSubsystem.java
