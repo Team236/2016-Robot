@@ -30,12 +30,27 @@ public class ProfileFollower implements Updatable {
 	
 	@Override
 	public void update() {
+		// Make sure i is within bounds of profile
 		if (i < 0) {
 			i = 0;
 		} else if (i > profile.length()) {
 			i = profile.length();
 		}
+		// Get position from the profile
+		double position = profile.get(i).position;
+		// Determine if we are on target. Allowing error of +/- .1
+		onTarget = Math.abs(endPosition + source.getDistance()) < .1;
 		
+		if (isEnabled) {
+			// Calculate the acceleration and velocity feedforward
+			double a = kA * profile.get(i).acceleration;
+			double v = kV * profile.get(i).speed;
+			// Calculate the correction
+			double correction = kP * Math.abs(source.getDistance() - position);
+			// Set the speed of the motor with correction
+			output.setSpeed(a + v + correction);
+			// Increment our loop counter
+			i++;
+		}
 	}
-
 }
