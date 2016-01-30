@@ -18,7 +18,6 @@ public class Intake extends Subsystem {
 
 	public Intake() {
 		motor = new Victor(RobotMap.IntakeMap.PWM_MOTOR);
-
 		motor.setInverted(RobotMap.IntakeMap.INV_MOTOR);
 	}
 

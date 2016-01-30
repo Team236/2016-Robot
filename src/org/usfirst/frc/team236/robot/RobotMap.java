@@ -52,6 +52,23 @@ public class RobotMap {
 		public static final boolean INV_MOTOR = false;
 	}
 
+	public class ArmMap {
+		public static final int PWM_MOTOR = 5;
+		public static final boolean INV_MOTOR = false;
+
+		public static final int DIO_ENCODER_A = 4;
+		public static final int DIO_ENCODER_B = 5;
+		public static final double DEGREES_PER_PULSE = 1;
+		public static final boolean INV_ENCODER = false;
+
+		public class pidConstants {
+			public static final double kP = 1;
+			public static final double kI = .5;
+			public static final double kD = 17;
+
+		}
+	}
+
 	public class ControlMap {
 		public static final int PORT_STICK_LEFT = 0;
 		public static final int PORT_STICK_RIGHT = 1;
