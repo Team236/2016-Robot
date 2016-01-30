@@ -2,6 +2,7 @@
 package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.Shift;
+import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
 import org.usfirst.frc.team236.robot.subsystems.Intake;
 
@@ -26,6 +27,7 @@ public class Robot extends IterativeRobot {
 	// Instantiate subsystems
 	public static final Drive drive = new Drive();
 	public static final Intake intake = new Intake();
+	public static final Arm arm = new Arm();
 
 	public static OI oi;
 
