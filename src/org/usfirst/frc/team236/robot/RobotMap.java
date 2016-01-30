@@ -21,11 +21,9 @@ public class RobotMap {
 
 	public class DriveMap {
 		public static final int PWM_LEFT_FRONT = 0;
-		public static final int PWM_LEFT_MID = 1;
-		public static final int PWM_LEFT_BACK = 2;
-		public static final int PWM_RIGHT_FRONT = 3;
-		public static final int PWM_RIGHT_MID = 4;
-		public static final int PWM_RIGHT_BACK = 5;
+		public static final int PWM_LEFT_BACK = 1;
+		public static final int PWM_RIGHT_FRONT = 2;
+		public static final int PWM_RIGHT_BACK = 3;
 
 		public static final int DIO_ENCODER_LEFT_A = 0;
 		public static final int DIO_ENCODER_LEFT_B = 1;
@@ -49,6 +47,11 @@ public class RobotMap {
 		public static final double DISTANCE_PER_PULSE = 1;
 	}
 
+	public class IntakeMap {
+		public static final int PWM_MOTOR = 4;
+		public static final boolean INV_MOTOR = false;
+	}
+
 	public class ControlMap {
 		public static final int PORT_STICK_LEFT = 0;
 		public static final int PORT_STICK_RIGHT = 1;
@@ -56,5 +59,8 @@ public class RobotMap {
 
 		public static final int BUTTON_SHIFT_UP = 3;
 		public static final int BUTTON_SHIFT_DOWN = 2;
+
+		public static final int BUTTON_INTAKE = 1;
+		public static final int BUTTON_EJECT = 1;
 	}
 }

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team236.robot;
 
+import org.usfirst.frc.team236.robot.commands.IntakeControl;
 import org.usfirst.frc.team236.robot.commands.Shift;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -41,15 +42,27 @@ public class OI {
 	public Joystick leftStick;
 	public Joystick rightStick;
 
-	public Button shiftUp = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_UP);
-	public Button shiftDown = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_DOWN);
+	public Button shiftUp;
+	public Button shiftDown;
+
+	public Button intake;
+	public Button eject;
 
 	public OI() {
 		leftStick = new Joystick(RobotMap.ControlMap.PORT_STICK_LEFT);
 		rightStick = new Joystick(RobotMap.ControlMap.PORT_STICK_RIGHT);
 
+		shiftUp = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_UP);
 		shiftUp.whenPressed(new Shift(0));
+
+		shiftDown = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_DOWN);
 		shiftDown.whenPressed(new Shift(1));
+
+		intake = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE);
+		intake.whileHeld(new IntakeControl(1));
+
+		eject = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_EJECT);
+		eject.whileHeld(new IntakeControl(-1));
 	}
 
 }

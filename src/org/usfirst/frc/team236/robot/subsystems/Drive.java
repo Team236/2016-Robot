@@ -14,10 +14,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Drive extends Subsystem {
 	// Declare motors
 	private Victor leftFront;
-	private Victor leftMid;
 	private Victor leftBack;
 	private Victor rightFront;
-	private Victor rightMid;
 	private Victor rightBack;
 
 	// Declare encoder
@@ -36,10 +34,8 @@ public class Drive extends Subsystem {
 	public Drive() {
 		// Instantiate Victors
 		leftFront = new Victor(RobotMap.DriveMap.PWM_LEFT_FRONT);
-		leftMid = new Victor(RobotMap.DriveMap.PWM_LEFT_MID);
 		leftBack = new Victor(RobotMap.DriveMap.PWM_LEFT_BACK);
 		rightFront = new Victor(RobotMap.DriveMap.PWM_RIGHT_FRONT);
-		rightMid = new Victor(RobotMap.DriveMap.PWM_RIGHT_MID);
 		rightBack = new Victor(RobotMap.DriveMap.PWM_RIGHT_BACK);
 
 		// Instantiate Encoders
@@ -48,11 +44,9 @@ public class Drive extends Subsystem {
 
 		// Invert Victors
 		leftFront.setInverted(RobotMap.DriveMap.INV_LEFT_FRONT);
-		leftMid.setInverted(RobotMap.DriveMap.INV_LEFT_MID);
-		leftBack.setInverted(RobotMap.DriveMap.INV_LEFT_BACK);
+		leftBack.setInverted(RobotMap.DriveMap.INV_LEFT_MID);
 		rightFront.setInverted(RobotMap.DriveMap.INV_RIGHT_FRONT);
-		rightMid.setInverted(RobotMap.DriveMap.INV_RIGHT_MID);
-		rightBack.setInverted(RobotMap.DriveMap.INV_RIGHT_BACK);
+		rightBack.setInverted(RobotMap.DriveMap.INV_RIGHT_MID);
 
 		// Invert Encoders
 		leftEncoder.setReverseDirection(RobotMap.DriveMap.INV_ENCODER_LEFT);
@@ -73,7 +67,6 @@ public class Drive extends Subsystem {
 			speed = -1;
 		}
 		leftFront.set(speed);
-		leftMid.set(speed);
 		leftBack.set(speed);
 	}
 
@@ -84,7 +77,6 @@ public class Drive extends Subsystem {
 			speed = -1;
 		}
 		rightFront.set(speed);
-		rightMid.set(speed);
 		rightBack.set(speed);
 	}
 
@@ -100,11 +92,9 @@ public class Drive extends Subsystem {
 			rightSpeed = -1;
 		}
 		leftFront.set(leftSpeed);
-		leftMid.set(leftSpeed);
 		leftBack.set(leftSpeed);
 
 		rightFront.set(rightSpeed);
-		rightMid.set(rightSpeed);
 		rightBack.set(rightSpeed);
 	}
 
