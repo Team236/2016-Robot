@@ -26,11 +26,11 @@ Ports are imported from RobotMap throughout the code.
 | Port | Subsystem | Assignment
 |------|-----------|-----------
 | 0 | Drive | Left Front
-| 1 | Drive | Left Middle
-| 2 | Drive | Left Back
-| 3 | Drive | Right Front
-| 4 | Drive | Right Middle
-| 5 | Drive | Right Back
+| 1 | Drive | Left Back
+| 2 | Drive | Right Front
+| 3 | Drive | Right Back
+| 4 | Intake| Intake
+| 5 | Arm   | Pivot
 
 ##### DIO
 
@@ -40,6 +40,7 @@ Ports are imported from RobotMap throughout the code.
 | 1 | Drive | Left Encoder, channel B
 | 2 | Drive | Right Encoder, channel A
 | 3 | Drive | Right Encoder, channel B
+| 4 | Arm   | Pivot
 
 ##### USB
 | Port | Assignment
