@@ -32,6 +32,9 @@ public class RobotMap {
 		public static final int DIO_ENCODER_RIGHT_A = 2;
 		public static final int DIO_ENCODER_RIGHT_B = 3;
 
+		public static final int SOL_FORWARD = 0;
+		public static final int SOL_REVERSE = 1;
+
 		public static final boolean INV_LEFT_FRONT = false;
 		public static final boolean INV_LEFT_MID = false;
 		public static final boolean INV_LEFT_BACK = false;
@@ -50,5 +53,8 @@ public class RobotMap {
 		public static final int PORT_STICK_LEFT = 0;
 		public static final int PORT_STICK_RIGHT = 1;
 		public static final int PORT_CONTROLLER = 2;
+
+		public static final int BUTTON_SHIFT_UP = 3;
+		public static final int BUTTON_SHIFT_DOWN = 2;
 	}
 }

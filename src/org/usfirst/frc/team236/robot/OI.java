@@ -1,10 +1,15 @@
 package org.usfirst.frc.team236.robot;
 
+import org.usfirst.frc.team236.robot.commands.Shift;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 public class OI {
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
@@ -33,6 +38,18 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-	public Joystick leftStick = new Joystick(RobotMap.ControlMap.PORT_STICK_LEFT);
-	public Joystick rightStick = new Joystick(RobotMap.ControlMap.PORT_STICK_RIGHT);
+	public Joystick leftStick;
+	public Joystick rightStick;
+
+	public Button shiftUp = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_UP);
+	public Button shiftDown = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_DOWN);
+
+	public OI() {
+		leftStick = new Joystick(RobotMap.ControlMap.PORT_STICK_LEFT);
+		rightStick = new Joystick(RobotMap.ControlMap.PORT_STICK_RIGHT);
+
+		shiftUp.whenPressed(new Shift(0));
+		shiftDown.whenPressed(new Shift(1));
+	}
+
 }

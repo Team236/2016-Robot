@@ -1,9 +1,11 @@
 
 package org.usfirst.frc.team236.robot;
 
+import org.usfirst.frc.team236.robot.commands.Shift;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -30,6 +32,8 @@ public class Robot extends IterativeRobot {
 
 	CameraServer camera;
 
+	Compressor compressor;
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -44,6 +48,13 @@ public class Robot extends IterativeRobot {
 		// Start Camera feed
 		// camera = CameraServer.getInstance();
 		// camera.startAutomaticCapture();
+
+		// Start Compressor
+		compressor = new Compressor();
+		compressor.start();
+
+		// Automatically set drive in high gear
+		new Shift(1);
 
 	}
 

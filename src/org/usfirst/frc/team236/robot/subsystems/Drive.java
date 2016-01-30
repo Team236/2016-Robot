@@ -3,6 +3,7 @@ package org.usfirst.frc.team236.robot.subsystems;
 import org.usfirst.frc.team236.robot.RobotMap;
 import org.usfirst.frc.team236.robot.commands.DriveWithJoysticks;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -22,6 +23,9 @@ public class Drive extends Subsystem {
 	// Declare encoder
 	private Encoder leftEncoder;
 	private Encoder rightEncoder;
+
+	// Declare solenoids
+	private DoubleSolenoid solenoid;
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
@@ -57,6 +61,9 @@ public class Drive extends Subsystem {
 		// Set distance per pulse
 		leftEncoder.setDistancePerPulse(RobotMap.DriveMap.DISTANCE_PER_PULSE);
 		rightEncoder.setDistancePerPulse(RobotMap.DriveMap.DISTANCE_PER_PULSE);
+
+		// Instantiate solenoid
+		solenoid = new DoubleSolenoid(RobotMap.DriveMap.SOL_FORWARD, RobotMap.DriveMap.SOL_REVERSE);
 	}
 
 	public void setLeftSpeed(double speed) {
@@ -124,5 +131,15 @@ public class Drive extends Subsystem {
 
 	public Encoder getRightEncoder() {
 		return rightEncoder;
+	}
+
+	public void setSol(int direction) {
+		if (direction == -1) {
+			solenoid.set(DoubleSolenoid.Value.kReverse);
+		} else if (direction == 0) {
+			solenoid.set(DoubleSolenoid.Value.kOff);
+		} else if (direction == 1) {
+			solenoid.set(DoubleSolenoid.Value.kForward);
+		}
 	}
 }
