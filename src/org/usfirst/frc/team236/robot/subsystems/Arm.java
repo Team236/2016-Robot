@@ -15,9 +15,9 @@ public class Arm extends PIDSubsystem {
 	private SpeedController motor;
 	private Encoder encoder;
 
-	private static final double kP = RobotMap.ArmMap.pidConstants.kP;
-	private static final double kI = RobotMap.ArmMap.pidConstants.kI;
-	private static final double kD = RobotMap.ArmMap.pidConstants.kD;
+	private static final double kP = RobotMap.ArmMap.PID.kP;
+	private static final double kI = RobotMap.ArmMap.PID.kI;
+	private static final double kD = RobotMap.ArmMap.PID.kD;
 
 	// Initialize your subsystem here
 	public Arm() {
@@ -32,6 +32,7 @@ public class Arm extends PIDSubsystem {
 
 		setAbsoluteTolerance(0.05);
 		getPIDController().setContinuous(false);
+		setOutputRange(0, 100); // TODO add maximum range
 		// Use these to get going:
 		// setSetpoint() - Sets where the PID controller should move the system
 		// to
@@ -54,6 +55,10 @@ public class Arm extends PIDSubsystem {
 		// Use output to drive your system, like a motor
 		// e.g. yourMotor.set(output);
 		motor.set(output);
+	}
+
+	public void zeroEncoder() {
+		encoder.reset();
 	}
 
 }

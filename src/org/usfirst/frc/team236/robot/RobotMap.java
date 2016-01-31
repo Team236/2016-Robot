@@ -44,7 +44,7 @@ public class RobotMap {
 		public static final boolean INV_ENCODER_LEFT = false;
 		public static final boolean INV_ENCODER_RIGHT = false;
 
-		public static final double DISTANCE_PER_PULSE = 1;
+		public static final double DISTANCE_PER_PULSE = 1; // TODO get distance
 	}
 
 	public class IntakeMap {
@@ -58,10 +58,11 @@ public class RobotMap {
 
 		public static final int DIO_ENCODER_A = 4;
 		public static final int DIO_ENCODER_B = 5;
-		public static final double DEGREES_PER_PULSE = 1;
+		public static final double DEGREES_PER_PULSE = 1; // TODO get degrees
 		public static final boolean INV_ENCODER = false;
 
-		public class pidConstants {
+		public class PID {
+			// TODO tune PID
 			public static final double kP = 1;
 			public static final double kI = .5;
 			public static final double kD = 17;

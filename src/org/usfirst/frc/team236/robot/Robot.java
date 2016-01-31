@@ -59,7 +59,6 @@ public class Robot extends IterativeRobot {
 
 		// Automatically set drive in high gear
 		new Shift(1);
-
 	}
 
 	/**
