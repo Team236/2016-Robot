@@ -5,6 +5,7 @@ import org.usfirst.frc.team236.robot.commands.Shift;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
 import org.usfirst.frc.team236.robot.subsystems.Intake;
+import org.usfirst.frc.team236.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
@@ -28,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public static final Drive drive = new Drive();
 	public static final Intake intake = new Intake();
 	public static final Arm arm = new Arm();
+	public static final Shooter shooter = new Shooter();
 
 	public static OI oi;
 
