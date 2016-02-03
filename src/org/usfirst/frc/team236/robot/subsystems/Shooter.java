@@ -14,7 +14,6 @@ public class Shooter extends Subsystem {
     
 	private SpeedController motorLeft;
 	private SpeedController motorRight;
-	//private Encoder encoder;
 	private DoubleSolenoid solenoid;
 	
 	
@@ -25,10 +24,6 @@ public class Shooter extends Subsystem {
 		
 		motorRight = new Spark(RobotMap.ShooterMap.PWM_MOTOR_RIGHT);
 		motorRight.setInverted(RobotMap.ShooterMap.INV_MOTOR_RIGHT);
-		
-		//encoder = new Encoder(RobotMap.ShooterMap.DIO_ENCODER_A, RobotMap.ShooterMap.DIO_ENCODER_B);
-		//encoder.setReverseDirection(RobotMap.ShooterMap.INV_ENCODER);
-		//encoder.setDistancePerPulse(RobotMap.ShooterMap.DISTANCE_PER_PULSE);
 		
 		solenoid = new DoubleSolenoid(RobotMap.ShooterMap.SOL_FORWARD, RobotMap.ShooterMap.SOL_REVERSE);
 		
@@ -42,8 +37,8 @@ public class Shooter extends Subsystem {
 	public void setSpeed(double speed) {
 		motorLeft.set(speed);
 		motorRight.set(speed);
-		
 	}
+	
     public void setSol(int direction) {
     	if (direction == 1) {
     		solenoid.set(DoubleSolenoid.Value.kForward);
@@ -55,16 +50,10 @@ public class Shooter extends Subsystem {
     		solenoid.set(DoubleSolenoid.Value.kReverse);
     	}
     }
-	//public double getDistance() {
-		//return encoder.getDistance();
-	//}
     
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    //public void zeroEncoder() {
-    	//encoder.reset();
-    //}
 }
 
