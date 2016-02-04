@@ -2,21 +2,21 @@
 Team 236's 2016 bot for FRC Stronghold
 
 ### Goals
-This robot code has hardly begun. Here are some of my goals for this season.
-Best case scenario, I can change the header above to "Features" by the end of
+Here are some of my goals for this season. Best case scenario, I can change the header above to "Features" by the end of
 the season.
 
 #### Motion Profiles for Autonomous
-The team (me included) has agreed that auto mode is very important this year.
-The dream is to have the robot cross the low bar and score a ball in the low 
-goal. I think that is extremely optimistic, not least because of the inherent
-inaccuracy in turning, even with gyros. I'll definitely be doing my best to
-make it happen.
+The MotionProfile code can now automatically generate smooth and continuous motion profiles based on profile parameters.
+The robot can (probably) follow these profiles too, using appropriate commands. This needs testing, but we're really
+happy with where we are. More on how this works in the wiki.
 
 #### Smooth PID control
-I've worked with PID Subsystems before, so that's not a terrible challenge.
-However, it becomes significantly more difficult when we need to incorporate
-PID control into the robot in ways WPIlib doesn't support.
+PID was very easy. All we needed PID for was the arm control, so virtually no additional code for us. This also needs
+to be tested, but that's a hardware problem.
+
+#### Gyro control
+We recently got a brand new NavX MXP gyro, primarily for use in the autonomous mode. we've been able to get readings,
+and controlling the robot based on these readings is just a step away.
 
 ### Ports
 Ports are imported from RobotMap throughout the code.
