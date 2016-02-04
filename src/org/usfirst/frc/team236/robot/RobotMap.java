@@ -76,25 +76,25 @@ public class RobotMap {
 	}
 
 	public class ControlMap {
+		// USB
 		public static final int PORT_STICK_LEFT = 0;
 		public static final int PORT_STICK_RIGHT = 1;
 		public static final int PORT_CONTROLLER = 2;
 
 		// Right stick
-		public static final int BUTTON_SHIFT_UP = 3;
-		public static final int BUTTON_SHIFT_DOWN = 2;
-
-		public static final int BUTTON_INTAKE = 1;
 		public static final int BUTTON_EJECT = 1;
-
-		public static final int BUTTON_SHOOT = 5;
-		public static final int BUTTON_COCK = 4;
+		public static final int BUTTON_SHIFT_DOWN = 2;
+		public static final int BUTTON_SHIFT_UP = 3;
 
 		// Left stick
+		public static final int BUTTON_INTAKE = 1;
 		public static final int BUTTON_INVERT_DRIVE = 2;
+		public static final int BUTTON_COCK = 4;
+		public static final int BUTTON_SHOOT = 5;
 
-		public static final int BUTTON_ARM_UP = 4;
+		// Controller
 		public static final int BUTTON_ARM_DOWN = 2;
+		public static final int BUTTON_ARM_UP = 4;
 	}
 
 	public class ShooterMap {
