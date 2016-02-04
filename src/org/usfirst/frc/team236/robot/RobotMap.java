@@ -60,10 +60,10 @@ public class RobotMap {
 		public static final int DIO_ENCODER_B = 5;
 		public static final double DEGREES_PER_PULSE = 1; // TODO get degrees
 		public static final boolean INV_ENCODER = false;
-		
+
 		public static final int DIO_LIMITSWITCH_TOP = 6;
 		public static final int DIO_LIMITSWITCH_BOTTOM = 7;
-		
+
 		public static final int MAN_INCREMENT = 1; // TODO test, get arm speed
 
 		public class PID {
@@ -80,31 +80,35 @@ public class RobotMap {
 		public static final int PORT_STICK_RIGHT = 1;
 		public static final int PORT_CONTROLLER = 2;
 
+		// Right stick
 		public static final int BUTTON_SHIFT_UP = 3;
 		public static final int BUTTON_SHIFT_DOWN = 2;
 
 		public static final int BUTTON_INTAKE = 1;
 		public static final int BUTTON_EJECT = 1;
-		
-		public static final int BUTTON_SHOOT = 3;
-		public static final int BUTTON_COCK = 2;
-		
+
+		public static final int BUTTON_SHOOT = 5;
+		public static final int BUTTON_COCK = 4;
+
+		// Left stick
+		public static final int BUTTON_INVERT_DRIVE = 2;
+
 		public static final int BUTTON_ARM_UP = 4;
 		public static final int BUTTON_ARM_DOWN = 2;
 	}
-	
+
 	public class ShooterMap {
 		public static final int PWM_MOTOR_LEFT = 6;
 		public static final boolean INV_MOTOR_LEFT = false;
 		public static final int PWM_MOTOR_RIGHT = 7;
 		public static final boolean INV_MOTOR_RIGHT = false;
-		
+
 		public static final int DIO_ENCODER_A = 6;
 		public static final int DIO_ENCODER_B = 7;
 		public static final double DISTANCE_PER_PULSE = 1; // TODO get distance
 		public static final boolean INV_ENCODER = false;
-		
+
 		public static final int SOL_FORWARD = 2;
-		public static final int SOL_REVERSE = 3; 
+		public static final int SOL_REVERSE = 3;
 	}
 }
