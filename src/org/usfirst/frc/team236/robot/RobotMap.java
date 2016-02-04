@@ -63,6 +63,8 @@ public class RobotMap {
 		
 		public static final int DIO_LIMITSWITCH_TOP = 6;
 		public static final int DIO_LIMITSWITCH_BOTTOM = 7;
+		
+		public static final int MAN_INCREMENT = 1; // TODO test, get arm speed
 
 		public class PID {
 			// TODO tune PID
@@ -90,6 +92,7 @@ public class RobotMap {
 		public static final int BUTTON_ARM_UP = 4;
 		public static final int BUTTON_ARM_DOWN = 2;
 	}
+	
 	public class ShooterMap {
 		public static final int PWM_MOTOR_LEFT = 6;
 		public static final boolean INV_MOTOR_LEFT = false;
@@ -103,8 +106,5 @@ public class RobotMap {
 		
 		public static final int SOL_FORWARD = 2;
 		public static final int SOL_REVERSE = 3; 
-		
-		
-		
 	}
 }

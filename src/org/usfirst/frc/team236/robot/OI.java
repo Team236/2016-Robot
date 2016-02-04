@@ -2,6 +2,8 @@ package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.Cock;
 import org.usfirst.frc.team236.robot.commands.IntakeControl;
+import org.usfirst.frc.team236.robot.commands.ManualArmDown;
+import org.usfirst.frc.team236.robot.commands.ManualArmUp;
 import org.usfirst.frc.team236.robot.commands.Shift;
 import org.usfirst.frc.team236.robot.commands.Shoot;
 import edu.wpi.first.wpilibj.Joystick;
@@ -53,8 +55,8 @@ public class OI {
 	public Button shoot;
 	public Button cock;
 	
-	public Button armUp;
-	public Button armDown;
+	public Button manualArmUp;
+	public Button manualArmDown;
 
 	public OI() {
 		leftStick = new Joystick(RobotMap.ControlMap.PORT_STICK_LEFT);
@@ -78,9 +80,11 @@ public class OI {
 		cock = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_COCK);
 		cock.whenPressed(new Cock());
 	
-		armUp = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_UP);
+		manualArmUp = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_UP);
+		manualArmUp.whileHeld(new ManualArmUp());
 				
-		armDown = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_DOWN);
+		manualArmDown = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_DOWN);
+		manualArmDown.whileHeld(new ManualArmDown());
 	}
 
 }

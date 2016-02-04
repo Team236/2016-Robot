@@ -47,14 +47,17 @@ public class Arm extends PIDSubsystem {
 		
 	}
 	public void setSpeed(double speed) {
-		if(speed == 1) {
-			setSpeed(1);
+		if(speed >= 1) {
+			motor.set(1);
 		}
-		else if (speed == -1) {
-			setSpeed(-1);
+		else if (speed <= -1) {
+			motor.set(-1);
+		} else {
+			motor.set(speed);
 		}
 		
 	}
+	
 	public void set(double speed) {
 		if(limitSwitchTop.get() == true) {
 			motor.set(0);
@@ -64,6 +67,14 @@ public class Arm extends PIDSubsystem {
 			motor.set(0);
 			encoder.reset();
 		}
+	}
+	
+	public double getAngle() {
+		return encoder.getDistance();
+	}
+	
+	public void stop() {
+		setSpeed(0);
 	}
 	
 	public void initDefaultCommand() {

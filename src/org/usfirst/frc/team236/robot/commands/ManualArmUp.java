@@ -1,35 +1,41 @@
 package org.usfirst.frc.team236.robot.commands;
 
 import org.usfirst.frc.team236.robot.Robot;
+import org.usfirst.frc.team236.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Shoot extends Command {
+public class ManualArmUp extends Command {
+	private double setPoint;
 
-    public Shoot() {
+    public ManualArmUp() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.shooter);
+        // eg. requires(chassis);
+    	requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setPoint = Robot.arm.getAngle();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.setSol(1);
+    	setPoint = Robot.arm.getAngle() + RobotMap.ArmMap.MAN_INCREMENT;
+    	Robot.arm.setSetpoint(setPoint);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.setSol(0);
+    	Robot.arm.stop();
     }
 
     // Called when another command which requires one or more of the same
