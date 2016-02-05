@@ -3,6 +3,6 @@ language: java
 install:
 - git clone https://github.com/Team236/wpilib-mirror.git ~/wpilib
 - curl -o ~/wpilib/java/current/lib/navx.jar http://www.t4904.xyz/wiki/files/navx/navx.jar
-- curl -o ~/wpilib/java/current/lib/navx_frc.jar http://www.t4904.xyz/wiki/files/navx/navx_frc.jar
+- curl -o ~/navx-mxp/java/lib/navx_frc.jar http://www.t4904.xyz/wiki/files/navx/navx_frc.jar
 script: ant jar
 jdk: oraclejdk8
