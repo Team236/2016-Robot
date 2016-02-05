@@ -9,10 +9,10 @@ public class AutoMap {
 	 * going under the low bar. // TODO add v, a, j
 	 */
 	public static ProfileParameters toShoot = new ProfileParameters(6.19, 5, 4, 2);
-	
+
 	/*
-	 * Drives from midfield line through the low goal into the opponent's 
+	 * Drives from midfield line through the low goal into the opponent's
 	 * courtyard. // TODO testing
 	 */
-	public static ProfileParameters cross = new ProfileParameters(6, 5, 4, 2);
+	public static ProfileParameters cross = new ProfileParameters(12, 5, 10, 20);
 }
