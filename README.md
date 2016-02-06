@@ -1,4 +1,4 @@
-# 2016-Robot [![Build Status](https://travis-ci.com/Team236/2016-Robot.svg?token=4mPK9HonddnzMs2vmEpY&branch=master)](https://travis-ci.com/Team236/2016-Robot)
+# 2016-Robot [![Build Status](https://travis-ci.org/Team236/2016-Robot.svg?branch=master)](https://travis-ci.org/Team236/2016-Robot)
 Team 236's 2016 bot for FRC Stronghold
 
 ### Goals
