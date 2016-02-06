@@ -2,7 +2,8 @@ package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.Cock;
 import org.usfirst.frc.team236.robot.commands.DriveWithJoysticks;
-import org.usfirst.frc.team236.robot.commands.IntakeControl;
+import org.usfirst.frc.team236.robot.commands.Eject;
+import org.usfirst.frc.team236.robot.commands.Intake;
 import org.usfirst.frc.team236.robot.commands.InvertedDriveWithJoysticks;
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.ShiftUp;
@@ -90,10 +91,10 @@ public class OI {
 		shoot.whenPressed(new Shoot());
 
 		eject = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_EJECT);
-		eject.whileHeld(new IntakeControl(-1));
+		eject.whileHeld(new Eject());
 
 		intake = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE);
-		intake.whileHeld(new IntakeControl(1));
+		intake.whileHeld(new Intake());
 
 		cock = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_COCK);
 		cock.whenPressed(new Cock());
