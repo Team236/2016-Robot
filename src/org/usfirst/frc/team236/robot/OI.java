@@ -4,7 +4,8 @@ import org.usfirst.frc.team236.robot.commands.Cock;
 import org.usfirst.frc.team236.robot.commands.DriveWithJoysticks;
 import org.usfirst.frc.team236.robot.commands.IntakeControl;
 import org.usfirst.frc.team236.robot.commands.InvertedDriveWithJoysticks;
-import org.usfirst.frc.team236.robot.commands.Shift;
+import org.usfirst.frc.team236.robot.commands.ShiftDown;
+import org.usfirst.frc.team236.robot.commands.ShiftUp;
 import org.usfirst.frc.team236.robot.commands.Shoot;
 import org.usfirst.frc.team236.robot.commands.arm.ManualArmDown;
 import org.usfirst.frc.team236.robot.commands.arm.ManualArmUp;
@@ -71,10 +72,10 @@ public class OI {
 
 		// Right Stick
 		shiftDown = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_DOWN);
-		shiftDown.whenPressed(new Shift(1));
+		shiftDown.whenPressed(new ShiftDown());
 
 		shiftUp = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_UP);
-		shiftUp.whenPressed(new Shift(0));
+		shiftUp.whenPressed(new ShiftUp());
 
 		invertDrive = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_INVERT_DRIVE);
 		invertDrive.whenPressed(new InvertedDriveWithJoysticks());

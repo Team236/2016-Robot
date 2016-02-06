@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team236.robot;
 
-import org.usfirst.frc.team236.robot.commands.Shift;
+import org.usfirst.frc.team236.robot.commands.ShiftUp;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
 import org.usfirst.frc.team236.robot.subsystems.Intake;
@@ -68,7 +68,7 @@ public class Robot extends IterativeRobot {
 		navx = new AHRS(SPI.Port.kMXP);
 
 		// Automatically set drive in high gear
-		new Shift(1);
+		new ShiftUp();
 	}
 
 	/**
