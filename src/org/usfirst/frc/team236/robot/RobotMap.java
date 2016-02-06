@@ -44,7 +44,7 @@ public class RobotMap {
 		public static final boolean INV_ENCODER_LEFT = false;
 		public static final boolean INV_ENCODER_RIGHT = false;
 
-		public static final double CIRCUMFERENCE = 12.0; // TODO get this (inch)
+		public static final double CIRCUMFERENCE = 24.62;
 		public static final double DISTANCE_PER_PULSE = CIRCUMFERENCE / (3 * 512);
 	}
 
