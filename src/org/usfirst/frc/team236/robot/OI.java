@@ -2,10 +2,10 @@ package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.Cock;
 import org.usfirst.frc.team236.robot.commands.IntakeControl;
-import org.usfirst.frc.team236.robot.commands.ManualArmDown;
-import org.usfirst.frc.team236.robot.commands.ManualArmUp;
 import org.usfirst.frc.team236.robot.commands.Shift;
 import org.usfirst.frc.team236.robot.commands.Shoot;
+import org.usfirst.frc.team236.robot.commands.arm.ManualArmDown;
+import org.usfirst.frc.team236.robot.commands.arm.ManualArmUp;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;

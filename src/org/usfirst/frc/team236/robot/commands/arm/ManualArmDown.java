@@ -1,4 +1,4 @@
-package org.usfirst.frc.team236.robot.commands;
+package org.usfirst.frc.team236.robot.commands.arm;
 
 import org.usfirst.frc.team236.robot.Robot;
 import org.usfirst.frc.team236.robot.RobotMap;
@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ManualArmUp extends Command {
+public class ManualArmDown extends Command {
 	private double setPoint;
-
-    public ManualArmUp() {
+	
+    public ManualArmDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.arm);
@@ -24,7 +24,7 @@ public class ManualArmUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	setPoint = Robot.arm.getAngle() + RobotMap.ArmMap.MAN_INCREMENT;
+    	setPoint = Robot.arm.getAngle() - RobotMap.ArmMap.MAN_INCREMENT;
     	Robot.arm.setSetpoint(setPoint);
     }
 

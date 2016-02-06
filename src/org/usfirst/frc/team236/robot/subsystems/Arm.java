@@ -15,8 +15,8 @@ public class Arm extends PIDSubsystem {
 
 	private SpeedController motor;
 	private Encoder encoder;
-	private DigitalInput limitSwitchTop;
-	private DigitalInput limitSwitchBottom;
+	public DigitalInput limitSwitchTop;
+	public DigitalInput limitSwitchBottom;
 
 	private static final double kP = RobotMap.ArmMap.PID.kP;
 	private static final double kI = RobotMap.ArmMap.PID.kI;
@@ -46,6 +46,7 @@ public class Arm extends PIDSubsystem {
 		// enable() - Enables the PID controller.
 		
 	}
+	
 	public void setSpeed(double speed) {
 		if(speed >= 1) {
 			motor.set(1);
@@ -58,10 +59,10 @@ public class Arm extends PIDSubsystem {
 		
 	}
 	
-	public void set(double speed) {
+	public void checkLimits() {
 		if(limitSwitchTop.get() == true) {
 			motor.set(0);
-			
+
 		}
 		else if (limitSwitchBottom.get() == true) {
 			motor.set(0);
@@ -70,7 +71,7 @@ public class Arm extends PIDSubsystem {
 	}
 	
 	public double getAngle() {
-		return encoder.getDistance();
+		return encoder.getDistance() + RobotMap.ArmMap.MIN_ANGLE;
 	}
 	
 	public void stop() {
@@ -86,7 +87,7 @@ public class Arm extends PIDSubsystem {
 		// Return your input value for the PID loop
 		// e.g. a sensor, like a potentiometer:
 		// yourPot.getAverageVoltage() / kYourMaxVoltage;
-		return encoder.getDistance();
+		return getAngle();
 	}
 
 	protected void usePIDOutput(double output) {

@@ -65,6 +65,8 @@ public class RobotMap {
 		public static final int DIO_LIMITSWITCH_BOTTOM = 7;
 
 		public static final int MAN_INCREMENT = 1; // TODO test, get arm speed
+		
+		public static final double MIN_ANGLE = -15; // Lowest angle of arm
 
 		public class PID {
 			// TODO tune PID
