@@ -7,20 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Shift extends Command {
+public class ShiftDown extends Command {
 
-	int direction;
-
-	public Shift(int gear) {
+	public ShiftDown() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.drive);
-
-		if (gear == 0) {
-			direction = -1;
-		} else if (gear == 1) {
-			direction = 1;
-		}
 	}
 
 	// Called just before this Command runs the first time
@@ -29,7 +21,7 @@ public class Shift extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.drive.setSol(direction);
+		Robot.drive.setSol(-1);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
