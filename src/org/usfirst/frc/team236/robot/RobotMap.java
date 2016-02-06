@@ -44,7 +44,8 @@ public class RobotMap {
 		public static final boolean INV_ENCODER_LEFT = false;
 		public static final boolean INV_ENCODER_RIGHT = false;
 
-		public static final double DISTANCE_PER_PULSE = 1; // TODO get distance
+		public static final double CIRCUMFERENCE = 12.0; // TODO get this (inch)
+		public static final double DISTANCE_PER_PULSE = CIRCUMFERENCE / (3 * 512);
 	}
 
 	public class IntakeMap {
@@ -58,14 +59,14 @@ public class RobotMap {
 
 		public static final int DIO_ENCODER_A = 4;
 		public static final int DIO_ENCODER_B = 5;
-		public static final double DEGREES_PER_PULSE = 1; // TODO get degrees
+		public static final double DEGREES_PER_PULSE = 360.0 / 512.0;
 		public static final boolean INV_ENCODER = false;
 
 		public static final int DIO_LIMITSWITCH_TOP = 6;
 		public static final int DIO_LIMITSWITCH_BOTTOM = 7;
 
 		public static final int MAN_INCREMENT = 1; // TODO test, get arm speed
-		
+
 		public static final double MIN_ANGLE = -15; // Lowest angle of arm
 
 		public class PID {
@@ -107,11 +108,10 @@ public class RobotMap {
 
 		// Not used
 		/*
-		public static final int DIO_ENCODER_A = 6;
-		public static final int DIO_ENCODER_B = 7;
-		public static final double DISTANCE_PER_PULSE = 1; // TODO get distance
-		public static final boolean INV_ENCODER = false;
-		*/
+		 * public static final int DIO_ENCODER_A = 6; public static final int
+		 * DIO_ENCODER_B = 7; public static final double DISTANCE_PER_PULSE = 1;
+		 * // TODO get distance public static final boolean INV_ENCODER = false;
+		 */
 
 		public static final int SOL_FORWARD = 2;
 		public static final int SOL_REVERSE = 3;
