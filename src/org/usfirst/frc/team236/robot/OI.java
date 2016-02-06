@@ -1,7 +1,9 @@
 package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.Cock;
+import org.usfirst.frc.team236.robot.commands.DriveWithJoysticks;
 import org.usfirst.frc.team236.robot.commands.IntakeControl;
+import org.usfirst.frc.team236.robot.commands.InvertedDriveWithJoysticks;
 import org.usfirst.frc.team236.robot.commands.Shift;
 import org.usfirst.frc.team236.robot.commands.Shoot;
 import org.usfirst.frc.team236.robot.commands.arm.ManualArmDown;
@@ -60,35 +62,47 @@ public class OI {
 	public Button manualArmDown;
 
 	public Button invertDrive;
+	public Button normalDrive;
 
 	public OI() {
 		leftStick = new Joystick(RobotMap.ControlMap.PORT_STICK_LEFT);
 		rightStick = new Joystick(RobotMap.ControlMap.PORT_STICK_RIGHT);
+		controller = new Joystick(RobotMap.ControlMap.PORT_CONTROLLER);
+
+		// Right Stick
+		shiftDown = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_DOWN);
+		shiftDown.whenPressed(new Shift(1));
 
 		shiftUp = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_UP);
 		shiftUp.whenPressed(new Shift(0));
 
-		shiftDown = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_DOWN);
-		shiftDown.whenPressed(new Shift(1));
+		invertDrive = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_INVERT_DRIVE);
+		invertDrive.whenPressed(new InvertedDriveWithJoysticks());
+		invertDrive.cancelWhenPressed(new DriveWithJoysticks());
 
-		intake = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE);
-		intake.whileHeld(new IntakeControl(1));
+		normalDrive = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_NORMAL_DRIVE);
+		normalDrive.whenPressed(new DriveWithJoysticks());
+		normalDrive.cancelWhenPressed(new InvertedDriveWithJoysticks());
+
+		// Left Stick
+		shoot = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_SHOOT);
+		shoot.whenPressed(new Shoot());
 
 		eject = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_EJECT);
 		eject.whileHeld(new IntakeControl(-1));
 
-		shoot = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_SHOOT);
-		shoot.whenPressed(new Shoot());
+		intake = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE);
+		intake.whileHeld(new IntakeControl(1));
 
 		cock = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_COCK);
 		cock.whenPressed(new Cock());
 
+		// Controller
 		manualArmUp = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_UP);
 		manualArmUp.whileHeld(new ManualArmUp());
 
 		manualArmDown = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_DOWN);
 		manualArmDown.whileHeld(new ManualArmDown());
 
-		invertDrive = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INVERT_DRIVE);
 	}
 }
