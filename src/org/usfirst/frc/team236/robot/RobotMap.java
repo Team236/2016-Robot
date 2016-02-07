@@ -67,7 +67,8 @@ public class RobotMap {
 
 		public static final int MAN_INCREMENT = 1; // TODO test, get arm speed
 
-		public static final double MIN_ANGLE = -15; // Lowest angle of arm
+		public static final double MIN_ANGLE = -11; // Lowest angle of arm
+		public static final double MAX_ANGLE = 90; // Highest angle of arm
 
 		public class PID {
 			// TODO tune PID
