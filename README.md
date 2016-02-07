@@ -1,7 +1,6 @@
-# 2016-Robot
-Team 236's 2016 bot for FRC Stronghold
-
 ![Build Status](http://dev.imjac.in/travis/Team236/2016-Robot)
+
+Team 236's 2016 bot for FRC Stronghold
 
 ### Goals
 Here are some of my goals for this season. Best case scenario, I can change the header above to "Features" by the end of
