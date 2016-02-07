@@ -15,8 +15,8 @@ public class Arm extends PIDSubsystem {
 
 	private SpeedController motor;
 	private Encoder encoder;
-	public DigitalInput limitSwitchTop;
-	public DigitalInput limitSwitchBottom;
+	public DigitalInput upperLimit;
+	public DigitalInput bottomLimit;
 
 	private static final double kP = RobotMap.ArmMap.PID.kP;
 	private static final double kI = RobotMap.ArmMap.PID.kI;
@@ -32,10 +32,9 @@ public class Arm extends PIDSubsystem {
 		encoder = new Encoder(RobotMap.ArmMap.DIO_ENCODER_A, RobotMap.ArmMap.DIO_ENCODER_B);
 		encoder.setDistancePerPulse(RobotMap.ArmMap.DEGREES_PER_PULSE);
 		encoder.setReverseDirection(RobotMap.ArmMap.INV_ENCODER);
-		
-		limitSwitchTop = new DigitalInput(RobotMap.ArmMap.DIO_LIMITSWITCH_TOP);
-		limitSwitchBottom = new DigitalInput(RobotMap.ArmMap.DIO_LIMITSWITCH_BOTTOM);
-		
+
+		upperLimit = new DigitalInput(RobotMap.ArmMap.DIO_LIMIT_TOP);
+		bottomLimit = new DigitalInput(RobotMap.ArmMap.DIO_LIMIT_BOTTOM);
 
 		setAbsoluteTolerance(0.05);
 		getPIDController().setContinuous(false);
@@ -44,40 +43,38 @@ public class Arm extends PIDSubsystem {
 		// setSetpoint() - Sets where the PID controller should move the system
 		// to
 		// enable() - Enables the PID controller.
-		
+
 	}
-	
+
 	public void setSpeed(double speed) {
-		if(speed >= 1) {
+		if (speed >= 1) {
 			motor.set(1);
-		}
-		else if (speed <= -1) {
+		} else if (speed <= -1) {
 			motor.set(-1);
 		} else {
 			motor.set(speed);
 		}
-		
+
 	}
-	
+
 	public void checkLimits() {
-		if(limitSwitchTop.get() == true) {
+		if (upperLimit.get() == true) {
 			motor.set(0);
 
-		}
-		else if (limitSwitchBottom.get() == true) {
+		} else if (bottomLimit.get() == true) {
 			motor.set(0);
 			encoder.reset();
 		}
 	}
-	
+
 	public double getAngle() {
 		return encoder.getDistance() + RobotMap.ArmMap.MIN_ANGLE;
 	}
-	
+
 	public void stop() {
 		setSpeed(0);
 	}
-	
+
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());

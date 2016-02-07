@@ -26,7 +26,7 @@ public class GoBottom extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.arm.limitSwitchBottom.get();
+        return Robot.arm.bottomLimit.get();
     }
 
     // Called once after isFinished returns true

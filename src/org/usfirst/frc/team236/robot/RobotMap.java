@@ -62,8 +62,8 @@ public class RobotMap {
 		public static final double DEGREES_PER_PULSE = 360.0 / 512.0;
 		public static final boolean INV_ENCODER = false;
 
-		public static final int DIO_LIMITSWITCH_TOP = 6;
-		public static final int DIO_LIMITSWITCH_BOTTOM = 7;
+		public static final int DIO_LIMIT_TOP = 6;
+		public static final int DIO_LIMIT_BOTTOM = 7;
 
 		public static final int MAN_INCREMENT = 1; // TODO test, get arm speed
 
