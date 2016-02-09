@@ -68,6 +68,7 @@ public class Arm extends PIDSubsystem {
 	}
 
 	public double getAngle() {
+		// This adjusts for bottom limit at some angle (-11) less than zero.
 		return encoder.getDistance() + RobotMap.ArmMap.MIN_ANGLE;
 	}
 
