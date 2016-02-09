@@ -22,7 +22,7 @@ public class Cock extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.shooter.setSpeed(1);
-    	Robot.shooter.setSol(-1);
+    	Robot.shooter.setSol(-1); // Compresses the spring. Stops when limit switch is hit using Spark.
     }
 
     // Make this return true when this Command no longer needs to run execute()

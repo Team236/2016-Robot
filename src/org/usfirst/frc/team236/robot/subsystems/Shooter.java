@@ -16,8 +16,6 @@ public class Shooter extends Subsystem {
 	private SpeedController motorRight;
 	private DoubleSolenoid solenoid;
 	
-	
-
 	public Shooter() {
 		motorLeft = new Spark(RobotMap.ShooterMap.PWM_MOTOR_LEFT);
 		motorLeft.setInverted(RobotMap.ShooterMap.INV_MOTOR_LEFT);
@@ -26,9 +24,6 @@ public class Shooter extends Subsystem {
 		motorRight.setInverted(RobotMap.ShooterMap.INV_MOTOR_RIGHT);
 		
 		solenoid = new DoubleSolenoid(RobotMap.ShooterMap.SOL_FORWARD, RobotMap.ShooterMap.SOL_REVERSE);
-		
-		
-		
 	}
 	
     // Put methods for controlling this subsystem
@@ -44,7 +39,7 @@ public class Shooter extends Subsystem {
     		solenoid.set(DoubleSolenoid.Value.kForward);
     	}
     	else if (direction == 0) {
-    		solenoid.set(DoubleSolenoid.Value.kOff);
+    		solenoid.set(DoubleSolenoid.Value.kOff); // We may want to remove this state
     	}
     	else if (direction == -1) {
     		solenoid.set(DoubleSolenoid.Value.kReverse);
