@@ -94,7 +94,7 @@ public class OI {
 		eject.whileHeld(new Eject());
 
 		intake = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE);
-		intake.whileHeld(new Intake());
+		intake.whenPressed(new Intake());
 
 		cock = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_COCK);
 		cock.whenPressed(new Cock());
