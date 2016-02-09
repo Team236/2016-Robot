@@ -2,8 +2,9 @@ package org.usfirst.frc.team236.robot.subsystems;
 
 import org.usfirst.frc.team236.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -15,15 +16,22 @@ public class Intake extends Subsystem {
 	// here. Call these from Commands.
 
 	private SpeedController motor;
+	private DigitalInput opticalLimit;
 
 	public Intake() {
-		motor = new Victor(RobotMap.IntakeMap.PWM_MOTOR);
+		motor = new Talon(RobotMap.IntakeMap.PWM_MOTOR);
 		motor.setInverted(RobotMap.IntakeMap.INV_MOTOR);
+		
+		opticalLimit = new DigitalInput(RobotMap.IntakeMap.DIO_OPTICAL_LIMIT);
 	}
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+	}
+	
+	public boolean getLimit() {
+		return opticalLimit.get();
 	}
 
 	public void set(double speed) {
