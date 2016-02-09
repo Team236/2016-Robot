@@ -5,7 +5,7 @@ import org.usfirst.frc.team236.robot.commands.DriveWithJoysticks;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -13,10 +13,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Drive extends Subsystem {
 	// Declare motors
-	private Victor leftFront;
-	private Victor leftBack;
-	private Victor rightFront;
-	private Victor rightBack;
+	private VictorSP leftFront;
+	private VictorSP leftBack;
+	private VictorSP rightFront;
+	private VictorSP rightBack;
 
 	// Declare encoder
 	private Encoder leftEncoder;
@@ -32,17 +32,17 @@ public class Drive extends Subsystem {
 	}
 
 	public Drive() {
-		// Instantiate Victors
-		leftFront = new Victor(RobotMap.DriveMap.PWM_LEFT_FRONT);
-		leftBack = new Victor(RobotMap.DriveMap.PWM_LEFT_BACK);
-		rightFront = new Victor(RobotMap.DriveMap.PWM_RIGHT_FRONT);
-		rightBack = new Victor(RobotMap.DriveMap.PWM_RIGHT_BACK);
+		// Instantiate VictorSPs
+		leftFront = new VictorSP(RobotMap.DriveMap.PWM_LEFT_FRONT);
+		leftBack = new VictorSP(RobotMap.DriveMap.PWM_LEFT_BACK);
+		rightFront = new VictorSP(RobotMap.DriveMap.PWM_RIGHT_FRONT);
+		rightBack = new VictorSP(RobotMap.DriveMap.PWM_RIGHT_BACK);
 
 		// Instantiate Encoders
 		leftEncoder = new Encoder(RobotMap.DriveMap.DIO_ENCODER_LEFT_A, RobotMap.DriveMap.DIO_ENCODER_LEFT_B);
 		rightEncoder = new Encoder(RobotMap.DriveMap.DIO_ENCODER_RIGHT_A, RobotMap.DriveMap.DIO_ENCODER_RIGHT_B);
 
-		// Invert Victors
+		// Invert VictorSPs
 		leftFront.setInverted(RobotMap.DriveMap.INV_LEFT_FRONT);
 		leftBack.setInverted(RobotMap.DriveMap.INV_LEFT_MID);
 		rightFront.setInverted(RobotMap.DriveMap.INV_RIGHT_FRONT);
@@ -127,7 +127,7 @@ public class Drive extends Subsystem {
 		if (direction == -1) {
 			solenoid.set(DoubleSolenoid.Value.kReverse);
 		} else if (direction == 0) {
-			solenoid.set(DoubleSolenoid.Value.kOff);
+			solenoid.set(DoubleSolenoid.Value.kOff); // May need to remove this state
 		} else if (direction == 1) {
 			solenoid.set(DoubleSolenoid.Value.kForward);
 		}
