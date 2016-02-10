@@ -97,6 +97,7 @@ public class RobotMap {
 		public static final int BUTTON_SHOOT = 1;
 		public static final int BUTTON_EJECT = 2;
 		public static final int BUTTON_INTAKE = 3;
+		public static final int BUTTON_INTAKE_OVERRIDE = 3;
 		public static final int BUTTON_COCK = 4;
 
 		// Controller
