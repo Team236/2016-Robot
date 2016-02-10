@@ -3,7 +3,7 @@
 ### Left Stick
 | Button | Function |
 |--------|----------|
-| 1 | Shoot |
+| Trigger | Shoot |
 | 2 | Eject |
 | 3 | Intake |
 | 4 | Cock |
@@ -19,5 +19,6 @@
 ### Controller
 | Button | Function |
 |--------|----------|
-| 2 | Arm up (manual) |
-| 3 | Arm down (manual) |
+| Y | Arm up (manual) |
+| A | Arm down (manual) |
+| Left Stick Y | Fine arm control |
