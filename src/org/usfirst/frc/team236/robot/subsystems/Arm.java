@@ -1,6 +1,7 @@
 package org.usfirst.frc.team236.robot.subsystems;
 
 import org.usfirst.frc.team236.robot.RobotMap;
+import org.usfirst.frc.team236.robot.commands.arm.ArmWithJoystick;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -79,6 +80,7 @@ public class Arm extends PIDSubsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new ArmWithJoystick());
 	}
 
 	protected double returnPIDInput() {
