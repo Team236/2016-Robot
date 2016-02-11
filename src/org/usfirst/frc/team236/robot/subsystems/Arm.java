@@ -48,14 +48,13 @@ public class Arm extends PIDSubsystem {
 	}
 
 	public void setSpeed(double speed) {
-		if (speed >= 1) {
+		if (speed > 1) {
 			motor.set(1);
-		} else if (speed <= -1) {
+		} else if (speed < -1) {
 			motor.set(-1);
 		} else {
 			motor.set(speed);
 		}
-
 	}
 
 	public void checkLimits() {

@@ -30,6 +30,11 @@ public class Shooter extends Subsystem {
     // here. Call these from Commands.
 	
 	public void setSpeed(double speed) {
+		if (speed > 1) {
+			speed = 1;
+		} else if (speed < -1) {
+			speed = -1;
+		}
 		motorLeft.set(speed);
 		motorRight.set(speed);
 	}
