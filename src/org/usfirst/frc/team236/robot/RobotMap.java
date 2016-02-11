@@ -44,16 +44,16 @@ public class RobotMap {
 		public static final boolean INV_ENCODER_LEFT = false;
 		public static final boolean INV_ENCODER_RIGHT = false;
 
-		//Circumference of Drive Wheel may need tweaking
+		// Circumference of Drive Wheel may need tweaking
 		public static final double CIRCUMFERENCE = 24.62;
-		//Gear ratio is 3:1, and raw encoder count is 512 per full revolution
+		// Gear ratio is 3:1, and raw encoder count is 512 per full revolution
 		public static final double DISTANCE_PER_PULSE = CIRCUMFERENCE / (3 * 512);
 	}
 
 	public class IntakeMap {
 		public static final int PWM_MOTOR = 4;
 		public static final boolean INV_MOTOR = false;
-		
+
 		public static final int DIO_OPTICAL_LIMIT = 8;
 	}
 
@@ -97,8 +97,8 @@ public class RobotMap {
 		public static final int BUTTON_SHOOT = 1;
 		public static final int BUTTON_EJECT = 2;
 		public static final int BUTTON_INTAKE = 3;
-		public static final int BUTTON_INTAKE_OVERRIDE = 3;
 		public static final int BUTTON_COCK = 4;
+		public static final int BUTTON_INTAKE_OVERRIDE = 5;
 
 		// Controller
 		public static final int BUTTON_ARM_DOWN = 1;

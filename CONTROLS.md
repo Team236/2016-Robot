@@ -7,6 +7,7 @@
 | 2 | Eject |
 | 3 | Intake |
 | 4 | Cock |
+| 5 | Intake (override) |
 
 ### Right Stick
 | Button | Function |
