@@ -5,7 +5,10 @@ import org.usfirst.frc.team236.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Runs the intake until manually stopped. Similar to the Intake command, but
+ * ignores the limit switch.
+ * 
+ * @author Gabriel
  */
 public class IntakeOverride extends Command {
 
