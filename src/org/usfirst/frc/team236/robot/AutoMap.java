@@ -1,8 +1,11 @@
 package org.usfirst.frc.team236.robot;
 
+import org.usfirst.frc.team236.robot.motionProfile.FollowParameters;
 import org.usfirst.frc.team236.robot.motionProfile.ProfileParameters;
 
 public class AutoMap {
+	public static FollowParameters params = new FollowParameters(10.2, 1.0 / 15, 1.0 / 15);
+
 	public static ProfileParameters test = new ProfileParameters(10, 5, 4, 2);
 	/*
 	 * Drives from the midfield to the position aligned with the left goal by

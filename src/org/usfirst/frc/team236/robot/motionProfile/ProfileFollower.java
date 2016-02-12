@@ -23,13 +23,13 @@ public class ProfileFollower implements Updatable {
 	public volatile boolean isEnabled;
 	public volatile boolean onTarget;
 
-	public ProfileFollower(Profile p, ProfileSource source, ProfileOutput output, double kP, double kV, double kA) {
+	public ProfileFollower(Profile p, ProfileSource source, ProfileOutput output, FollowParameters params) {
 		this.profile = p;
 		this.source = source;
 		this.output = output;
-		this.kV = kV;
-		this.kA = kA;
-		this.kP = kP;
+		this.kV = params.kV;
+		this.kA = params.kA;
+		this.kP = params.kP;
 
 		this.endPosition = p.get(p.length() - 1).position;
 	}
