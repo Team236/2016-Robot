@@ -1,6 +1,6 @@
 package org.usfirst.frc.team236.robot.motionProfile;
 
-import org.usfirst.frc.team236.robot.Updatable;
+import updater.Updatable;
 
 /**
  * 

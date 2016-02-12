@@ -1,0 +1,6 @@
+[submodule "src/org/usfirst/frc/team236/robot/updater"]
+	path = src/org/usfirst/frc/team236/robot/updater
+	url = https://github.com/Team236/Updater.git
+[submodule "src/updater"]
+	path = src/updater
+	url = https://github.com/Team236/Updater.git

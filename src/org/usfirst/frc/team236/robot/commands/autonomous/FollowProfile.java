@@ -2,12 +2,12 @@ package org.usfirst.frc.team236.robot.commands.autonomous;
 
 import org.usfirst.frc.team236.robot.AutoMap;
 import org.usfirst.frc.team236.robot.Robot;
-import org.usfirst.frc.team236.robot.Updater;
 import org.usfirst.frc.team236.robot.motionProfile.DriveSide;
 import org.usfirst.frc.team236.robot.motionProfile.Profile;
 import org.usfirst.frc.team236.robot.motionProfile.ProfileFollower;
 
 import edu.wpi.first.wpilibj.command.Command;
+import updater.Updater;
 
 /**
  *
