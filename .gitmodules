@@ -4,3 +4,6 @@
 [submodule "src/updater"]
 	path = src/updater
 	url = https://github.com/Team236/Updater.git
+[submodule "src/motionProfile"]
+	path = src/motionProfile
+	url = https://github.com/Team236/MotionProfile.git

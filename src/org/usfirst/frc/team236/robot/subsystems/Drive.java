@@ -2,12 +2,12 @@ package org.usfirst.frc.team236.robot.subsystems;
 
 import org.usfirst.frc.team236.robot.RobotMap;
 import org.usfirst.frc.team236.robot.commands.DriveWithJoysticks;
-import org.usfirst.frc.team236.robot.motionProfile.DriveSide;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import motionProfile.DriveSide;
 
 /**
  *

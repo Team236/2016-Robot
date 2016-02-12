@@ -1,7 +1,7 @@
 package org.usfirst.frc.team236.robot;
 
-import org.usfirst.frc.team236.robot.motionProfile.FollowParameters;
-import org.usfirst.frc.team236.robot.motionProfile.ProfileParameters;
+import motionProfile.FollowParameters;
+import motionProfile.ProfileParameters;
 
 public class AutoMap {
 	public static FollowParameters params = new FollowParameters(10.2, 1.0 / 15, 1.0 / 15);
