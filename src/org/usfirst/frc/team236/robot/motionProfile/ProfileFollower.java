@@ -2,6 +2,12 @@ package org.usfirst.frc.team236.robot.motionProfile;
 
 import org.usfirst.frc.team236.robot.Updatable;
 
+/**
+ * 
+ * @author samcf_000
+ *
+ */
+
 public class ProfileFollower implements Updatable {
 	// Profile to be followed
 	Profile profile;
@@ -16,7 +22,7 @@ public class ProfileFollower implements Updatable {
 	double endPosition;
 	public volatile boolean isEnabled;
 	public volatile boolean onTarget;
-	
+
 	public ProfileFollower(Profile p, ProfileSource source, ProfileOutput output, double kP, double kV, double kA) {
 		this.profile = p;
 		this.source = source;
@@ -24,10 +30,10 @@ public class ProfileFollower implements Updatable {
 		this.kV = kV;
 		this.kA = kA;
 		this.kP = kP;
-		
+
 		this.endPosition = p.get(p.length() - 1).position;
 	}
-	
+
 	@Override
 	public void update() {
 		// Make sure i is within bounds of profile
@@ -40,7 +46,7 @@ public class ProfileFollower implements Updatable {
 		double position = profile.get(i).position;
 		// Determine if we are on target. Allowing error of +/- .1
 		onTarget = Math.abs(endPosition + source.getDistance()) < .1;
-		
+
 		if (isEnabled) {
 			// Calculate the acceleration and velocity feedforward
 			double a = kA * profile.get(i).acceleration;

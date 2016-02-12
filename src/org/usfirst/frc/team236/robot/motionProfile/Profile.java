@@ -9,7 +9,6 @@ import java.util.ArrayList;
  * A class that contains a list of elements. Represents a motion profile.
  * 
  * @author Sam
- *
  */
 public class Profile {
 
