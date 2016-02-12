@@ -1,40 +1,28 @@
 package org.usfirst.frc.team236.robot.motionProfile;
 
-import org.usfirst.frc.team236.robot.Robot;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SpeedController;
 
 public class DriveSide implements ProfileSource, ProfileOutput {
 
-	public String side;
-	public final String left = "left";
-	public final String right = "right";
+	private SpeedController motorA;
+	private SpeedController motorB;
+	private Encoder enc;
 
-	public DriveSide(String side) {
-		if (side == left) {
-			side = left;
-		} else if (side == right) {
-			side = right;
-		} else {
-			side = null;
-			throw new IllegalArgumentException("Enter either 'left' or 'right");
-		}
+	public DriveSide(SpeedController _motorA, SpeedController _motorB, Encoder _enc) {
+		this.motorA = _motorA;
+		this.motorB = _motorB;
+		this.enc = _enc;
 	}
 
+	@Override
 	public void setSpeed(double speed) {
-		if (side == left) {
-			Robot.drive.setLeftSpeed(speed);
-		} else if (side == right) {
-			Robot.drive.setRightSpeed(speed);
-		}
+		motorA.set(speed);
+		motorB.set(speed);
 	}
 
+	@Override
 	public double getDistance() {
-		if (side == left) {
-			return Robot.drive.getLeftDistance();
-		} else if (side == right) {
-			return Robot.drive.getRightDistance();
-		} else {
-			return 0;
-		}
+		return enc.getDistance();
 	}
-
 }
