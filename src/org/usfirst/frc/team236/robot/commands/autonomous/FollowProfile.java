@@ -19,6 +19,10 @@ public class FollowProfile extends Command {
 	DriveSide leftSide, rightSide;
 	ProfileFollower followLeft, followRight;
 
+	public FollowProfile(Profile bothSides) {
+		this(bothSides, bothSides);
+	}
+
 	public FollowProfile(Profile _left, Profile _right) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -53,6 +57,7 @@ public class FollowProfile extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
+		// TODO
 		return false;
 	}
 
