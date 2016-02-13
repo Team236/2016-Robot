@@ -18,4 +18,9 @@ public class AutoMap {
 	 * courtyard. // TODO testing
 	 */
 	public static ProfileParameters cross = new ProfileParameters(12, 5, 10, 20);
+
+	/*
+	 * Drives from auto line onto the ramp of any defense. // TODO testing
+	 */
+	public static ProfileParameters reach = new ProfileParameters(3, 2, 7, 15);
 }

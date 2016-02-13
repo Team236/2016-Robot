@@ -2,7 +2,9 @@
 package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.ShiftUp;
+import org.usfirst.frc.team236.robot.commands.autonomous.CrossLowGoal;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
+import org.usfirst.frc.team236.robot.commands.autonomous.Reach;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
 import org.usfirst.frc.team236.robot.subsystems.Intake;
@@ -20,6 +22,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import motionProfile.Profile;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -45,15 +48,25 @@ public class Robot extends IterativeRobot {
 	AHRS navx;
 	PowerDistributionPanel pdp;
 
+	// Motion Profiles
+	public Profile crossLowGoal;
+	public Profile reach;
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
 		oi = new OI();
+
+		// Generate profiles
+		crossLowGoal = new Profile(AutoMap.cross);
+		reach = new Profile(AutoMap.reach);
+
 		chooser = new SendableChooser();
 		chooser.addDefault("Do Nothing", new DoNothing());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		chooser.addObject("Cross - low goal", new CrossLowGoal(crossLowGoal));
+		chooser.addObject("Reach", new Reach(reach));
 		SmartDashboard.putData("Auto mode", chooser);
 
 		// Start Camera feed
