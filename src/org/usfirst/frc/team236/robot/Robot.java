@@ -39,11 +39,8 @@ public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
 	SendableChooser chooser;
-
 	CameraServer camera;
-
 	Compressor compressor;
-
 	AHRS navx;
 
 	/**
@@ -58,8 +55,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 
 		// Start Camera feed
-		// camera = CameraServer.getInstance();
-		// camera.startAutomaticCapture();
+		camera = CameraServer.getInstance();
+		camera.startAutomaticCapture();
 
 		// Start Compressor
 		compressor = new Compressor();
