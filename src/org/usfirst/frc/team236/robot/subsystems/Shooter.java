@@ -27,11 +27,6 @@ public class Shooter extends Subsystem {
 	}
 
 	public void setSpeed(double speed) {
-		if (speed > 1) {
-			speed = 1;
-		} else if (speed < -1) {
-			speed = -1;
-		}
 		motorLeft.set(speed);
 		motorRight.set(speed);
 	}
