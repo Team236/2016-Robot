@@ -14,6 +14,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
@@ -143,6 +144,12 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		// SmartDashboard
+		SmartDashboard.putNumber("Match Time", DriverStation.getInstance().getMatchTime());
+		SmartDashboard.putNumber("Battery Voltage", DriverStation.getInstance().getBatteryVoltage());
+		SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());
+
+		SmartDashboard.putNumber("Arm angle", Robot.arm.getAngle());
 	}
 
 	/**
