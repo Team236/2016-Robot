@@ -147,7 +147,7 @@ public class Robot extends IterativeRobot {
 		// SmartDashboard
 		SmartDashboard.putNumber("Match Time", DriverStation.getInstance().getMatchTime());
 		SmartDashboard.putNumber("Battery Voltage", DriverStation.getInstance().getBatteryVoltage());
-		SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());
+		//SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());
 
 		SmartDashboard.putNumber("Arm angle", Robot.arm.getAngle());
 	}
