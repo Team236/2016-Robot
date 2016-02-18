@@ -10,6 +10,7 @@ import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.ShiftUp;
 import org.usfirst.frc.team236.robot.commands.Shoot;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithJoystick;
+import org.usfirst.frc.team236.robot.commands.arm.ArmWithPOV;
 import org.usfirst.frc.team236.robot.commands.arm.ManualArmDown;
 import org.usfirst.frc.team236.robot.commands.arm.ManualArmUp;
 
@@ -70,6 +71,8 @@ public class OI {
 
 	public Button invertDrive;
 	public Button normalDrive;
+	
+	public Button armWithPOV;
 
 	public OI() {
 		leftStick = new Joystick(RobotMap.ControlMap.PORT_STICK_LEFT);
@@ -115,5 +118,8 @@ public class OI {
 
 		armWithJoystick = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_JOYSTICK);
 		armWithJoystick.whileHeld(new ArmWithJoystick());
+		
+		armWithPOV = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_WITH_POV);
+		armWithPOV.whileHeld(new ArmWithPOV());
 	}
 }
