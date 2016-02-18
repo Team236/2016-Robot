@@ -102,8 +102,8 @@ public class RobotMap {
 		// Controller
 		public static final int BUTTON_ARM_DOWN = 1;
 		public static final int BUTTON_ARM_UP = 4;
-		public static final int BUTTON_ARM_JOYSTICK = 8;
 		public static final int BUTTON_ARM_WITH_POV = 5;
+		public static final int BUTTON_ARM_JOYSTICK = 9;
 	}
 
 	public class ShooterMap {
