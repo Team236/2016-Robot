@@ -6,7 +6,7 @@ import motionProfile.ProfileParameters;
 public class AutoMap {
 	// The distance we turn to shoot for the goal
 	public static final double turnForGoalDegrees = 58;
-	
+
 	public static FollowParameters params = new FollowParameters(10.2, 1.0 / 15, 1.0 / 15);
 
 	public static ProfileParameters test = new ProfileParameters(10, 5, 4, 2);
@@ -20,10 +20,10 @@ public class AutoMap {
 	 * Drives from midfield line through the low goal into the opponent's
 	 * courtyard. // TODO testing
 	 */
-	public static ProfileParameters cross = new ProfileParameters(12, 5, 10, 20);
+	public static ProfileParameters cross = new ProfileParameters(6, 5, 10, 20);
 
 	/*
 	 * Drives from auto line onto the ramp of any defense. // TODO testing
 	 */
-	public static ProfileParameters reach = new ProfileParameters(3, 2, 7, 15);
+	public static ProfileParameters reach = new ProfileParameters((35 / 12), 2, 7, 15);
 }
