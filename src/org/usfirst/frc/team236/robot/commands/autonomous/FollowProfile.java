@@ -58,6 +58,9 @@ public class FollowProfile extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		// TODO
+		if (followLeft.error < .1 || followRight.error < .1) {
+			return true;
+		}
 		return false;
 	}
 
@@ -65,6 +68,7 @@ public class FollowProfile extends Command {
 	protected void end() {
 		left.isEnabled = false;
 		right.isEnabled = false;
+		Robot.drive.stop();
 	}
 
 	// Called when another command which requires one or more of the same
