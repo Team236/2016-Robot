@@ -1,6 +1,6 @@
 package org.usfirst.frc.team236.robot.commands.autonomous;
 
-import org.usfirst.frc.team236.robot.commands.ShiftUp;
+import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.arm.GoBottom;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -28,7 +28,7 @@ public class Reach extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		addParallel(new ShiftUp());
+		addParallel(new ShiftDown());
 		addSequential(new GoBottom());
 
 		addSequential(new FollowProfile(profile));

@@ -2,7 +2,7 @@ package org.usfirst.frc.team236.robot.commands.autonomous;
 
 import org.usfirst.frc.team236.robot.AutoMap;
 import org.usfirst.frc.team236.robot.commands.Cock;
-import org.usfirst.frc.team236.robot.commands.ShiftUp;
+import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.Shoot;
 import org.usfirst.frc.team236.robot.commands.arm.GoBottom;
 
@@ -31,7 +31,7 @@ public class LowShot extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		addParallel(new ShiftUp());
+		addParallel(new ShiftDown());
 		addSequential(new GoBottom());
 
 		addParallel(new Cock());

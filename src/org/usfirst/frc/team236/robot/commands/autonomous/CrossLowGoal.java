@@ -1,6 +1,6 @@
 package org.usfirst.frc.team236.robot.commands.autonomous;
 
-import org.usfirst.frc.team236.robot.commands.ShiftUp;
+import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.arm.GoBottom;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -30,7 +30,7 @@ public class CrossLowGoal extends CommandGroup {
 		// arm.
 
 		// Initials
-		addParallel(new ShiftUp());
+		addParallel(new ShiftDown());
 		addSequential(new GoBottom());
 
 		// Get going
