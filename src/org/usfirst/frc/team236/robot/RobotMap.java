@@ -54,7 +54,7 @@ public class RobotMap {
 		public static final int PWM_MOTOR = 4;
 		public static final boolean INV_MOTOR = false;
 
-		public static final int DIO_OPTICAL_LIMIT = 8;
+		public static final int DIO_LIMIT = 8;
 	}
 
 	public class ArmMap {

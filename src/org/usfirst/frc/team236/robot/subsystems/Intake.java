@@ -16,22 +16,22 @@ public class Intake extends Subsystem {
 	// here. Call these from Commands.
 
 	private SpeedController motor;
-	private DigitalInput opticalLimit;
+	private DigitalInput limit;
 
 	public Intake() {
 		motor = new Talon(RobotMap.IntakeMap.PWM_MOTOR);
 		motor.setInverted(RobotMap.IntakeMap.INV_MOTOR);
-		
-		opticalLimit = new DigitalInput(RobotMap.IntakeMap.DIO_OPTICAL_LIMIT);
+
+		limit = new DigitalInput(RobotMap.IntakeMap.DIO_LIMIT);
 	}
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
-	
+
 	public boolean getLimit() {
-		return opticalLimit.get();
+		return limit.get();
 	}
 
 	public void set(double speed) {
