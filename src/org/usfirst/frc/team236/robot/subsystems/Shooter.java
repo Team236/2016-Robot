@@ -12,23 +12,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Shooter extends Subsystem {
 
-	private SpeedController motorLeft;
-	private SpeedController motorRight;
+	private SpeedController motor;
 	private DoubleSolenoid solenoid;
 
 	public Shooter() {
-		motorLeft = new Spark(RobotMap.ShooterMap.PWM_MOTOR_LEFT);
-		motorLeft.setInverted(RobotMap.ShooterMap.INV_MOTOR_LEFT);
-
-		motorRight = new Spark(RobotMap.ShooterMap.PWM_MOTOR_RIGHT);
-		motorRight.setInverted(RobotMap.ShooterMap.INV_MOTOR_RIGHT);
+		motor = new Spark(RobotMap.ShooterMap.PWM_MOTOR);
+		motor.setInverted(RobotMap.ShooterMap.INV_MOTOR);
 
 		solenoid = new DoubleSolenoid(RobotMap.ShooterMap.SOL_FORWARD, RobotMap.ShooterMap.SOL_REVERSE);
 	}
 
 	public void setSpeed(double speed) {
-		motorLeft.set(speed);
-		motorRight.set(speed);
+		motor.set(speed);
 	}
 
 	public void setSol(int direction) {

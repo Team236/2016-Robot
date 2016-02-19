@@ -107,10 +107,8 @@ public class RobotMap {
 	}
 
 	public class ShooterMap {
-		public static final int PWM_MOTOR_LEFT = 6;
-		public static final boolean INV_MOTOR_LEFT = false;
-		public static final int PWM_MOTOR_RIGHT = 7;
-		public static final boolean INV_MOTOR_RIGHT = false;
+		public static final int PWM_MOTOR = 6;
+		public static final boolean INV_MOTOR = false;
 
 		public static final int SOL_FORWARD = 2;
 		public static final int SOL_REVERSE = 3;
