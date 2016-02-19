@@ -2,7 +2,7 @@
 package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
-import org.usfirst.frc.team236.robot.commands.autonomous.CrossLowGoal;
+import org.usfirst.frc.team236.robot.commands.autonomous.CrossLowBar;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team236.robot.commands.autonomous.HighShot;
 import org.usfirst.frc.team236.robot.commands.autonomous.LowShot;
@@ -74,7 +74,7 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Do Nothing", new DoNothing());
 		chooser.addDefault("High Shot", new HighShot(toShoot));
 		chooser.addDefault("Low Shot", new LowShot(toShoot, toLowGoal));
-		chooser.addObject("Cross - low goal", new CrossLowGoal(crossLowGoal));
+		chooser.addObject("Cross - low bar", new CrossLowBar(crossLowGoal));
 		chooser.addObject("Reach", new Reach(reach));
 		SmartDashboard.putData("Auto mode", chooser);
 

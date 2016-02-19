@@ -9,9 +9,9 @@ import motionProfile.Profile;
 /**
  *
  */
-public class CrossLowGoal extends CommandGroup {
+public class CrossLowBar extends CommandGroup {
 
-	public CrossLowGoal(Profile profile) {
+	public CrossLowBar(Profile profile) {
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
