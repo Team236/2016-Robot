@@ -9,7 +9,9 @@ Ports are imported from RobotMap throughout the code.
 | 2 | Drive | Right Front
 | 3 | Drive | Right Back
 | 4 | Intake| Intake
-| 5 | Arm   | Pivot
+| 5 | Arm   | Pivot Motor
+| 6 | Shooter | Shooter motor
+| 7 |
 
 ### DIO
 | Port | Subsystem | Assignment
@@ -18,7 +20,12 @@ Ports are imported from RobotMap throughout the code.
 | 1 | Drive | Left Encoder, channel B
 | 2 | Drive | Right Encoder, channel A
 | 3 | Drive | Right Encoder, channel B
-| 4 | Arm   | Pivot
+| 4 | Arm   | Encoder, channel A
+| 5 | Arm   | Encoder, channel B
+| 6 | Arm   | Upper limit
+| 7 | Arm   | Bottom limit
+| 8 | Intake | Ball limit
+
 
 ### USB
 | Port | Assignment
