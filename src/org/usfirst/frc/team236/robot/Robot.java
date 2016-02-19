@@ -5,6 +5,7 @@ import org.usfirst.frc.team236.robot.commands.ShiftUp;
 import org.usfirst.frc.team236.robot.commands.autonomous.CrossLowGoal;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team236.robot.commands.autonomous.HighShot;
+import org.usfirst.frc.team236.robot.commands.autonomous.LowShot;
 import org.usfirst.frc.team236.robot.commands.autonomous.Reach;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
@@ -54,6 +55,7 @@ public class Robot extends IterativeRobot {
 	public Profile crossLowGoal;
 	public Profile reach;
 	public Profile toShoot;
+	public Profile toLowGoal;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -66,10 +68,12 @@ public class Robot extends IterativeRobot {
 		crossLowGoal = new Profile(AutoMap.cross);
 		reach = new Profile(AutoMap.reach);
 		toShoot = new Profile(AutoMap.toShoot);
+		toLowGoal = new Profile(AutoMap.toLowGoal);
 
 		chooser = new SendableChooser();
 		chooser.addDefault("Do Nothing", new DoNothing());
 		chooser.addDefault("High Shot", new HighShot(toShoot));
+		chooser.addDefault("Low Shot", new LowShot(toShoot, toLowGoal));
 		chooser.addObject("Cross - low goal", new CrossLowGoal(crossLowGoal));
 		chooser.addObject("Reach", new Reach(reach));
 		SmartDashboard.putData("Auto mode", chooser);

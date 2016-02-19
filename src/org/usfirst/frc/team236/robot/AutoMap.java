@@ -26,4 +26,9 @@ public class AutoMap {
 	 * Drives from auto line onto the ramp of any defense. // TODO testing
 	 */
 	public static ProfileParameters reach = new ProfileParameters((35 / 12), 2, 7, 15);
+
+	/*
+	 * Drives from our roundabout point to the edge of the batter to shoot
+	 */
+	public static ProfileParameters toLowGoal = new ProfileParameters((98 / 12), 5, 4, 2);
 }
