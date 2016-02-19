@@ -20,6 +20,7 @@
 ### Controller
 | Button | Function |
 |--------|----------|
-| Y | Arm up (manual) |
-| A | Arm down (manual) |
-| Left Stick Y | Fine arm control |
+| Y | Arm up (manual) (deprecated) |
+| A | Arm down (manual) (deprecated) |
+| Left Stick Y | Fine arm control (hold down stick to activate) |
+| DPad | Arm control (hold LB to activate) |
