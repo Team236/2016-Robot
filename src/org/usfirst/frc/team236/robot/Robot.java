@@ -168,5 +168,6 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void testInit() {
+		LiveWindow.addActuator("Arm", "Arm", arm.getPIDController());
 	}
 }
