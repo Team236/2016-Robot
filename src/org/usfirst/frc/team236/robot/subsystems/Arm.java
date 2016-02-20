@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class Arm extends PIDSubsystem {
 
-	private SpeedController motorA;
-	private SpeedController motorB;
+	private SpeedController motorLeft;
+	private SpeedController motorRight;
 	private Encoder encoder;
 	public DigitalInput upperLimit;
 	public DigitalInput bottomLimit;
@@ -28,11 +28,11 @@ public class Arm extends PIDSubsystem {
 	public Arm() {
 		super("arm", kP, kI, kD);
 
-		motorA = new Talon(RobotMap.ArmMap.PWM_MOTOR_A);
-		motorA.setInverted(RobotMap.ArmMap.INV_MOTOR_A);
-		
-		motorB = new Talon(RobotMap.ArmMap.PWM_MOTOR_B);
-		motorB.setInverted(RobotMap.ArmMap.INV_MOTOR_B);
+		motorLeft = new Talon(RobotMap.ArmMap.PWM_MOTOR_LEFT);
+		motorLeft.setInverted(RobotMap.ArmMap.INV_MOTOR_LEFT);
+
+		motorRight = new Talon(RobotMap.ArmMap.PWM_MOTOR_RIGHT);
+		motorRight.setInverted(RobotMap.ArmMap.INV_MOTOR_RIGHT);
 
 		encoder = new Encoder(RobotMap.ArmMap.DIO_ENCODER_A, RobotMap.ArmMap.DIO_ENCODER_B);
 		encoder.setDistancePerPulse(RobotMap.ArmMap.DEGREES_PER_PULSE);
@@ -52,18 +52,18 @@ public class Arm extends PIDSubsystem {
 	}
 
 	public void setSpeed(double speed) {
-		motorA.set(speed);
-		motorB.set(speed);
+		motorLeft.set(speed);
+		motorRight.set(speed);
 	}
 
 	public void checkLimits() {
 		if (upperLimit.get() == true) {
-			motorA.set(0);
-			motorB.set(0);
+			motorLeft.set(0);
+			motorRight.set(0);
 
 		} else if (bottomLimit.get() == true) {
-			motorA.set(0);
-			motorB.set(0);
+			motorLeft.set(0);
+			motorRight.set(0);
 			encoder.reset();
 		}
 	}
@@ -93,8 +93,8 @@ public class Arm extends PIDSubsystem {
 	protected void usePIDOutput(double output) {
 		// Use output to drive your system, like a motor
 		// e.g. yourMotor.set(output);
-		motorA.set(output);
-		motorB.set(output);
+		motorLeft.set(output);
+		motorRight.set(output);
 	}
 
 	public void zeroEncoder() {
