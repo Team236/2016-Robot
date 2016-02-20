@@ -14,7 +14,8 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class Arm extends PIDSubsystem {
 
-	private SpeedController motor;
+	private SpeedController motorA;
+	private SpeedController motorB;
 	private Encoder encoder;
 	public DigitalInput upperLimit;
 	public DigitalInput bottomLimit;
@@ -27,8 +28,11 @@ public class Arm extends PIDSubsystem {
 	public Arm() {
 		super("arm", kP, kI, kD);
 
-		motor = new Talon(RobotMap.ArmMap.PWM_MOTOR);
-		motor.setInverted(RobotMap.ArmMap.INV_MOTOR);
+		motorA = new Talon(RobotMap.ArmMap.PWM_MOTOR_A);
+		motorA.setInverted(RobotMap.ArmMap.INV_MOTOR_A);
+		
+		motorB = new Talon(RobotMap.ArmMap.PWM_MOTOR_B);
+		motorB.setInverted(RobotMap.ArmMap.INV_MOTOR_B);
 
 		encoder = new Encoder(RobotMap.ArmMap.DIO_ENCODER_A, RobotMap.ArmMap.DIO_ENCODER_B);
 		encoder.setDistancePerPulse(RobotMap.ArmMap.DEGREES_PER_PULSE);
@@ -48,15 +52,18 @@ public class Arm extends PIDSubsystem {
 	}
 
 	public void setSpeed(double speed) {
-		motor.set(speed);
+		motorA.set(speed);
+		motorB.set(speed);
 	}
 
 	public void checkLimits() {
 		if (upperLimit.get() == true) {
-			motor.set(0);
+			motorA.set(0);
+			motorB.set(0);
 
 		} else if (bottomLimit.get() == true) {
-			motor.set(0);
+			motorA.set(0);
+			motorB.set(0);
 			encoder.reset();
 		}
 	}
@@ -86,7 +93,8 @@ public class Arm extends PIDSubsystem {
 	protected void usePIDOutput(double output) {
 		// Use output to drive your system, like a motor
 		// e.g. yourMotor.set(output);
-		motor.set(output);
+		motorA.set(output);
+		motorB.set(output);
 	}
 
 	public void zeroEncoder() {
