@@ -58,11 +58,8 @@ public class RobotMap {
 	}
 
 	public class ArmMap {
-		public static final int PWM_MOTOR_A = 5;
-		public static final boolean INV_MOTOR_A = false;
-		
-		public static final int PWM_MOTOR_B = 6;
-		public static final boolean INV_MOTOR_B = false;
+		public static final int PWM_MOTOR = 5;
+		public static final boolean INV_MOTOR = false;
 
 		public static final int DIO_ENCODER_A = 4;
 		public static final int DIO_ENCODER_B = 5;
@@ -110,7 +107,7 @@ public class RobotMap {
 	}
 
 	public class ShooterMap {
-		public static final int PWM_MOTOR = 7;
+		public static final int PWM_MOTOR = 6;
 		public static final boolean INV_MOTOR = false;
 
 		public static final int SOL_FORWARD = 2;
