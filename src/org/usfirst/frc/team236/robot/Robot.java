@@ -80,7 +80,7 @@ public class Robot extends IterativeRobot {
 
 		// Start Camera feed
 		camera = CameraServer.getInstance();
-		camera.startAutomaticCapture();
+		camera.startAutomaticCapture(RobotMap.CAMERA_NAME);
 
 		// Start Compressor
 		compressor = new Compressor();

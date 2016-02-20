@@ -12,10 +12,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Shooter extends Subsystem {
 
+	private boolean isCocked;
 	private SpeedController motor;
 	private DoubleSolenoid solenoid;
 
 	public Shooter() {
+		isCocked = false;
+		
 		motor = new Spark(RobotMap.ShooterMap.PWM_MOTOR);
 		motor.setInverted(RobotMap.ShooterMap.INV_MOTOR);
 
@@ -50,6 +53,14 @@ public class Shooter extends Subsystem {
 
 	public void stop() {
 		setSpeed(0);
+	}
+
+	public void setIsCocked( boolean _isCocked ){
+		isCocked = true;
+	}
+
+	public boolean isCocked(){
+		return isCocked;
 	}
 
 	public void initDefaultCommand() {
