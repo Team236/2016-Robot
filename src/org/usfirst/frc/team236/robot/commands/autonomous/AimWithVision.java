@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.networktables2.type.NumberArray;
 import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 
-public class AimAndShootWithVision extends Command {
+public class AimWithVision extends Command {
 
 	private NetworkTable ntserver = NetworkTable.getTable("SmartDashboard");
 	private int step;
@@ -74,8 +74,9 @@ public class AimAndShootWithVision extends Command {
 	private double currentElevation;	
 
 	
-	public AimAndShootWithVision(){
+	public AimWithVision(){
     	requires(Robot.drive);
+    	requires(Robot.arm);
 	}
 	
 	@Override
@@ -120,7 +121,6 @@ public class AimAndShootWithVision extends Command {
 			break;
 		case 3: // Fire!
 			if (Robot.shooter.isCocked()){
-				Robot.shooter.retractPin();
 				isComplete = true;
 				step++;
 			}
