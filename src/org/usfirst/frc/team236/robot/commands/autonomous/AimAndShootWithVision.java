@@ -119,7 +119,7 @@ public class AimAndShootWithVision extends Command {
 			}
 			break;
 		case 3: // Fire!
-			if (Robot.shooter.IsCocked()){
+			if (Robot.shooter.isCocked()){
 				Robot.shooter.retractPin();
 				isComplete = true;
 				step++;

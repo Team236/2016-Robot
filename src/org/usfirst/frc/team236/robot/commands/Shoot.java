@@ -23,7 +23,7 @@ public class Shoot extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		Robot.shooter.retractPin();
-		Robot.shooter.SetIsCocked(false);
+		Robot.shooter.setIsCocked(false);
 		i++;
 	}
 
