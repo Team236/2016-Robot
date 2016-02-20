@@ -3,8 +3,8 @@ package org.usfirst.frc.team236.robot.subsystems;
 import org.usfirst.frc.team236.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -19,7 +19,7 @@ public class Intake extends Subsystem {
 	private DigitalInput limit;
 
 	public Intake() {
-		motor = new Talon(RobotMap.IntakeMap.PWM_MOTOR);
+		motor = new Spark(RobotMap.IntakeMap.PWM_MOTOR);
 		motor.setInverted(RobotMap.IntakeMap.INV_MOTOR);
 
 		limit = new DigitalInput(RobotMap.IntakeMap.DIO_LIMIT);
