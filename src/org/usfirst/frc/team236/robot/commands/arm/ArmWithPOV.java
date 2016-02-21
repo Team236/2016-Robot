@@ -9,46 +9,47 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ArmWithPOV extends Command {
 
-    public ArmWithPOV() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.arm);
-    }
+	public ArmWithPOV() {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		requires(Robot.arm);
+	}
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	Robot.arm.disable();
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		Robot.arm.disable();
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	if (Robot.oi.controller.getPOV(0) == 0) {
-    		Robot.arm.setSpeed(0.5);
-    	} else if (Robot.oi.controller.getPOV(0) == 180) {
-    		Robot.arm.setSpeed(-0.5);
-    	} else if (Robot.oi.controller.getPOV(0) == -1) {
-    		Robot.arm.stop();
-    	}
-    	if (Robot.arm.upperLimit.get()) {
-    		Robot.arm.stop();
-    	} else if (Robot.arm.bottomLimit.get()) {
-    		Robot.arm.stop();
-    	}
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		if (Robot.oi.controller.getPOV(0) == 0) {
+			Robot.arm.setSpeed(0.5);
+		} else if (Robot.oi.controller.getPOV(0) == 180) {
+			Robot.arm.setSpeed(-0.5);
+		} else if (Robot.oi.controller.getPOV(0) == -1) {
+			Robot.arm.stop();
+		}
+		if (Robot.arm.getUpperLimit()) {
+			Robot.arm.stop();
+		} else if (Robot.arm.getBottomLimit()) {
+			Robot.arm.stop();
+		}
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return false;
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	Robot.arm.enable();
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		Robot.arm.setSetpointRelative(0); // Keep arm at this angle
+		Robot.arm.enable();
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	Robot.arm.enable();
-    }
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		Robot.arm.enable();
+	}
 }

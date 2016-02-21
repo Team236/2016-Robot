@@ -101,4 +101,11 @@ public class Arm extends PIDSubsystem {
 		encoder.reset();
 	}
 
+	public boolean getUpperLimit() {
+		return !upperLimit.get();
+	}
+
+	public boolean getBottomLimit() {
+		return !bottomLimit.get();
+	}
 }

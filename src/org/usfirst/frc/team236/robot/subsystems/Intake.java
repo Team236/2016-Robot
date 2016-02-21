@@ -31,7 +31,7 @@ public class Intake extends Subsystem {
 	}
 
 	public boolean getLimit() {
-		return limit.get();
+		return !limit.get();
 	}
 
 	public void set(double speed) {

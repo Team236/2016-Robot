@@ -32,8 +32,8 @@ public class ManualArmUp extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		Robot.arm.setSetpointRelative(0); // Keep arm at this angle
 		Robot.arm.enable();
-		Robot.arm.setSetpoint(Robot.arm.getAngle());
 	}
 
 	// Called when another command which requires one or more of the same
