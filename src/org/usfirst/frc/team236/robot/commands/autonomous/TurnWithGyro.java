@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * @param degrees The number of degrees to turn. Positive values turn right.
  *
  */
-public class Turn extends Command {
+public class TurnWithGyro extends Command {
 	
 	private double degrees;
 	private double heading;
@@ -17,7 +17,7 @@ public class Turn extends Command {
 	private int turnDirectionCoeff;
 	private final double turnSpeed = 0.5;
 
-    public Turn(double degrees) {
+    public TurnWithGyro(double degrees) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drive);
