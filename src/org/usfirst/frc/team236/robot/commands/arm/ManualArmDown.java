@@ -39,7 +39,7 @@ public class ManualArmDown extends Command {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		Robot.arm.setSetpointRelative(0); // Keep arm at this angle
 		Robot.arm.enable();
-		Robot.arm.setSetpoint(Robot.arm.getAngle());
 	}
 }
