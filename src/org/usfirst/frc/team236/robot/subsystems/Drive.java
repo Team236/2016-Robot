@@ -70,21 +70,11 @@ public class Drive extends Subsystem {
 	}
 
 	public void setLeftSpeed(double speed) {
-		if (speed > 1) {
-			speed = 1;
-		} else if (speed < -1) {
-			speed = -1;
-		}
 		leftFront.set(speed);
 		leftBack.set(speed);
 	}
 
 	public void setRightSpeed(double speed) {
-		if (speed > 1) {
-			speed = 1;
-		} else if (speed < -1) {
-			speed = -1;
-		}
 		rightFront.set(speed);
 		rightBack.set(speed);
 	}
