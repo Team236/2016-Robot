@@ -18,7 +18,7 @@ public class Shooter extends Subsystem {
 
 	public Shooter() {
 		isCocked = false;
-		
+
 		motor = new Spark(RobotMap.ShooterMap.PWM_MOTOR);
 		motor.setInverted(RobotMap.ShooterMap.INV_MOTOR);
 
@@ -26,7 +26,7 @@ public class Shooter extends Subsystem {
 	}
 
 	public void setSpeed(double speed) {
-		motor.set(speed);
+		motor.set(Math.abs(speed));
 	}
 
 	public void setSol(int direction) {
@@ -55,11 +55,11 @@ public class Shooter extends Subsystem {
 		setSpeed(0);
 	}
 
-	public void setIsCocked( boolean _isCocked ){
+	public void setIsCocked(boolean _isCocked) {
 		isCocked = true;
 	}
 
-	public boolean isCocked(){
+	public boolean isCocked() {
 		return isCocked;
 	}
 
