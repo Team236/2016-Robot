@@ -54,8 +54,8 @@ public class Drive extends Subsystem {
 		rightBack.setInverted(RobotMap.DriveMap.INV_RIGHT_BACK);
 
 		// Invert Encoders
-		leftEncoder.setReverseDirection(RobotMap.DriveMap.INV_ENCODER_LEFT);
-		rightEncoder.setReverseDirection(RobotMap.DriveMap.INV_ENCODER_RIGHT);
+		//leftEncoder.setReverseDirection(RobotMap.DriveMap.INV_ENCODER_LEFT);
+		//rightEncoder.setReverseDirection(RobotMap.DriveMap.INV_ENCODER_RIGHT);
 
 		// Set distance per pulse
 		leftEncoder.setDistancePerPulse(RobotMap.DriveMap.DISTANCE_PER_PULSE);
@@ -101,7 +101,7 @@ public class Drive extends Subsystem {
 	}
 
 	public double getRightDistance() {
-		return rightEncoder.getDistance();
+		return -rightEncoder.getDistance();
 	}
 
 	public Encoder getLeftEncoder() {
