@@ -103,6 +103,7 @@ public class OI {
 
 		intake = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE);
 		intake.whileHeld(new Intake());
+
 		intakeoverride = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE_OVERRIDE);
 		intakeoverride.whileHeld(new IntakeOverride());
 

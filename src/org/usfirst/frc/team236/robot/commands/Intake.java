@@ -21,8 +21,10 @@ public class Intake extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (!Robot.intake.getLimit()) {
-			Robot.intake.set(1);
+		if (Robot.intake.getLimit()) {
+			Robot.intake.stop();
+		} else {
+			Robot.intake.intake();
 		}
 	}
 
