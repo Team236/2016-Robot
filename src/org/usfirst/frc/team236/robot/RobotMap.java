@@ -33,12 +33,10 @@ public class RobotMap {
 		public static final int SOL_FORWARD = 0;
 		public static final int SOL_REVERSE = 1;
 
-		public static final boolean INV_LEFT_FRONT = false;
-		public static final boolean INV_LEFT_MID = false;
-		public static final boolean INV_LEFT_BACK = false;
+		public static final boolean INV_LEFT_FRONT = true;
+		public static final boolean INV_LEFT_BACK = true;
 
 		public static final boolean INV_RIGHT_FRONT = false;
-		public static final boolean INV_RIGHT_MID = false;
 		public static final boolean INV_RIGHT_BACK = false;
 
 		public static final boolean INV_ENCODER_LEFT = false;
@@ -60,7 +58,7 @@ public class RobotMap {
 	public class ArmMap {
 		public static final int PWM_MOTOR_LEFT = 5;
 		public static final boolean INV_MOTOR_LEFT = false;
-		
+
 		public static final int PWM_MOTOR_RIGHT = 6;
 		public static final boolean INV_MOTOR_RIGHT = false;
 

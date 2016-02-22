@@ -49,9 +49,9 @@ public class Drive extends Subsystem {
 
 		// Invert VictorSPs
 		leftFront.setInverted(RobotMap.DriveMap.INV_LEFT_FRONT);
-		leftBack.setInverted(RobotMap.DriveMap.INV_LEFT_MID);
+		leftBack.setInverted(RobotMap.DriveMap.INV_LEFT_BACK);
 		rightFront.setInverted(RobotMap.DriveMap.INV_RIGHT_FRONT);
-		rightBack.setInverted(RobotMap.DriveMap.INV_RIGHT_MID);
+		rightBack.setInverted(RobotMap.DriveMap.INV_RIGHT_BACK);
 
 		// Invert Encoders
 		leftEncoder.setReverseDirection(RobotMap.DriveMap.INV_ENCODER_LEFT);
