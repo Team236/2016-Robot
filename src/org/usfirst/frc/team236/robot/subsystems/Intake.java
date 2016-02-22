@@ -23,6 +23,7 @@ public class Intake extends Subsystem {
 		motor.setInverted(RobotMap.IntakeMap.INV_MOTOR);
 
 		limit = new DigitalInput(RobotMap.IntakeMap.DIO_LIMIT);
+		stop();
 	}
 
 	public void initDefaultCommand() {

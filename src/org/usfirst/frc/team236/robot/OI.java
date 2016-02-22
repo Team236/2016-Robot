@@ -71,7 +71,7 @@ public class OI {
 
 	public Button invertDrive;
 	public Button normalDrive;
-	
+
 	public Button armWithPOV;
 
 	public OI() {
@@ -102,7 +102,7 @@ public class OI {
 		eject.whileHeld(new Eject());
 
 		intake = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE);
-		intake.whenPressed(new Intake());
+		intake.whileHeld(new Intake());
 		intakeoverride = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE_OVERRIDE);
 		intakeoverride.whileHeld(new IntakeOverride());
 
@@ -118,7 +118,7 @@ public class OI {
 
 		armWithJoystick = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_JOYSTICK);
 		armWithJoystick.whileHeld(new ArmWithJoystick());
-		
+
 		armWithPOV = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_WITH_POV);
 		armWithPOV.whileHeld(new ArmWithPOV());
 	}
