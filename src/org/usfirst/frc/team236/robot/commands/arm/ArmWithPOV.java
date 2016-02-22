@@ -17,22 +17,26 @@ public class ArmWithPOV extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.arm.disable();
+		Robot.arm.disable(); // Stop PID loop
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (Robot.oi.controller.getPOV(0) == 0) {
-			Robot.arm.setSpeed(0.5);
-		} else if (Robot.oi.controller.getPOV(0) == 180) {
-			Robot.arm.setSpeed(-0.5);
-		} else if (Robot.oi.controller.getPOV(0) == -1) {
+		// Stop arm at either limit
+		if (Robot.arm.getBottomLimit() || Robot.arm.getUpperLimit()) {
 			Robot.arm.stop();
-		}
-		if (Robot.arm.getUpperLimit()) {
-			Robot.arm.stop();
-		} else if (Robot.arm.getBottomLimit()) {
-			Robot.arm.stop();
+		} else {
+			// Use POV to control arm
+			if (Robot.oi.controller.getPOV(0) == 0) {
+				// Raise arm if POV up
+				Robot.arm.setSpeed(0.5);
+			} else if (Robot.oi.controller.getPOV(0) == 180) {
+				// Lower arm if POV down
+				Robot.arm.setSpeed(-0.5);
+			} else if (Robot.oi.controller.getPOV(0) == -1) {
+				// Stop arm if no POV pressed
+				Robot.arm.stop();
+			}
 		}
 	}
 
@@ -44,7 +48,7 @@ public class ArmWithPOV extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		Robot.arm.setSetpointRelative(0); // Keep arm at this angle
-		Robot.arm.enable();
+		Robot.arm.enable(); // Re-enable PID loop
 	}
 
 	// Called when another command which requires one or more of the same
