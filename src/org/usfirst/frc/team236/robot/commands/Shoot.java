@@ -9,10 +9,14 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Shoot extends Command {
 	private int i;
+	private boolean isLimitWorking;
 
 	public Shoot() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.shooter);
+		// If the limit switch is depressed when we call the command, then the
+		// switch is a valid way to determine if the ball is still in the robot
+		isLimitWorking = Robot.intake.getLimit();
 	}
 
 	// Called just before this Command runs the first time
@@ -29,6 +33,12 @@ public class Shoot extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
+		if (isLimitWorking) {
+			// If the limit switch is a valid way to determine if the ball is
+			// in the bot, then we can stop the command when the limit switch
+			// is no longer pressed.
+			return !Robot.intake.getLimit();
+		}
 		return (i / 50) > 1; // Time out after 1 second
 	}
 
