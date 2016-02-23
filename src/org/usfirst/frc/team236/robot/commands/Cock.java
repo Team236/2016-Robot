@@ -23,7 +23,7 @@ public class Cock extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.shooter.setSpeed(.5); // Retract spring
+		Robot.shooter.setSpeed(.6); // Retract spring
 		if (i > 10) {
 			Robot.shooter.insertPin();
 		}
