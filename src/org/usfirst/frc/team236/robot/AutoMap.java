@@ -14,21 +14,21 @@ public class AutoMap {
 	 * Drives from the midfield to the position aligned with the left goal by
 	 * going under the low bar. // TODO add v, a, j
 	 */
-	public static ProfileParameters toShoot = new ProfileParameters(6.19, 5, 4, 2);
+	public static ProfileParameters toShoot = new ProfileParameters(223, 60, 48, 24);
 
 	/*
 	 * Drives from midfield line through the low goal into the opponent's
 	 * courtyard. // TODO testing
 	 */
-	public static ProfileParameters cross = new ProfileParameters(6, 5, 10, 20);
+	public static ProfileParameters cross = new ProfileParameters(72, 60, 120, 240);
 
 	/*
 	 * Drives from auto line onto the ramp of any defense. // TODO testing
 	 */
-	public static ProfileParameters reach = new ProfileParameters((35 / 12), 2, 7, 15);
+	public static ProfileParameters reach = new ProfileParameters(35, 24, 84, 180);
 
 	/*
 	 * Drives from our roundabout point to the edge of the batter to shoot
 	 */
-	public static ProfileParameters toLowGoal = new ProfileParameters((98 / 12), 5, 4, 2);
+	public static ProfileParameters toLowGoal = new ProfileParameters(98, 60, 48, 24);
 }
