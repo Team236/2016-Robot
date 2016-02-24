@@ -64,13 +64,13 @@ public class RobotMap {
 
 		public static final int DIO_ENCODER_A = 4;
 		public static final int DIO_ENCODER_B = 5;
-		public static final double DEGREES_PER_PULSE = 360.0 / (3.875 * 512.0);
+		public static final double DEGREES_PER_PULSE = 360.0 / (3.875 * 128.0);
 		public static final boolean INV_ENCODER = false;
 
 		public static final int DIO_LIMIT_TOP = 6;
 		public static final int DIO_LIMIT_BOTTOM = 7;
 
-		public static final double MIN_ANGLE = -11; // Lowest angle of arm
+		public static final double MIN_ANGLE = -10.5; // Lowest angle of arm
 		public static final double MAX_ANGLE = 90; // Highest angle of arm
 
 		public class PID {

@@ -22,11 +22,23 @@ public class ArmWithJoystick extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (Robot.arm.getUpperLimit() || Robot.arm.getUpperLimit()) {
-			Robot.arm.setSpeed(0);
-		} else {
-			Robot.arm.setSpeed(-Robot.oi.controller.getRawAxis(1) / 2);
+		/*
+		if (Robot.arm.getUpperLimit()) {
+			if (Robot.oi.controller.getRawAxis(1) > 0) {
+				Robot.arm.stop();
+			} else {
+				Robot.arm.setSpeed(-Robot.oi.controller.getRawAxis(1) / 2);
+			}
 		}
+		if (Robot.arm.getBottomLimit()) {
+			if (Robot.oi.controller.getRawAxis(1) < 0) {
+				Robot.arm.stop();
+			} else {
+				Robot.arm.setSpeed(-Robot.oi.controller.getRawAxis(1) / 2);
+			}
+		}
+		*/
+		Robot.arm.setSpeed(-Robot.oi.controller.getRawAxis(1) / 3);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
