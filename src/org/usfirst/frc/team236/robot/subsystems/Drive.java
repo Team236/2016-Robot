@@ -14,7 +14,7 @@ import motionProfile.DriveSide;
  */
 public class Drive extends Subsystem {
 	// Keep track of what gear we're in. 0 = low, 1 = high
-	public int gear;
+	private int gear;
 
 	// Declare motors
 	private VictorSP leftFront;
@@ -119,11 +119,31 @@ public class Drive extends Subsystem {
 		if (direction == -1) {
 			// Set drive in low gear
 			solenoid.set(DoubleSolenoid.Value.kReverse);
-			this.gear = 0;
+			setGear(0);
 		} else if (direction == 1) {
 			// Set drive in high gear
 			solenoid.set(DoubleSolenoid.Value.kForward);
-			this.gear = 1;
+			setGear(1);
+		}
+	}
+
+	public int getGear() {
+		return this.gear;
+	}
+
+	public String getGearString() {
+		if (getGear() == 0) {
+			return "low";
+		} else if (getGear() == 1) {
+			return "high";
+		} else {
+			return null;
+		}
+	}
+
+	private void setGear(int state) {
+		if (state == 0 || state == 1) {
+			this.gear = state;
 		}
 	}
 }
