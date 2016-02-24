@@ -18,13 +18,13 @@ public class Arm extends PIDSubsystem {
 	public DigitalInput upperLimit;
 	public DigitalInput bottomLimit;
 
-	private static final double kP = RobotMap.ArmMap.PID.kP;
-	private static final double kI = RobotMap.ArmMap.PID.kI;
-	private static final double kD = RobotMap.ArmMap.PID.kD;
+	private static final double kP_up = RobotMap.ArmMap.upPID.kP;
+	private static final double kI_up = RobotMap.ArmMap.upPID.kI;
+	private static final double kD_up = RobotMap.ArmMap.upPID.kD;
 
 	// Initialize your subsystem here
 	public Arm() {
-		super("arm", kP, kI, kD);
+		super("arm", kP_up, kI_up, kD_up);
 
 		motor = new Talon(RobotMap.ArmMap.PWM_MOTOR_LEFT);
 		motor.setInverted(RobotMap.ArmMap.INV_MOTOR_LEFT);
@@ -38,13 +38,6 @@ public class Arm extends PIDSubsystem {
 
 		setAbsoluteTolerance(0.05);
 		getPIDController().setContinuous(false);
-		setOutputRange(0, 100); // TODO add maximum range
-		// Use these to get going:
-		// setSetpoint() - Sets where the PID controller should move the system
-		// to
-		// enable() - Enables the PID controller.
-
-		//SmartDashboard.putData("Arm PID", getPIDController());
 	}
 
 	public void setSpeed(double speed) {

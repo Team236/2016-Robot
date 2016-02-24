@@ -73,9 +73,15 @@ public class RobotMap {
 		public static final double MIN_ANGLE = -10.5; // Lowest angle of arm
 		public static final double MAX_ANGLE = 90; // Highest angle of arm
 
-		public class PID {
+		public class upPID {
 			// TODO tune PID
 			public static final double kP = .1;
+			public static final double kI = 0;
+			public static final double kD = 0;
+		}
+		public class downPID {
+			// TODO tune PID
+			public static final double kP = .05;
 			public static final double kI = 0;
 			public static final double kD = 0;
 		}
