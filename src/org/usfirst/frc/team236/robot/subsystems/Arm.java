@@ -55,7 +55,7 @@ public class Arm extends PIDSubsystem {
 		motorLeft.set(speed);
 		motorRight.set(speed);
 	}
-	
+
 	public double getAngle() {
 		// This adjusts for bottom limit at some angle (-11) less than zero.
 		return encoder.getDistance() + RobotMap.ArmMap.MIN_ANGLE;
@@ -87,6 +87,10 @@ public class Arm extends PIDSubsystem {
 
 	public void zeroEncoder() {
 		encoder.reset();
+	}
+
+	public double getRawEncoder() {
+		return encoder.getRaw();
 	}
 
 	public boolean getUpperLimit() {
