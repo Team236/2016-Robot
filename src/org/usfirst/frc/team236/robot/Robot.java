@@ -158,8 +158,13 @@ public class Robot extends IterativeRobot {
 		//SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());
 
 		SmartDashboard.putNumber("Arm angle", Robot.arm.getAngle());
+		SmartDashboard.putNumber("Raw value", Robot.arm.getRawEncoder());
+
 		SmartDashboard.putNumber("Left encoder", Robot.drive.getLeftDistance());
 		SmartDashboard.putNumber("Right encoder", Robot.drive.getRightDistance());
+
+		SmartDashboard.putBoolean("Upper arm limit", Robot.arm.getUpperLimit());
+		SmartDashboard.putBoolean("Bottom arm limit", Robot.arm.getBottomLimit());
 	}
 
 	/**
