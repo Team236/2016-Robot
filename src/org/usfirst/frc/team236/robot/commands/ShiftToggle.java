@@ -5,7 +5,7 @@ import org.usfirst.frc.team236.robot.Robot;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * Toggles between gears. Goes to high gear if in low, and vice versa.
  */
 public class ShiftToggle extends CommandGroup {
 
@@ -26,10 +26,10 @@ public class ShiftToggle extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		if (Robot.drive.gear == 1) {
-
-		} else if (Robot.drive.gear == 0) {
-
+		if (Robot.drive.getGear() == 0) {
+			addSequential(new ShiftUp());
+		} else if (Robot.drive.getGear() == 1) {
+			addSequential(new ShiftDown());
 		}
 	}
 }
