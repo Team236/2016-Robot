@@ -43,7 +43,7 @@ public class RobotMap {
 		public static final boolean INV_ENCODER_RIGHT = false;
 
 		// Circumference of Drive Wheel may need tweaking
-		public static final double CIRCUMFERENCE = 24.2;
+		public static final double CIRCUMFERENCE = 28;
 		// Gear ratio is 3:1, and raw encoder count is 512 per full revolution
 		public static final double DISTANCE_PER_PULSE = CIRCUMFERENCE / (3 * 512);
 	}
