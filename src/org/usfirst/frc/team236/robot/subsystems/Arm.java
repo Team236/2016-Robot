@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -45,6 +46,7 @@ public class Arm extends PIDSubsystem {
 		// to
 		// enable() - Enables the PID controller.
 
+		//SmartDashboard.putData("Arm PID", getPIDController());
 	}
 
 	public void setSpeed(double speed) {
@@ -69,7 +71,7 @@ public class Arm extends PIDSubsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		setDefaultCommand(new ArmWithJoystick());
+		//setDefaultCommand(new ArmWithJoystick());
 	}
 
 	protected double returnPIDInput() {
