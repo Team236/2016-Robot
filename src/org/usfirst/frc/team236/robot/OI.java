@@ -13,7 +13,6 @@ import org.usfirst.frc.team236.robot.commands.arm.ArmWithJoystick;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithPOV;
 import org.usfirst.frc.team236.robot.commands.arm.ManualArmDown;
 import org.usfirst.frc.team236.robot.commands.arm.ManualArmUp;
-import org.usfirst.frc.team236.robot.commands.arm.SetAnglePID;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -74,7 +73,7 @@ public class OI {
 	public Button normalDrive;
 
 	public Button armWithPOV;
-	
+
 	public Button armPIDTest;
 
 	public OI() {
@@ -125,8 +124,5 @@ public class OI {
 
 		armWithPOV = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_WITH_POV);
 		armWithPOV.whileHeld(new ArmWithPOV());
-		
-		armPIDTest = new JoystickButton(controller, 1);
-		armPIDTest.whileHeld(new SetAnglePID());
 	}
 }
