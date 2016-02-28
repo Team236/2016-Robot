@@ -18,7 +18,6 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -49,7 +48,7 @@ public class Robot extends IterativeRobot {
 	CameraServer camera;
 	Compressor compressor;
 	public static AHRS navx;
-	PowerDistributionPanel pdp;
+	//PowerDistributionPanel pdp;
 
 	// Motion Profiles
 	public Profile crossLowGoal;
@@ -70,6 +69,7 @@ public class Robot extends IterativeRobot {
 		toShoot = new Profile(AutoMap.toShoot);
 		toLowGoal = new Profile(AutoMap.toLowGoal);
 
+		// Choose auto mode
 		chooser = new SendableChooser();
 		chooser.addDefault("Do Nothing", new DoNothing());
 		chooser.addDefault("High Shot", new HighShot(toShoot));
@@ -77,6 +77,9 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Cross - low bar", new CrossLowBar(crossLowGoal));
 		chooser.addObject("Reach", new Reach(reach));
 		SmartDashboard.putData("Auto mode", chooser);
+		
+		// Start PDP
+		//pdp = new PowerDistributionPanel();
 
 		// Start Camera feed
 		camera = CameraServer.getInstance();
@@ -160,9 +163,15 @@ public class Robot extends IterativeRobot {
 		//SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());
 
 		SmartDashboard.putNumber("Arm angle", Robot.arm.getAngle());
-
+		SmartDashboard.putNumber("Arm angle", Robot.arm.getAngle());
+		
+		SmartDashboard.putBoolean("PID enabled", Robot.arm.getPIDController().isEnabled());
+		
 		SmartDashboard.putNumber("Left encoder", Robot.drive.getLeftDistance());
 		SmartDashboard.putNumber("Right encoder", Robot.drive.getRightDistance());
+		
+		//SmartDashboard.putNumber("PDP Voltage", pdp.getTotalCurrent());
+		//SmartDashboard.putNumber("Arm Current", pdp.getCurrent(9));
 	}
 
 	/**

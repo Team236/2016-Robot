@@ -8,9 +8,12 @@ import org.usfirst.frc.team236.robot.commands.IntakeOverride;
 import org.usfirst.frc.team236.robot.commands.InvertedDriveWithJoysticks;
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.ShiftUp;
-import org.usfirst.frc.team236.robot.commands.Shoot;
+import org.usfirst.frc.team236.robot.commands.ShootCycle;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithJoystick;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithPOV;
+import org.usfirst.frc.team236.robot.commands.arm.GoBatterHighShotAngle;
+import org.usfirst.frc.team236.robot.commands.arm.GoBottom;
+import org.usfirst.frc.team236.robot.commands.arm.GoDefenseHighShotAngle;
 import org.usfirst.frc.team236.robot.commands.arm.ManualArmDown;
 import org.usfirst.frc.team236.robot.commands.arm.ManualArmUp;
 
@@ -75,6 +78,12 @@ public class OI {
 	public Button armWithPOV;
 
 	public Button armPIDTest;
+	
+	public Button goBottom;
+	public Button goBatterHighShotAngle;
+	public Button goDefenseHighShotAngle;
+	
+	public Button controllerShoot;
 
 	public OI() {
 		leftStick = new Joystick(RobotMap.ControlMap.PORT_STICK_LEFT);
@@ -88,9 +97,9 @@ public class OI {
 		shiftUp = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_UP);
 		shiftUp.whenPressed(new ShiftUp());
 
-		invertDrive = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_INVERT_DRIVE);
-		invertDrive.whenPressed(new InvertedDriveWithJoysticks());
-		invertDrive.cancelWhenPressed(new DriveWithJoysticks());
+		//invertDrive = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_INVERT_DRIVE);
+		//invertDrive.whenPressed(new InvertedDriveWithJoysticks());
+		//invertDrive.cancelWhenPressed(new DriveWithJoysticks());
 
 		normalDrive = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_NORMAL_DRIVE);
 		normalDrive.whenPressed(new DriveWithJoysticks());
@@ -98,7 +107,7 @@ public class OI {
 
 		// Left Stick
 		shoot = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_SHOOT);
-		shoot.whenPressed(new Shoot());
+		shoot.whenPressed(new ShootCycle());
 
 		eject = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_EJECT);
 		eject.whileHeld(new Eject());
@@ -113,12 +122,25 @@ public class OI {
 		cock.whenPressed(new Cock());
 
 		// Controller
+		goBottom = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_BOTTOM);
+		goBottom.whenPressed(new GoBottom());
+		
+		goBatterHighShotAngle = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_HIGH_SHOT_BATTER);
+		goBatterHighShotAngle.whenPressed(new GoBatterHighShotAngle());
+		
+		goDefenseHighShotAngle = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_HIGH_SHOT_DEFENSE);
+		goBatterHighShotAngle.whenPressed(new GoDefenseHighShotAngle());
+		
+		controllerShoot = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_SHOOT_CONTROLLER);
+		controllerShoot.whenPressed(new ShootCycle());
+
+		/*
 		manualArmUp = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_UP);
 		manualArmUp.whileHeld(new ManualArmUp());
 
 		manualArmDown = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_DOWN);
 		manualArmDown.whileHeld(new ManualArmDown());
-
+		*/
 		armWithJoystick = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_JOYSTICK);
 		armWithJoystick.whileHeld(new ArmWithJoystick());
 

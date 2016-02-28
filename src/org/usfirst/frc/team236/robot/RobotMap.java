@@ -72,6 +72,9 @@ public class RobotMap {
 
 		public static final double MIN_ANGLE = -10.5; // Lowest angle of arm
 		public static final double MAX_ANGLE = 90; // Highest angle of arm
+		
+		public static final double BATTER_HIGH_SHOT_ANGLE = 74.0;
+		public static final double DEFENSE_HIGH_SHOT_ANGLE = 37.948;
 
 		public class upPID {
 			// TODO tune PID
@@ -107,10 +110,14 @@ public class RobotMap {
 		public static final int BUTTON_NORMAL_DRIVE = 5;
 
 		// Controller
-		public static final int BUTTON_ARM_DOWN = 1;
-		public static final int BUTTON_ARM_UP = 4;
+		//public static final int BUTTON_ARM_DOWN = 1;
+		//public static final int BUTTON_ARM_UP = 4;
+		public static final int BUTTON_ARM_BOTTOM = 1;
+		public static final int BUTTON_ARM_HIGH_SHOT_BATTER = 4;
 		public static final int BUTTON_ARM_WITH_POV = 5;
+		public static final int BUTTON_SHOOT_CONTROLLER = 6;
 		public static final int BUTTON_ARM_JOYSTICK = 9;
+		public static final int BUTTON_ARM_HIGH_SHOT_DEFENSE = 3;
 	}
 
 	public class ShooterMap {
