@@ -22,7 +22,7 @@ public class GoBottom extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.arm.getPIDController().setPID(kP_down, kI_down, kD_down);
+		Robot.arm.getPIDController().setPID(.1, kI_down, kD_down);
 		Robot.arm.setSetpoint(-10.5);
 	}
 

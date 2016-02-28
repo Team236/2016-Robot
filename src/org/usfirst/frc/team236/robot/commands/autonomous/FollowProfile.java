@@ -15,9 +15,8 @@ import updater.Updater;
 public class FollowProfile extends Command {
 
 	Profile leftProfile, rightProfile;
-	ProfileFollower left, right;
-	DriveSide leftSide, rightSide;
 	ProfileFollower followLeft, followRight;
+	DriveSide leftSide, rightSide;
 
 	public FollowProfile(Profile bothSides) {
 		this(bothSides, bothSides);
@@ -44,8 +43,8 @@ public class FollowProfile extends Command {
 			Updater.getInstance().addThreadedUpdatable(followLeft);
 			Updater.getInstance().addThreadedUpdatable(followRight);
 
-			left.isEnabled = true;
-			right.isEnabled = true;
+			followLeft.isEnabled = true;
+			followRight.isEnabled = true;
 		} else {
 			System.out.println("Null profile(s)");
 		}
@@ -58,23 +57,23 @@ public class FollowProfile extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		// TODO
-		if (followLeft.error < .1 || followRight.error < .1) {
-			return true;
-		}
+		//if (followLeft.error < .1 || followRight.error < .1) {
+		//	return true;
+		//}
 		return false;
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
-		left.isEnabled = false;
-		right.isEnabled = false;
+		followLeft.isEnabled = false;
+		followRight.isEnabled = false;
 		Robot.drive.stop();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-		left.isEnabled = false;
-		right.isEnabled = false;
+		followLeft.isEnabled = false;
+		followRight.isEnabled = false;
 	}
 }

@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import motionProfile.Profile;
+import updater.Updater;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -78,6 +79,8 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Reach", new Reach(reach));
 		SmartDashboard.putData("Auto mode", chooser);
 		
+		Updater.getInstance().addUpdatable(drive);
+		
 		// Start PDP
 		//pdp = new PowerDistributionPanel();
 
@@ -106,6 +109,7 @@ public class Robot extends IterativeRobot {
 
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		Updater.getInstance().updateAll();
 	}
 
 	/**
@@ -132,6 +136,8 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		
+		Updater.getInstance().initControllers();
 	}
 
 	/**
@@ -139,6 +145,10 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		
+		Updater.getInstance().updateAll();
+		
+		SmartDashboard.putData(Scheduler.getInstance());
 	}
 
 	public void teleopInit() {

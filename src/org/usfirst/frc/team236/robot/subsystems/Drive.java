@@ -8,11 +8,12 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import motionProfile.DriveSide;
+import updater.Updatable;
 
 /**
  *
  */
-public class Drive extends Subsystem {
+public class Drive extends Subsystem implements Updatable {
 	// Keep track of what gear we're in. 0 = low, 1 = high
 	private int gear;
 
@@ -145,5 +146,17 @@ public class Drive extends Subsystem {
 		if (state == 0 || state == 1) {
 			this.gear = state;
 		}
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

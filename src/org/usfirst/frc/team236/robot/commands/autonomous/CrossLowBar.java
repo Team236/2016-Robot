@@ -30,8 +30,8 @@ public class CrossLowBar extends CommandGroup {
 		// arm.
 
 		// Initials
-		addParallel(new ShiftDown());
-		addSequential(new GoBottom());
+		addSequential(new ShiftDown());
+		//addSequential(new GoBottom());
 
 		// Get going
 		addSequential(new FollowProfile(profile));
