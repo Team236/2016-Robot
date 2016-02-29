@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class GoBottom extends Command {
-	
+
 	private static final double kP_down = RobotMap.ArmMap.downPID.kP;
 	private static final double kI_down = RobotMap.ArmMap.downPID.kI;
 	private static final double kD_down = RobotMap.ArmMap.downPID.kD;
@@ -22,7 +22,7 @@ public class GoBottom extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.arm.getPIDController().setPID(.1, kI_down, kD_down);
+		Robot.arm.getPIDController().setPID(kP_down, kI_down, kD_down);
 		Robot.arm.setSetpoint(-10.5);
 	}
 
