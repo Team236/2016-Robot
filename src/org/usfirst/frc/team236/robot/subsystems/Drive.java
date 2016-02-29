@@ -115,7 +115,11 @@ public class Drive extends Subsystem implements Updatable {
 	public Encoder getRightEncoder() {
 		return rightEncoder;
 	}
-
+	/**
+	 * Set the solenoid forward or reverse.
+	 * @param direction the direction to set the solenoid, in 1 or -1. 1 will
+	 * set to high gear, -1 to low gear.
+	 */
 	public void setSol(int direction) {
 		if (direction == -1) {
 			// Set drive in low gear
@@ -125,6 +129,8 @@ public class Drive extends Subsystem implements Updatable {
 			// Set drive in high gear
 			solenoid.set(DoubleSolenoid.Value.kForward);
 			setGear(1);
+		} else {
+			return;
 		}
 	}
 
@@ -146,6 +152,26 @@ public class Drive extends Subsystem implements Updatable {
 		if (state == 0 || state == 1) {
 			this.gear = state;
 		}
+	}
+	
+	/**
+	 * Sets the motors to turn the robot in place
+	 * 
+	 * @param speed The speed to turn at, negative to turn right
+	 */
+	public void turn(double speed) {
+		setLeftSpeed(speed);
+		setRightSpeed(-speed);
+	}
+	
+	public void turnLeft(double speed) {
+		setLeftSpeed(-speed);
+		setRightSpeed(speed);
+	}
+
+	public void turnRight(double speed) {
+		setLeftSpeed(speed);
+		setRightSpeed(-speed);
 	}
 
 	@Override
