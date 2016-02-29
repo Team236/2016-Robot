@@ -35,7 +35,9 @@ public class FollowProfile extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		if (leftProfile != null || rightProfile != null) {
+		if (leftProfile == null || rightProfile == null) {
+			System.out.println("Null profile(s)");
+		} else {
 			Robot.drive.zeroEncoders();
 			followLeft = new ProfileFollower(leftProfile, leftSide, leftSide, AutoMap.params);
 			followRight = new ProfileFollower(rightProfile, rightSide, rightSide, AutoMap.params);
@@ -45,8 +47,6 @@ public class FollowProfile extends Command {
 
 			followLeft.isEnabled = true;
 			followRight.isEnabled = true;
-		} else {
-			System.out.println("Null profile(s)");
 		}
 	}
 
