@@ -7,7 +7,7 @@ public class AutoMap {
 	// The distance we turn to shoot for the goal
 	public static final double turnForGoalDegrees = 58;
 
-	public static FollowParameters params = new FollowParameters(120, 12 / 1, 12 / 1);
+	public static FollowParameters params = new FollowParameters(0, 1 / 120, 1 / 120);
 
 	public static ProfileParameters test = new ProfileParameters(10, 5, 4, 2);
 	/*
