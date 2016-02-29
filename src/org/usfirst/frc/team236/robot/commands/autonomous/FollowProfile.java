@@ -15,7 +15,7 @@ import updater.Updater;
 public class FollowProfile extends Command {
 
 	Profile leftProfile, rightProfile;
-	ProfileFollower followLeft, followRight;
+	ProfileFollower leftFollower, rightFollower;
 	DriveSide leftSide, rightSide;
 
 	public FollowProfile(Profile bothSides) {
@@ -31,6 +31,7 @@ public class FollowProfile extends Command {
 		this.rightProfile = _right;
 
 		this.leftSide = Robot.drive.leftSide;
+		this.rightSide = Robot.drive.rightSide;
 	}
 
 	// Called just before this Command runs the first time
@@ -39,14 +40,14 @@ public class FollowProfile extends Command {
 			System.out.println("Null profile(s)");
 		} else {
 			Robot.drive.zeroEncoders();
-			followLeft = new ProfileFollower(leftProfile, leftSide, leftSide, AutoMap.params);
-			followRight = new ProfileFollower(rightProfile, rightSide, rightSide, AutoMap.params);
+			leftFollower = new ProfileFollower(leftProfile, leftSide, leftSide, AutoMap.params);
+			rightFollower = new ProfileFollower(rightProfile, rightSide, rightSide, AutoMap.params);
 
-			Updater.getInstance().addThreadedUpdatable(followLeft);
-			Updater.getInstance().addThreadedUpdatable(followRight);
+			Updater.getInstance().addThreadedUpdatable(leftFollower);
+			Updater.getInstance().addThreadedUpdatable(rightFollower);
 
-			followLeft.isEnabled = true;
-			followRight.isEnabled = true;
+			leftFollower.isEnabled = true;
+			rightFollower.isEnabled = true;
 		}
 	}
 
@@ -65,15 +66,15 @@ public class FollowProfile extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		followLeft.isEnabled = false;
-		followRight.isEnabled = false;
+		leftFollower.isEnabled = false;
+		rightFollower.isEnabled = false;
 		Robot.drive.stop();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-		followLeft.isEnabled = false;
-		followRight.isEnabled = false;
+		leftFollower.isEnabled = false;
+		rightFollower.isEnabled = false;
 	}
 }
