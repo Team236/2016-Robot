@@ -185,4 +185,16 @@ public class Drive extends Subsystem implements Updatable {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public void enable() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void disable() {
+		// TODO Auto-generated method stub
+		
+	}
 }

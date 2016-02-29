@@ -46,8 +46,8 @@ public class FollowProfile extends Command {
 			Updater.getInstance().addThreadedUpdatable(leftFollower);
 			Updater.getInstance().addThreadedUpdatable(rightFollower);
 
-			leftFollower.isEnabled = true;
-			rightFollower.isEnabled = true;
+			leftFollower.enable();
+			rightFollower.enable();
 		}
 	}
 
