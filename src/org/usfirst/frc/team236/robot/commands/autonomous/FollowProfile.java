@@ -32,10 +32,14 @@ public class FollowProfile extends Command {
 
 		this.leftSide = Robot.drive.leftSide;
 		this.rightSide = Robot.drive.rightSide;
+
+		System.out.println("Created followprofile command");
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		System.out.println("Started followprofile command");
+
 		if (leftProfile == null || rightProfile == null) {
 			System.out.println("Null profile(s)");
 		} else {
