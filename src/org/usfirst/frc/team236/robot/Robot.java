@@ -35,41 +35,41 @@ import updater.Updater;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
+	
 	// Instantiate subsystems
 	public static final Drive drive = new Drive();
 	public static final Intake intake = new Intake();
 	public static final Arm arm = new Arm();
 	public static final Shooter shooter = new Shooter();
-
+	
 	public static OI oi;
-
+	
 	Command autonomousCommand;
 	SendableChooser chooser;
 	CameraServer camera;
 	Compressor compressor;
 	public static AHRS navx;
 	//PowerDistributionPanel pdp;
-
+	
 	// Motion Profiles
 	public Profile crossLowGoal;
 	public Profile reach;
 	public Profile toShoot;
 	public Profile toLowGoal;
-
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
 		oi = new OI();
-
+		
 		// Generate profiles
 		crossLowGoal = new Profile(AutoMap.cross);
 		reach = new Profile(AutoMap.reach);
 		toShoot = new Profile(AutoMap.toShoot);
 		toLowGoal = new Profile(AutoMap.toLowGoal);
-
+		
 		// Choose auto mode
 		chooser = new SendableChooser();
 		chooser.addDefault("Do Nothing", new DoNothing());
@@ -77,28 +77,29 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Low Shot", new LowShot(toShoot, toLowGoal));
 		chooser.addObject("Cross - low bar", new CrossLowBar(crossLowGoal));
 		chooser.addObject("Reach", new Reach(reach));
+		chooser.addObject("Test", new Intake());
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		Updater.getInstance().addUpdatable(drive);
 		
 		// Start PDP
 		//pdp = new PowerDistributionPanel();
-
+		
 		// Start Camera feed
 		camera = CameraServer.getInstance();
 		camera.startAutomaticCapture(RobotMap.CAMERA_NAME);
-
+		
 		// Start Compressor
 		compressor = new Compressor();
 		compressor.start();
-
+		
 		// Start NavX
 		navx = new AHRS(SPI.Port.kMXP);
-
+		
 		// Automatically set drive in high gear
 		new ShiftDown();
 	}
-
+	
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
@@ -106,12 +107,12 @@ public class Robot extends IterativeRobot {
 	 */
 	public void disabledInit() {
 	}
-
+	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		Updater.getInstance().updateAll();
 	}
-
+	
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select
 	 * between different autonomous modes using the dashboard. The sendable
@@ -125,21 +126,21 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousInit() {
 		autonomousCommand = (Command) chooser.getSelected();
-
+		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-
+		
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 		
 		Updater.getInstance().initControllers();
 	}
-
+	
 	/**
 	 * This function is called periodically during autonomous
 	 */
@@ -150,7 +151,7 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putData(Scheduler.getInstance());
 	}
-
+	
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
@@ -158,10 +159,10 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-
+		
 		Robot.drive.zeroEncoders();
 	}
-
+	
 	/**
 	 * This function is called periodically during operator control
 	 */
@@ -171,7 +172,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Match Time", DriverStation.getInstance().getMatchTime());
 		SmartDashboard.putNumber("Battery Voltage", DriverStation.getInstance().getBatteryVoltage());
 		//SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());
-
+		
 		SmartDashboard.putNumber("Arm angle", Robot.arm.getAngle());
 		SmartDashboard.putNumber("Arm angle", Robot.arm.getAngle());
 		
@@ -183,14 +184,14 @@ public class Robot extends IterativeRobot {
 		//SmartDashboard.putNumber("PDP Voltage", pdp.getTotalCurrent());
 		//SmartDashboard.putNumber("Arm Current", pdp.getCurrent(9));
 	}
-
+	
 	/**
 	 * This function is called periodically during test mode
 	 */
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
-
+	
 	public void testInit() {
 		LiveWindow.addActuator("Arm", "Arm", arm.getPIDController());
 	}
