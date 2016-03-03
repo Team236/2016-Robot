@@ -6,6 +6,7 @@ import org.usfirst.frc.team236.robot.commands.autonomous.CrossLowBar;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team236.robot.commands.autonomous.HighShot;
 import org.usfirst.frc.team236.robot.commands.autonomous.LowShot;
+import org.usfirst.frc.team236.robot.commands.autonomous.Rawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.Reach;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
@@ -78,6 +79,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Cross - low bar", new CrossLowBar(crossLowGoal));
 		chooser.addObject("Reach", new Reach(reach));
 		chooser.addObject("Test", new Intake());
+		chooser.addObject("Rawto", new Rawtonomous());
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		Updater.getInstance().addUpdatable(drive);
