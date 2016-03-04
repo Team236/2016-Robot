@@ -57,8 +57,8 @@ public class RobotMap {
 	}
 	
 	public class ArmMap {
-		public static final int PWM_MOTOR_LEFT = 5;
-		public static final boolean INV_MOTOR_LEFT = false;
+		public static final int PWM_MOTOR = 5;
+		public static final boolean INV_MOTOR = false;
 		
 		public static final int PWM_MOTOR_RIGHT = 6;
 		public static final boolean INV_MOTOR_RIGHT = false;
