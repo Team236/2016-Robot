@@ -1,5 +1,8 @@
 package org.usfirst.frc.team236.robot.commands.autonomous;
 
+import org.usfirst.frc.team236.robot.commands.ShiftDown;
+import org.usfirst.frc.team236.robot.commands.arm.RawArmDown;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -24,7 +27,8 @@ public class Rawtonomous extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		
+		addParallel(new ShiftDown());
+		addSequential(new RawArmDown());
 		addSequential(new RawDrive(), 2);
 	}
 }
