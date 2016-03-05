@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -114,6 +115,7 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		Updater.getInstance().updateAll();
+		//SmartDashboard.putNumber("PDP Current", pdp.getTotalCurrent());
 	}
 	
 	/**
@@ -128,6 +130,7 @@ public class Robot extends IterativeRobot {
 	 * to the switch structure below with additional strings & commands.
 	 */
 	public void autonomousInit() {
+		arm.setSetpointRelative(0);
 		autonomousCommand = (Command) chooser.getSelected();
 		
 		/*
@@ -164,6 +167,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 		
 		Robot.drive.zeroEncoders();
+		Robot.arm.setSetpointRelative(0);
 	}
 	
 	/**
@@ -184,6 +188,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Left encoder", Robot.drive.getLeftDistance());
 		SmartDashboard.putNumber("Right encoder", Robot.drive.getRightDistance());
 		
+		SmartDashboard.putBoolean("Bottom Limit", Robot.arm.getBottomLimit());		
+		SmartDashboard.putBoolean("Upper Limit", Robot.arm.getUpperLimit());
+
 		//SmartDashboard.putNumber("PDP Voltage", pdp.getTotalCurrent());
 		//SmartDashboard.putNumber("Arm Current", pdp.getCurrent(9));
 	}
@@ -196,6 +203,7 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void testInit() {
+		arm.setSetpointRelative(0);
 		LiveWindow.addActuator("Arm", "Arm", arm.getPIDController());
 	}
 }
