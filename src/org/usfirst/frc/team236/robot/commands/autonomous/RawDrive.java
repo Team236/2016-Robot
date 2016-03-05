@@ -12,6 +12,7 @@ public class RawDrive extends Command {
 	public RawDrive() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
+		requires(Robot.drive);
 	}
 	
 	// Called just before this Command runs the first time
