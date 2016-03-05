@@ -22,7 +22,7 @@ public class ArmWithJoystick extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.arm.setSpeed(-Robot.oi.controller.getRawAxis(1) / 2);
+		Robot.arm.setSpeed(-Robot.oi.controller.getRawAxis(1) / 3);
 
 		if (Robot.arm.getBottomLimit()) {
 			Robot.arm.zeroEncoder();
