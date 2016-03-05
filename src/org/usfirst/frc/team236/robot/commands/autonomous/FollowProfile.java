@@ -62,9 +62,11 @@ public class FollowProfile extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		// TODO
+		/*
 		if (leftFollower.error < .1 && rightFollower.error < .1) {
 			return true;
 		}
+		*/
 		return false;
 	}
 
