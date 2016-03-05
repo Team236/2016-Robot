@@ -1,7 +1,6 @@
 package org.usfirst.frc.team236.robot.commands.autonomous;
 
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
-import org.usfirst.frc.team236.robot.commands.arm.GoBottom;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import motionProfile.Profile;
