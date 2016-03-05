@@ -29,6 +29,6 @@ public class Rawtonomous extends CommandGroup {
 		// arm.
 		addParallel(new ShiftDown());
 		addSequential(new RawArmDown());
-		addSequential(new RawDrive(), 2);
+		addSequential(new RawDrive(), 4);
 	}
 }

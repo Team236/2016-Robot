@@ -23,7 +23,7 @@ public class RawDrive extends Command {
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.drive.setSpeeds(0.5, 0.5);
+		Robot.drive.setSpeeds(0.75, 0.75);
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()

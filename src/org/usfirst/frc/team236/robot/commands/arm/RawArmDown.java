@@ -18,12 +18,13 @@ public class RawArmDown extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.arm.disable();
+    	System.out.print("Arm coming down");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.arm.getAngle() > 70) {
-    		Robot.arm.setSpeed(-0.1);
+    	if (Robot.arm.getAngle() > 75) {
+    		Robot.arm.setSpeed(-0.2);
     	} else {
     		Robot.arm.setSpeed(-0.05);
     	}
