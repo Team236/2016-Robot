@@ -5,6 +5,7 @@ import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.autonomous.CrossLowBar;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team236.robot.commands.autonomous.HighShot;
+import org.usfirst.frc.team236.robot.commands.autonomous.IntakeTestAuto;
 import org.usfirst.frc.team236.robot.commands.autonomous.LowShot;
 import org.usfirst.frc.team236.robot.commands.autonomous.Rawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.Reach;
@@ -78,7 +79,7 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Low Shot", new LowShot(toShoot, toLowGoal));
 		chooser.addObject("Cross - low bar", new CrossLowBar(crossLowGoal));
 		chooser.addObject("Reach", new Reach(reach));
-		chooser.addObject("Test", new Intake());
+		chooser.addObject("Intake Test", new IntakeTestAuto());
 		chooser.addObject("Rawto", new Rawtonomous());
 		SmartDashboard.putData("Auto mode", chooser);
 		
@@ -89,7 +90,7 @@ public class Robot extends IterativeRobot {
 		
 		// Start Camera feed
 		camera = CameraServer.getInstance();
-		camera.startAutomaticCapture(RobotMap.CAMERA_NAME);
+		camera.startAutomaticCapture(RobotMap.INTAKE_CAMERA_NAME);
 		
 		// Start Compressor
 		compressor = new Compressor();

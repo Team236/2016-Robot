@@ -17,8 +17,9 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	
-	public static final String CAMERA_NAME = "cam3";
-	
+	public static final String MID_CAMERA_NAME = "cam3";
+	public static final String INTAKE_CAMERA_NAME = "cam4";
+
 	public class DriveMap {
 		public static final int PWM_LEFT_FRONT = 0;
 		public static final int PWM_LEFT_BACK = 1;
