@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Rawtonomous extends CommandGroup {
+public class ForwardRawtonomous extends CommandGroup {
 	
-	public Rawtonomous() {
+	public ForwardRawtonomous() {
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		//      addSequential(new Command2());
@@ -29,6 +29,6 @@ public class Rawtonomous extends CommandGroup {
 		// arm.
 		addParallel(new ShiftDown());
 		addSequential(new RawArmDown());
-		addSequential(new RawDrive(), 4);
+		addSequential(new RawDrive(0.75), 4);
 	}
 }

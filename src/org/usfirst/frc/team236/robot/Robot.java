@@ -2,13 +2,9 @@
 package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
-import org.usfirst.frc.team236.robot.commands.autonomous.CrossLowBar;
+import org.usfirst.frc.team236.robot.commands.autonomous.BackwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
-import org.usfirst.frc.team236.robot.commands.autonomous.HighShot;
-import org.usfirst.frc.team236.robot.commands.autonomous.IntakeTestAuto;
-import org.usfirst.frc.team236.robot.commands.autonomous.LowShot;
-import org.usfirst.frc.team236.robot.commands.autonomous.Rawtonomous;
-import org.usfirst.frc.team236.robot.commands.autonomous.Reach;
+import org.usfirst.frc.team236.robot.commands.autonomous.ForwardRawtonomous;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
 import org.usfirst.frc.team236.robot.subsystems.Intake;
@@ -20,13 +16,13 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 import motionProfile.Profile;
 import updater.Updater;
 
@@ -49,8 +45,12 @@ public class Robot extends IterativeRobot {
 	
 	Command autonomousCommand;
 	SendableChooser chooser;
-	CameraServer camera;
+	
+	CameraServer server;
+	USBCamera camera;
+	
 	Compressor compressor;
+	
 	public static AHRS navx;
 	//PowerDistributionPanel pdp;
 	
@@ -75,13 +75,9 @@ public class Robot extends IterativeRobot {
 		
 		// Choose auto mode
 		chooser = new SendableChooser();
-		chooser.addDefault("Do Nothing", new DoNothing());
-		chooser.addDefault("High Shot", new HighShot(toShoot));
-		chooser.addDefault("Low Shot", new LowShot(toShoot, toLowGoal));
-		chooser.addObject("Cross - low bar", new CrossLowBar(crossLowGoal));
-		chooser.addObject("Reach", new Reach(reach));
-		chooser.addObject("Intake Test", new IntakeTestAuto());
-		chooser.addObject("Rawto", new Rawtonomous());
+		chooser.addObject("Do Nothing", new DoNothing());
+		chooser.addObject("Forward Rawto", new ForwardRawtonomous());
+		chooser.addDefault("Backward Rawto", new BackwardRawtonomous());
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		Updater.getInstance().addUpdatable(drive);
@@ -90,8 +86,11 @@ public class Robot extends IterativeRobot {
 		//pdp = new PowerDistributionPanel();
 		
 		// Start Camera feed
-		camera = CameraServer.getInstance();
-		camera.startAutomaticCapture(RobotMap.INTAKE_CAMERA_NAME);
+		camera = new USBCamera();
+		
+		server = CameraServer.getInstance();
+		server.setQuality(40);
+		server.startAutomaticCapture(camera);
 		
 		// Start Compressor
 		compressor = new Compressor();
@@ -110,12 +109,17 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
 	 */
 	public void disabledInit() {
+		SmartDashboard.putData("Auto mode", chooser);
 	}
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		Updater.getInstance().updateAll();
 		//SmartDashboard.putNumber("PDP Current", pdp.getTotalCurrent());
+		if (arm.getBottomLimit()) {
+			arm.zeroEncoder();
+		}
+		SmartDashboard.putNumber("Arm Angle", arm.getAngle());
 	}
 	
 	/**
@@ -181,9 +185,8 @@ public class Robot extends IterativeRobot {
 		//SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());
 		
 		SmartDashboard.putNumber("Arm angle", Robot.arm.getAngle());
-		SmartDashboard.putNumber("Arm angle", Robot.arm.getAngle());
 		
-		SmartDashboard.putBoolean("PID enabled", Robot.arm.getPIDController().isEnabled());
+		//SmartDashboard.putBoolean("PID enabled", Robot.arm.getPIDController().isEnabled());
 		
 		SmartDashboard.putNumber("Left encoder", Robot.drive.getLeftDistance());
 		SmartDashboard.putNumber("Right encoder", Robot.drive.getRightDistance());
@@ -193,6 +196,10 @@ public class Robot extends IterativeRobot {
 
 		//SmartDashboard.putNumber("PDP Voltage", pdp.getTotalCurrent());
 		//SmartDashboard.putNumber("Arm Current", pdp.getCurrent(9));
+		
+		if (DriverStation.getInstance().getMatchTime() <= 1) {
+			new ShiftDown();
+		}
 	}
 	
 	/**

@@ -8,11 +8,13 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class RawDrive extends Command {
+	double speed;
 	
-	public RawDrive() {
+	public RawDrive(double speed) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.drive);
+		this.speed = speed;
 	}
 	
 	// Called just before this Command runs the first time
@@ -23,7 +25,7 @@ public class RawDrive extends Command {
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.drive.setSpeeds(0.75, 0.75);
+		Robot.drive.setSpeeds(speed, speed);
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()

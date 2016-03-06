@@ -12,7 +12,6 @@ import org.usfirst.frc.team236.robot.commands.ShootCycle;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithJoystick;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithPOV;
 import org.usfirst.frc.team236.robot.commands.arm.GoBatterHighShotAngle;
-import org.usfirst.frc.team236.robot.commands.arm.GoBottom;
 import org.usfirst.frc.team236.robot.commands.arm.GoDefenseHighShotAngle;
 import org.usfirst.frc.team236.robot.commands.arm.RawArmDown;
 
