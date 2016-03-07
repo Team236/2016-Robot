@@ -28,7 +28,7 @@ public class RawArmDown extends Command {
     	if (Robot.arm.getAngle() > 60) {
     		Robot.arm.setSpeed(-0.25);
     	} else {
-    		Robot.arm.setSpeed(-0.05);
+    		Robot.arm.setSpeed(-0.1);
     	}
     	i++;
     }

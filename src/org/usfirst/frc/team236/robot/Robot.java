@@ -2,6 +2,7 @@
 package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
+import org.usfirst.frc.team236.robot.commands.autonomous.LowBarRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.BackwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team236.robot.commands.autonomous.ForwardRawtonomous;
@@ -75,9 +76,10 @@ public class Robot extends IterativeRobot {
 		
 		// Choose auto mode
 		chooser = new SendableChooser();
-		chooser.addObject("Do Nothing", new DoNothing());
+		chooser.addDefault("Do Nothing", new DoNothing());
 		chooser.addObject("Forward Rawto", new ForwardRawtonomous());
-		chooser.addDefault("Backward Rawto", new BackwardRawtonomous());
+		chooser.addObject("Backward Rawto", new BackwardRawtonomous());
+		chooser.addObject("Low Bar", new LowBarRawtonomous());
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		Updater.getInstance().addUpdatable(drive);
