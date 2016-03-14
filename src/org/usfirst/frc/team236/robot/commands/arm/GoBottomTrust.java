@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RawArmDown extends Command {
+public class GoBottomTrust extends Command {
 	private int i;
 
-    public RawArmDown() {
+    public GoBottomTrust() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.arm);

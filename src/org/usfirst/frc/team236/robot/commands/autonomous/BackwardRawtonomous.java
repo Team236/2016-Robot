@@ -1,7 +1,7 @@
 package org.usfirst.frc.team236.robot.commands.autonomous;
 
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
-import org.usfirst.frc.team236.robot.commands.arm.RawArmDown;
+import org.usfirst.frc.team236.robot.commands.arm.GoBottomTrust;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -28,7 +28,7 @@ public class BackwardRawtonomous extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 		addSequential(new ShiftDown());
-		addSequential(new RawArmDown());
+		addSequential(new GoBottomTrust());
 		addSequential(new RawDrive(-1), 3);
 	}
 }

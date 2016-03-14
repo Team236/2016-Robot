@@ -13,7 +13,7 @@ import org.usfirst.frc.team236.robot.commands.arm.ArmWithJoystick;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithPOV;
 import org.usfirst.frc.team236.robot.commands.arm.GoBatterHighShotAngle;
 import org.usfirst.frc.team236.robot.commands.arm.GoDefenseHighShotAngle;
-import org.usfirst.frc.team236.robot.commands.arm.RawArmDown;
+import org.usfirst.frc.team236.robot.commands.arm.GoBottomTrust;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -121,7 +121,7 @@ public class OI {
 
 		// Controller
 		goBottom = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_BOTTOM);
-		goBottom.whenPressed(new RawArmDown());
+		goBottom.whenPressed(new GoBottomTrust());
 
 		goBatterHighShotAngle = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_HIGH_SHOT_BATTER);
 		goBatterHighShotAngle.whenPressed(new GoBatterHighShotAngle());

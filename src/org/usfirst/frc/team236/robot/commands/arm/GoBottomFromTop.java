@@ -1,4 +1,4 @@
-package org.usfirst.frc.team236.robot.commands.autonomous;
+package org.usfirst.frc.team236.robot.commands.arm;
 
 import org.usfirst.frc.team236.robot.Robot;
 import org.usfirst.frc.team236.robot.RobotMap;
