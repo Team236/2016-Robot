@@ -86,7 +86,7 @@ public class RobotMap {
 		
 		public class downPID {
 			// TODO tune PID
-			public static final double kP = .1;
+			public static final double kP = .05;
 			public static final double kI = 0;
 			public static final double kD = 0;
 		}
