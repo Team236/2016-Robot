@@ -1,5 +1,7 @@
 package org.usfirst.frc.team236.robot.subsystems;
 
+import java.util.ArrayList;
+
 import org.usfirst.frc.team236.robot.RobotMap;
 import org.usfirst.frc.team236.robot.commands.DriveWithJoysticks;
 
@@ -8,6 +10,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import motionProfile.DriveSide;
@@ -25,6 +28,9 @@ public class Drive extends Subsystem implements Updatable {
 	private VictorSP leftBack;
 	private VictorSP rightFront;
 	private VictorSP rightBack;
+	
+	private ArrayList<SpeedController> leftMotors;
+	private ArrayList<SpeedController> rightMotors;
 
 	// Declare encoder
 	private Encoder leftEncoder;
@@ -52,6 +58,12 @@ public class Drive extends Subsystem implements Updatable {
 		leftBack = new VictorSP(RobotMap.DriveMap.PWM_LEFT_BACK);
 		rightFront = new VictorSP(RobotMap.DriveMap.PWM_RIGHT_FRONT);
 		rightBack = new VictorSP(RobotMap.DriveMap.PWM_RIGHT_BACK);
+		
+		// Create list of motors
+		leftMotors.add(leftFront);
+		leftMotors.add(leftBack);
+		rightMotors.add(rightFront);
+		rightMotors.add(rightBack);
 
 		// Instantiate Encoders
 		leftEncoder = new Encoder(RobotMap.DriveMap.DIO_ENCODER_LEFT_A, RobotMap.DriveMap.DIO_ENCODER_LEFT_B);
@@ -75,8 +87,9 @@ public class Drive extends Subsystem implements Updatable {
 		solenoid = new DoubleSolenoid(RobotMap.DriveMap.SOL_FORWARD, RobotMap.DriveMap.SOL_REVERSE);
 
 		// Instantiate drivesides
-		leftSide = new DriveSide(leftFront, leftBack, leftEncoder);
-		rightSide = new DriveSide(rightFront, rightBack, rightEncoder);
+		
+		leftSide = new DriveSide(leftMotors, leftEncoder);
+		rightSide = new DriveSide(rightMotors, rightEncoder);
 
 		// Start NavX
 		navx = new AHRS(SPI.Port.kMXP);
