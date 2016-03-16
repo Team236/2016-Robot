@@ -2,10 +2,10 @@
 package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
-import org.usfirst.frc.team236.robot.commands.autonomous.LowBarRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.BackwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team236.robot.commands.autonomous.ForwardRawtonomous;
+import org.usfirst.frc.team236.robot.commands.autonomous.LowBarRawtonomous;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
 import org.usfirst.frc.team236.robot.subsystems.Intake;
@@ -17,7 +17,6 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -97,9 +96,6 @@ public class Robot extends IterativeRobot {
 		// Start Compressor
 		compressor = new Compressor();
 		compressor.start();
-		
-		// Start NavX
-		navx = new AHRS(SPI.Port.kMXP);
 		
 		// Automatically set drive in high gear
 		new ShiftDown();
@@ -193,9 +189,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Left encoder", Robot.drive.getLeftDistance());
 		SmartDashboard.putNumber("Right encoder", Robot.drive.getRightDistance());
 		
-		SmartDashboard.putBoolean("Bottom Limit", Robot.arm.getBottomLimit());		
+		SmartDashboard.putBoolean("Bottom Limit", Robot.arm.getBottomLimit());
 		SmartDashboard.putBoolean("Upper Limit", Robot.arm.getUpperLimit());
-
+		
 		//SmartDashboard.putNumber("PDP Voltage", pdp.getTotalCurrent());
 		//SmartDashboard.putNumber("Arm Current", pdp.getCurrent(9));
 		

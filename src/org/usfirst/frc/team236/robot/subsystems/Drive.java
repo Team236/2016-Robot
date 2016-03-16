@@ -3,8 +3,11 @@ package org.usfirst.frc.team236.robot.subsystems;
 import org.usfirst.frc.team236.robot.RobotMap;
 import org.usfirst.frc.team236.robot.commands.DriveWithJoysticks;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import motionProfile.DriveSide;
@@ -33,6 +36,9 @@ public class Drive extends Subsystem implements Updatable {
 	// Declare drivesides
 	public DriveSide leftSide;
 	public DriveSide rightSide;
+
+	// Declare NavX
+	public AHRS navx;
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
@@ -71,6 +77,10 @@ public class Drive extends Subsystem implements Updatable {
 		// Instantiate drivesides
 		leftSide = new DriveSide(leftFront, leftBack, leftEncoder);
 		rightSide = new DriveSide(rightFront, rightBack, rightEncoder);
+
+		// Start NavX
+		navx = new AHRS(SPI.Port.kMXP);
+
 	}
 
 	public void setLeftSpeed(double speed) {
@@ -115,10 +125,12 @@ public class Drive extends Subsystem implements Updatable {
 	public Encoder getRightEncoder() {
 		return rightEncoder;
 	}
+
 	/**
 	 * Set the solenoid forward or reverse.
+	 * 
 	 * @param direction the direction to set the solenoid, in 1 or -1. 1 will
-	 * set to high gear, -1 to low gear.
+	 *            set to high gear, -1 to low gear.
 	 */
 	public void setSol(int direction) {
 		if (direction == -1) {
@@ -153,7 +165,7 @@ public class Drive extends Subsystem implements Updatable {
 			this.gear = state;
 		}
 	}
-	
+
 	/**
 	 * Sets the motors to turn the robot in place
 	 * 
@@ -163,7 +175,7 @@ public class Drive extends Subsystem implements Updatable {
 		setLeftSpeed(speed);
 		setRightSpeed(-speed);
 	}
-	
+
 	public void turnLeft(double speed) {
 		setLeftSpeed(-speed);
 		setRightSpeed(speed);
@@ -177,7 +189,7 @@ public class Drive extends Subsystem implements Updatable {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -189,12 +201,12 @@ public class Drive extends Subsystem implements Updatable {
 	@Override
 	public void enable() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void disable() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
