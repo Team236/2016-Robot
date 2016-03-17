@@ -1,4 +1,4 @@
-package org.usfirst.frc.team236.robot.commands.autonomous;
+package org.usfirst.frc.team236.robot.commands.profiled;
 
 import org.usfirst.frc.team236.robot.AutoMap;
 import org.usfirst.frc.team236.robot.Robot;

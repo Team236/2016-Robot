@@ -1,10 +1,11 @@
-package org.usfirst.frc.team236.robot.commands.autonomous;
+package org.usfirst.frc.team236.robot.commands.profiled;
 
 import org.usfirst.frc.team236.robot.AutoMap;
 import org.usfirst.frc.team236.robot.commands.Cock;
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.Shoot;
 import org.usfirst.frc.team236.robot.commands.arm.GoBottom;
+import org.usfirst.frc.team236.robot.commands.autonomous.TurnWithGyro;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import motionProfile.Profile;

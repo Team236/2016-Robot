@@ -1,7 +1,11 @@
-package org.usfirst.frc.team236.robot.commands.autonomous;
+package org.usfirst.frc.team236.robot.commands.profiled;
 
+import org.usfirst.frc.team236.robot.AutoMap;
+import org.usfirst.frc.team236.robot.commands.Cock;
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
+import org.usfirst.frc.team236.robot.commands.Shoot;
 import org.usfirst.frc.team236.robot.commands.arm.GoBottom;
+import org.usfirst.frc.team236.robot.commands.autonomous.TurnWithGyro;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import motionProfile.Profile;
@@ -9,18 +13,18 @@ import motionProfile.Profile;
 /**
  *
  */
-public class Reach extends CommandGroup {
+public class HighShot extends CommandGroup {
 
-	public Reach(Profile profile) {
+	public HighShot(Profile profile) {
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
-		// addSequential(new Command2());
+		//      addSequential(new Command2());
 		// these will run in order.
 
 		// To run multiple commands at the same time,
 		// use addParallel()
 		// e.g. addParallel(new Command1());
-		// addSequential(new Command2());
+		//      addSequential(new Command2());
 		// Command1 and Command2 will run in parallel.
 
 		// A command group will require all of the subsystems that each member
@@ -31,6 +35,9 @@ public class Reach extends CommandGroup {
 		addParallel(new ShiftDown());
 		addSequential(new GoBottom());
 
+		addParallel(new Cock());
 		addSequential(new FollowProfile(profile));
+		addSequential(new TurnWithGyro(AutoMap.turnForGoalDegrees));
+		addSequential(new Shoot());
 	}
 }

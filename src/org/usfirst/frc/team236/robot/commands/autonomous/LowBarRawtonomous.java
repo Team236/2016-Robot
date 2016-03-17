@@ -29,6 +29,6 @@ public class LowBarRawtonomous extends CommandGroup {
 		// arm.
 		addSequential(new ShiftDown());
 		addSequential(new GoBottomFromTop());
-		addSequential(new RawDrive(-0.5), 4);
+		addSequential(new RawDriveDistance(-0.5, -200));
 	}
 }

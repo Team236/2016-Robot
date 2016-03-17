@@ -1,6 +1,7 @@
-package org.usfirst.frc.team236.robot.commands.autonomous;
+package org.usfirst.frc.team236.robot.commands.profiled;
 
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
+import org.usfirst.frc.team236.robot.commands.arm.GoBottom;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import motionProfile.Profile;
@@ -8,9 +9,9 @@ import motionProfile.Profile;
 /**
  *
  */
-public class CrossLowBar extends CommandGroup {
+public class Reach extends CommandGroup {
 
-	public CrossLowBar(Profile profile) {
+	public Reach(Profile profile) {
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -27,12 +28,9 @@ public class CrossLowBar extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
+		addParallel(new ShiftDown());
+		addSequential(new GoBottom());
 
-		// Initials
-		addSequential(new ShiftDown());
-		//addSequential(new GoBottom());
-
-		// Get going
 		addSequential(new FollowProfile(profile));
 	}
 }
