@@ -6,3 +6,6 @@
 	path = src/motionProfile
 	url = https://github.com/Team236/MotionProfile.git
 	branch = master
+[submodule "src/standard"]
+	path = src/standard
+	url = https://github.com/team236/Standard
