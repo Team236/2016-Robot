@@ -1,6 +1,7 @@
 package org.usfirst.frc.team236.robot.commands.arm;
 
 import org.usfirst.frc.team236.robot.Robot;
+import org.usfirst.frc.team236.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -8,6 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ArmWithJoystick extends Command {
+	private final int scaleFactor = 3;
+	private final int axis = RobotMap.ControlMap.AXIS_ARM;
 
 	public ArmWithJoystick() {
 		// Use requires() here to declare subsystem dependencies
@@ -22,7 +25,7 @@ public class ArmWithJoystick extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.arm.setSpeed(-Robot.oi.controller.getRawAxis(1) / 3);
+		Robot.arm.setSpeed(-Robot.oi.controller.getRawAxis(axis) / scaleFactor);
 
 		if (Robot.arm.getBottomLimit()) {
 			Robot.arm.zeroEncoder();

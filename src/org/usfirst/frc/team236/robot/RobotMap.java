@@ -118,6 +118,7 @@ public class RobotMap {
 		public static final int BUTTON_SHOOT_CONTROLLER = LogitechF310.RB;
 		public static final int BUTTON_ARM_JOYSTICK = LogitechF310.LEFT_PRESS;
 		public static final int BUTTON_ARM_HIGH_SHOT_DEFENSE = LogitechF310.X;
+		public static final int AXIS_ARM = LogitechF310.Axes.LEFT_Y;
 	}
 
 	public class ShooterMap {
