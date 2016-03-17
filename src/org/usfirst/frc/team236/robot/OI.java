@@ -1,19 +1,17 @@
 package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.Cock;
-import org.usfirst.frc.team236.robot.commands.DriveWithJoysticks;
 import org.usfirst.frc.team236.robot.commands.Eject;
 import org.usfirst.frc.team236.robot.commands.Intake;
 import org.usfirst.frc.team236.robot.commands.IntakeOverride;
-import org.usfirst.frc.team236.robot.commands.InvertedDriveWithJoysticks;
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.ShiftUp;
 import org.usfirst.frc.team236.robot.commands.ShootCycle;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithJoystick;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithPOV;
 import org.usfirst.frc.team236.robot.commands.arm.GoBatterHighShotAngle;
-import org.usfirst.frc.team236.robot.commands.arm.GoDefenseHighShotAngle;
 import org.usfirst.frc.team236.robot.commands.arm.GoBottomTrust;
+import org.usfirst.frc.team236.robot.commands.arm.GoDefenseHighShotAngle;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -94,14 +92,6 @@ public class OI {
 
 		shiftUp = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_UP);
 		shiftUp.whenPressed(new ShiftUp());
-
-		//invertDrive = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_INVERT_DRIVE);
-		//invertDrive.whenPressed(new InvertedDriveWithJoysticks());
-		//invertDrive.cancelWhenPressed(new DriveWithJoysticks());
-
-		normalDrive = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_NORMAL_DRIVE);
-		normalDrive.whenPressed(new DriveWithJoysticks());
-		normalDrive.cancelWhenPressed(new InvertedDriveWithJoysticks());
 
 		// Left Stick
 		shoot = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_SHOOT);
