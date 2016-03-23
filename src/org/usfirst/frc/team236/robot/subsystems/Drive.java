@@ -14,12 +14,11 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import motionProfile.DriveSide;
-import updater.Updatable;
 
 /**
  *
  */
-public class Drive extends Subsystem implements Updatable {
+public class Drive extends Subsystem {
 	// Keep track of what gear we're in. 0 = low, 1 = high
 	private int gear;
 
@@ -197,29 +196,5 @@ public class Drive extends Subsystem implements Updatable {
 	public void turnRight(double speed) {
 		setLeftSpeed(speed);
 		setRightSpeed(-speed);
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void enable() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void disable() {
-		// TODO Auto-generated method stub
-
 	}
 }

@@ -86,7 +86,6 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		// Run Updater stuff
-		Updater.getInstance().addUpdatable(drive);
 		Updater.getInstance().addUpdatable(updateTester);
 		
 		// Start PDP
