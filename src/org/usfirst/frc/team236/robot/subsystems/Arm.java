@@ -18,9 +18,9 @@ public class Arm extends PIDSubsystem {
 	public DigitalInput upperLimit;
 	public DigitalInput bottomLimit;
 	
-	private static final double kP_up = RobotMap.ArmMap.upPID.kP;
-	private static final double kI_up = RobotMap.ArmMap.upPID.kI;
-	private static final double kD_up = RobotMap.ArmMap.upPID.kD;
+	private static final double kP_up = RobotMap.ArmMap.PID.kP;
+	private static final double kI_up = RobotMap.ArmMap.PID.kI;
+	private static final double kD_up = RobotMap.ArmMap.PID.kD;
 	
 	// Initialize your subsystem here
 	public Arm() {

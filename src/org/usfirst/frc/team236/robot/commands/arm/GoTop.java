@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class GoTop extends Command {
 	
-	private static final double kP_up = RobotMap.ArmMap.upPID.kP;
-	private static final double kI_up = RobotMap.ArmMap.upPID.kI;
-	private static final double kD_up = RobotMap.ArmMap.upPID.kD;
+	private static final double kP_up = RobotMap.ArmMap.PID.kP;
+	private static final double kI_up = RobotMap.ArmMap.PID.kI;
+	private static final double kD_up = RobotMap.ArmMap.PID.kD;
 	
 	public GoTop() {
 		// Use requires() here to declare subsystem dependencies

@@ -79,13 +79,7 @@ public class RobotMap {
 		public static final double BATTER_HIGH_SHOT_ANGLE = 74.0;
 		public static final double DEFENSE_HIGH_SHOT_ANGLE = 37.948;
 
-		public class upPID {
-			public static final double kP = .05;
-			public static final double kI = 0;
-			public static final double kD = 0;
-		}
-
-		public class downPID {
+		public class PID {
 			public static final double kP = .05;
 			public static final double kI = 0;
 			public static final double kD = 0;
