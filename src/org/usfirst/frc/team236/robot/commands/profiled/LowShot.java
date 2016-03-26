@@ -15,30 +15,30 @@ import motionProfile.Profile;
  */
 public class LowShot extends CommandGroup {
 
-	public LowShot(Profile toSpin, Profile toLowGoal) {
-		// Add Commands here:
-		// e.g. addSequential(new Command1());
-		//      addSequential(new Command2());
-		// these will run in order.
+    public LowShot(Profile toSpin, Profile toLowGoal) {
+	// Add Commands here:
+	// e.g. addSequential(new Command1());
+	// addSequential(new Command2());
+	// these will run in order.
 
-		// To run multiple commands at the same time,
-		// use addParallel()
-		// e.g. addParallel(new Command1());
-		//      addSequential(new Command2());
-		// Command1 and Command2 will run in parallel.
+	// To run multiple commands at the same time,
+	// use addParallel()
+	// e.g. addParallel(new Command1());
+	// addSequential(new Command2());
+	// Command1 and Command2 will run in parallel.
 
-		// A command group will require all of the subsystems that each member
-		// would require.
-		// e.g. if Command1 requires chassis, and Command2 requires arm,
-		// a CommandGroup containing them would require both the chassis and the
-		// arm.
-		addParallel(new ShiftDown());
-		addSequential(new GoBottom());
+	// A command group will require all of the subsystems that each member
+	// would require.
+	// e.g. if Command1 requires chassis, and Command2 requires arm,
+	// a CommandGroup containing them would require both the chassis and the
+	// arm.
+	addParallel(new ShiftDown());
+	addSequential(new GoBottom());
 
-		addParallel(new Cock());
-		addSequential(new FollowProfile(toSpin));
-		addSequential(new TurnWithGyro(AutoMap.turnForGoalDegrees));
-		addSequential(new FollowProfile(toLowGoal));
-		addSequential(new Shoot());
-	}
+	addParallel(new Cock());
+	addSequential(new FollowProfile(toSpin));
+	addSequential(new TurnWithGyro(AutoMap.turnForGoalDegrees));
+	addSequential(new FollowProfile(toLowGoal));
+	addSequential(new Shoot());
+    }
 }

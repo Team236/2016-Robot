@@ -9,44 +9,44 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ArmWithJoystick extends Command {
-	private final int scaleFactor = 3;
-	private final int axis = RobotMap.ControlMap.AXIS_ARM;
+    private final int scaleFactor = 3;
+    private final int axis = RobotMap.ControlMap.AXIS_ARM;
 
-	public ArmWithJoystick() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-		requires(Robot.arm);
+    public ArmWithJoystick() {
+	// Use requires() here to declare subsystem dependencies
+	// eg. requires(chassis);
+	requires(Robot.arm);
+    }
+
+    // Called just before this Command runs the first time
+    protected void initialize() {
+	Robot.arm.disable();
+    }
+
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+	Robot.arm.setSpeed(-Robot.oi.controller.getRawAxis(axis) / scaleFactor);
+
+	if (Robot.arm.getBottomLimit()) {
+	    Robot.arm.zeroEncoder();
 	}
+    }
 
-	// Called just before this Command runs the first time
-	protected void initialize() {
-		Robot.arm.disable();
-	}
+    // Make this return true when this Command no longer needs to run execute()
+    protected boolean isFinished() {
+	return false;
+    }
 
-	// Called repeatedly when this Command is scheduled to run
-	protected void execute() {
-		Robot.arm.setSpeed(-Robot.oi.controller.getRawAxis(axis) / scaleFactor);
+    // Called once after isFinished returns true
+    protected void end() {
+	Robot.arm.setSetpointRelative(0); // Keep arm at this angle
+	Robot.arm.enable();
+    }
 
-		if (Robot.arm.getBottomLimit()) {
-			Robot.arm.zeroEncoder();
-		}
-	}
-
-	// Make this return true when this Command no longer needs to run execute()
-	protected boolean isFinished() {
-		return false;
-	}
-
-	// Called once after isFinished returns true
-	protected void end() {
-		Robot.arm.setSetpointRelative(0); // Keep arm at this angle
-		Robot.arm.enable();
-	}
-
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
-	protected void interrupted() {
-		Robot.arm.setSetpointRelative(0); // Keep arm at this angle
-		Robot.arm.enable();
-	}
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
+    protected void interrupted() {
+	Robot.arm.setSetpointRelative(0); // Keep arm at this angle
+	Robot.arm.enable();
+    }
 }
