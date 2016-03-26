@@ -4,6 +4,7 @@ import org.usfirst.frc.team236.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -17,6 +18,8 @@ public class Arm extends PIDSubsystem {
 	private Encoder encoder;
 	public DigitalInput upperLimit;
 	public DigitalInput bottomLimit;
+	
+	private Relay flashlight;
 	
 	private static final double kP_up = RobotMap.ArmMap.PID.kP;
 	private static final double kI_up = RobotMap.ArmMap.PID.kI;
@@ -35,6 +38,8 @@ public class Arm extends PIDSubsystem {
 		
 		upperLimit = new DigitalInput(RobotMap.ArmMap.DIO_LIMIT_TOP);
 		bottomLimit = new DigitalInput(RobotMap.ArmMap.DIO_LIMIT_BOTTOM);
+		
+		flashlight = new Relay(RobotMap.ArmMap.FLASHLIGHT_RELAY);
 		
 		setAbsoluteTolerance(0.05);
 		getPIDController().setContinuous(false);
@@ -60,6 +65,14 @@ public class Arm extends PIDSubsystem {
 		angle += RobotMap.ArmMap.MID_ANCHOR_ANGLE;
 		
 		return angle;
+	}
+	
+	public void flashlightOn() {
+		flashlight.set(Relay.Value.kOn);
+	}
+
+	public void flashlightOff() {
+		flashlight.set(Relay.Value.kOff);
 	}
 	
 	private double getActuatorLength() {
