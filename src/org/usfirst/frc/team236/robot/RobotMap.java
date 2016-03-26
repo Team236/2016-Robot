@@ -58,7 +58,7 @@ public class RobotMap {
 		public static final int DIO_LIMIT = 8;
 	}
 
-	public class ArmMap {
+	public static class ArmMap {
 		public static final int PWM_MOTOR = 5;
 		public static final boolean INV_MOTOR = false;
 
@@ -67,8 +67,6 @@ public class RobotMap {
 
 		public static final int DIO_ENCODER_A = 4;
 		public static final int DIO_ENCODER_B = 5;
-		public static final double DEGREES_PER_PULSE = 360.0 / (3 * 128.0);
-		public static final boolean INV_ENCODER = false;
 
 		public static final int DIO_LIMIT_TOP = 6;
 		public static final int DIO_LIMIT_BOTTOM = 7;
@@ -78,6 +76,24 @@ public class RobotMap {
 
 		public static final double BATTER_HIGH_SHOT_ANGLE = 74.0;
 		public static final double DEFENSE_HIGH_SHOT_ANGLE = 37.948;
+		
+		//TODO Trig numbers
+		// Numbers to find actuator side length
+		public static final boolean INV_ENCODER = false;
+		public static final double ACTUATOR_MIN_LENGTH = 10;
+		public static final double INCHES_PER_THREAD = (1/5);
+		public static final double ROTATIONS_PER_PULSE = (1/512);
+		public static final double DISTANCE_PER_PULSE = ROTATIONS_PER_PULSE * INCHES_PER_THREAD;
+
+		// Axle to pivot side length
+		public static final double AXLE_ACTUATOR_DISTANCE = 5;
+		
+		// Axle to anchor side length		
+		public static final double AXLE_ANCHOR_MID_DISTANCE = 10;
+		public static final double MID_ANCHOR_DISTANCE = 4;		
+		public static final double MID_ANCHOR_ANGLE = Math.atan(MID_ANCHOR_DISTANCE / AXLE_ANCHOR_MID_DISTANCE);
+		public static final double AXLE_ANCHOR_DISTANCE = Math.sqrt(Math.pow(AXLE_ANCHOR_MID_DISTANCE, 2)
+				+ Math.pow(MID_ANCHOR_DISTANCE, 2));
 
 		public class PID {
 			public static final double kP = .05;
