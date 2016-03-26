@@ -164,14 +164,14 @@ public class AimWithVision extends Command {
 	}
 	
 	private void Turn(double firingAngle) {
-    	currentHeading = Robot.navx.getRawGyroY();
+    	//currentHeading = Robot.navx.getRawGyroY();
     	targetHeading = currentHeading + firingAngle;	
 	}
 	
 	private boolean updateTurn() {
 		boolean turnComplete = false;
 		
-    	currentHeading = Robot.navx.getRawGyroY();
+    	//currentHeading = Robot.navx.getRawGyroY();
     	if (Math.abs(targetHeading - currentHeading) > turnTolerance){
     		// Still not within tolerance; convert the error to a turn speed
 	    	double targetSpd = turnDegreesToSpeedScale * (targetHeading - currentHeading);
@@ -195,7 +195,7 @@ public class AimWithVision extends Command {
 	private boolean updateElevation() {
 		boolean elevComplete = false;
 		
-    	currentHeading = Robot.navx.getRawGyroY();
+    	//currentHeading = Robot.navx.getRawGyroY();
     	if (Math.abs(targetElevation - currentElevation) > elevTolerance){
     		// Still not within tolerance; convert the error to a turn speed
 	    	double targetSpd = elevDegreesToSpeedScale * (targetElevation - currentElevation);

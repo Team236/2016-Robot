@@ -13,7 +13,7 @@ import org.usfirst.frc.team236.robot.subsystems.Drive;
 import org.usfirst.frc.team236.robot.subsystems.Intake;
 import org.usfirst.frc.team236.robot.subsystems.Shooter;
 
-import com.kauailabs.navx.frc.AHRS;
+//import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
@@ -58,7 +58,7 @@ public class Robot extends IterativeRobot {
 	// Updatables
 	public TestUpdatable updateTester;
 	
-	public static AHRS navx;
+	//public static AHRS navx;
 	//PowerDistributionPanel pdp;
 	
 	// Motion Profiles

@@ -30,12 +30,12 @@ public class TurnWithGyro extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.drive.stop();
-    	initialHeading = Robot.navx.getRawGyroY();
+    	//initialHeading = Robot.navx.getRawGyroY();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	heading = Robot.navx.getRawGyroY();
+    	//heading = Robot.navx.getRawGyroY();
     	distanceTurned = heading - initialHeading;
     	Robot.drive.setLeftSpeed(turnSpeed * turnDirectionCoeff);
     	Robot.drive.setRightSpeed(turnSpeed * -turnDirectionCoeff);
