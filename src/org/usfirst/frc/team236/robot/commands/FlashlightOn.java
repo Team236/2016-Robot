@@ -10,13 +10,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class FlashlightOn extends Command {
 
     public FlashlightOn() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+	// Use requires() here to declare subsystem dependencies
+	// eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.arm.flashlightOn();
+	Robot.arm.flashlightOn();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -25,12 +25,12 @@ public class FlashlightOn extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+	return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.arm.flashlightOff();
+	Robot.arm.flashlightOff();
     }
 
     // Called when another command which requires one or more of the same

@@ -8,43 +8,43 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Cock extends Command {
-	private int i;
+    private int i;
 
-	public Cock() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-		requires(Robot.shooter);
-	}
+    public Cock() {
+	// Use requires() here to declare subsystem dependencies
+	// eg. requires(chassis);
+	requires(Robot.shooter);
+    }
 
-	// Called just before this Command runs the first time
-	protected void initialize() {
-		i = 0;
-	}
+    // Called just before this Command runs the first time
+    protected void initialize() {
+	i = 0;
+    }
 
-	// Called repeatedly when this Command is scheduled to run
-	protected void execute() {
-		Robot.shooter.setSpeed(.6); // Retract spring
-		if (i > 10) {
-			Robot.shooter.insertPin();
-		}
-		i++;
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+	Robot.shooter.setSpeed(.6); // Retract spring
+	if (i > 10) {
+	    Robot.shooter.insertPin();
 	}
+	i++;
+    }
 
-	// Make this return true when this Command no longer needs to run execute()
-	protected boolean isFinished() {
-		return (i / 50) > 5; // Time out after 5 seconds
-	}
+    // Make this return true when this Command no longer needs to run execute()
+    protected boolean isFinished() {
+	return (i / 50) > 5; // Time out after 5 seconds
+    }
 
-	// Called once after isFinished returns true
-	protected void end() {
-		Robot.shooter.stop();
-		Robot.shooter.setIsCocked(true);
-	}
+    // Called once after isFinished returns true
+    protected void end() {
+	Robot.shooter.stop();
+	Robot.shooter.setIsCocked(true);
+    }
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
-	protected void interrupted() {
-		Robot.shooter.stop();
-		Robot.shooter.setIsCocked(true);
-	}
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
+    protected void interrupted() {
+	Robot.shooter.stop();
+	Robot.shooter.setIsCocked(true);
+    }
 }

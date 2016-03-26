@@ -9,9 +9,9 @@ import motionProfile.Profile;
 
 public class HighShotWithVision extends CommandGroup {
 
-	public HighShotWithVision(Profile profile) {
-		addParallel(new Cock());
-		addSequential(new AimWithVision());
-		addSequential(new Shoot());
-	}
+    public HighShotWithVision(Profile profile) {
+	addParallel(new Cock());
+	addSequential(new AimWithVision());
+	addSequential(new Shoot());
+    }
 }
