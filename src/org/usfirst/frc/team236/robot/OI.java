@@ -2,13 +2,13 @@ package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.Cock;
 import org.usfirst.frc.team236.robot.commands.Eject;
+import org.usfirst.frc.team236.robot.commands.FlashlightOn;
 import org.usfirst.frc.team236.robot.commands.Intake;
 import org.usfirst.frc.team236.robot.commands.IntakeOverride;
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.ShiftUp;
 import org.usfirst.frc.team236.robot.commands.ShootCycle;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithJoystick;
-import org.usfirst.frc.team236.robot.commands.arm.ArmWithPOV;
 import org.usfirst.frc.team236.robot.commands.arm.GoBatterHighShotAngle;
 import org.usfirst.frc.team236.robot.commands.arm.GoBottomTrust;
 import org.usfirst.frc.team236.robot.commands.arm.GoDefenseHighShotAngle;
@@ -80,6 +80,8 @@ public class OI {
 	public Button goDefenseHighShotAngle;
 
 	public Button controllerShoot;
+	
+	public Button flashlight;
 
 	public OI() {
 		leftStick = new Joystick(RobotMap.ControlMap.PORT_STICK_LEFT);
@@ -132,7 +134,10 @@ public class OI {
 		armWithJoystick = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_JOYSTICK);
 		armWithJoystick.whileHeld(new ArmWithJoystick());
 
-		armWithPOV = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_WITH_POV);
-		armWithPOV.whileHeld(new ArmWithPOV());
+		//armWithPOV = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_WITH_POV);
+		//armWithPOV.whileHeld(new ArmWithPOV());
+		
+		flashlight = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_FLASHLIGHT);
+		flashlight.whileHeld(new FlashlightOn());
 	}
 }

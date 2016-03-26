@@ -59,6 +59,8 @@ public class RobotMap {
 	}
 
 	public static class ArmMap {
+		public static final int FLASHLIGHT_RELAY = 0;
+		
 		public static final int PWM_MOTOR = 5;
 		public static final boolean INV_MOTOR = false;
 
@@ -129,6 +131,7 @@ public class RobotMap {
 		public static final int BUTTON_ARM_JOYSTICK = LogitechF310.LEFT_PRESS;
 		public static final int BUTTON_ARM_HIGH_SHOT_DEFENSE = LogitechF310.X;
 		public static final int AXIS_ARM = LogitechF310.Axes.LEFT_Y;
+		public static final int BUTTON_FLASHLIGHT = LogitechF310.LB;
 	}
 
 	public class ShooterMap {
