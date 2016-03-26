@@ -30,7 +30,7 @@ public class Arm extends PIDSubsystem {
 		motor.setInverted(RobotMap.ArmMap.INV_MOTOR);
 		
 		encoder = new Encoder(RobotMap.ArmMap.DIO_ENCODER_A, RobotMap.ArmMap.DIO_ENCODER_B);
-		encoder.setDistancePerPulse(RobotMap.ArmMap.DEGREES_PER_PULSE);
+		encoder.setDistancePerPulse(RobotMap.ArmMap.DISTANCE_PER_PULSE);
 		encoder.setReverseDirection(RobotMap.ArmMap.INV_ENCODER);
 		
 		upperLimit = new DigitalInput(RobotMap.ArmMap.DIO_LIMIT_TOP);
@@ -52,7 +52,24 @@ public class Arm extends PIDSubsystem {
 	
 	public double getAngle() {
 		// This adjusts for bottom limit at some angle (-11) less than zero.
-		return encoder.getDistance() + RobotMap.ArmMap.MIN_ANGLE;
+		double angle = solveAngle(RobotMap.ArmMap.AXLE_ACTUATOR_DISTANCE, 
+				RobotMap.ArmMap.AXLE_ANCHOR_DISTANCE, 
+				getActuatorLength());
+		
+		angle += RobotMap.ArmMap.MIN_ANGLE;
+		angle += RobotMap.ArmMap.MID_ANCHOR_ANGLE;
+		
+		return angle;
+	}
+	
+	private double getActuatorLength() {
+		return RobotMap.ArmMap.ACTUATOR_MIN_LENGTH + encoder.getDistance();
+	}
+	
+	private double solveAngle(double a, double b, double opp) {
+		double radians = Math.acos((a*a + b*b - opp*opp) / 2 * a * b);
+		double degrees = Math.toDegrees(radians);
+		return degrees;
 	}
 	
 	public void stop() {
