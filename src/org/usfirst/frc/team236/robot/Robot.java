@@ -1,8 +1,6 @@
 
 package org.usfirst.frc.team236.robot;
 
-import java.util.ArrayList;
-
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.autonomous.BackwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
@@ -12,8 +10,6 @@ import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
 import org.usfirst.frc.team236.robot.subsystems.Intake;
 import org.usfirst.frc.team236.robot.subsystems.Shooter;
-
-import com.kauailabs.navx.frc.AHRS;
 
 //import com.kauailabs.navx.frc.AHRS;
 
@@ -28,8 +24,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 import motionProfile.Profile;
-import updater.TestUpdatable;
-import updater.Updatable;
 import updater.Updater;
 
 /**
@@ -57,10 +51,7 @@ public class Robot extends IterativeRobot {
 
     Compressor compressor;
 
-    // Updatables
-    public TestUpdatable updateTester;
-
-    public static AHRS navx;
+    //public static AHRS navx;
     // PowerDistributionPanel pdp;
 
     // Motion Profiles
@@ -90,8 +81,6 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("Low Bar", new LowBarRawtonomous());
 	SmartDashboard.putData("Auto mode", chooser);
 
-	// Run Updater stuff
-	Updater.getInstance().addUpdatable(updateTester);
 
 	// Start PDP
 	// pdp = new PowerDistributionPanel();
@@ -109,10 +98,8 @@ public class Robot extends IterativeRobot {
 
 	// Automatically set drive in high gear
 	new ShiftDown();
-	ArrayList<Updatable> updatables = Updater.getInstance().getUpdatables();
-	for (int i = 0; i < updatables.size() + 1; i++) {
-	    System.out.println(i + ". " + updatables.get(i).toString());
-	}
+	
+	System.out.println("2016-ROBOT MODULE LOADED");
     }
 
     /**
