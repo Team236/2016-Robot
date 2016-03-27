@@ -59,8 +59,11 @@ public class Drive extends Subsystem {
 	rightBack = new VictorSP(RobotMap.DriveMap.PWM_RIGHT_BACK);
 
 	// Create list of motors
+	leftMotors = new ArrayList<SpeedController>();
 	leftMotors.add(leftFront);
 	leftMotors.add(leftBack);
+	
+	rightMotors = new ArrayList<SpeedController>();
 	rightMotors.add(rightFront);
 	rightMotors.add(rightBack);
 
