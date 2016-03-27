@@ -5,15 +5,13 @@ import java.util.ArrayList;
 import org.usfirst.frc.team236.robot.RobotMap;
 import org.usfirst.frc.team236.robot.commands.DriveWithJoysticks;
 
-import com.kauailabs.navx.frc.AHRS;
+//import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import motionProfile.DriveSide;
+import motionProfile.DriveSideEncoderless;
 
 /**
  *
@@ -32,18 +30,18 @@ public class Drive extends Subsystem {
     private ArrayList<SpeedController> rightMotors;
 
     // Declare encoder
-    private Encoder leftEncoder;
-    private Encoder rightEncoder;
+    //private Encoder leftEncoder;
+    //private Encoder rightEncoder;
 
     // Declare solenoids
     private DoubleSolenoid solenoid;
 
     // Declare drivesides
-    public DriveSide leftSide;
-    public DriveSide rightSide;
+    public DriveSideEncoderless leftSide;
+    public DriveSideEncoderless rightSide;
 
     // Declare NavX
-    public AHRS navx;
+    //public AHRS navx;
 
     public void initDefaultCommand() {
 	// Set the default command for a subsystem here.
@@ -65,8 +63,8 @@ public class Drive extends Subsystem {
 	rightMotors.add(rightBack);
 
 	// Instantiate Encoders
-	leftEncoder = new Encoder(RobotMap.DriveMap.DIO_ENCODER_LEFT_A, RobotMap.DriveMap.DIO_ENCODER_LEFT_B);
-	rightEncoder = new Encoder(RobotMap.DriveMap.DIO_ENCODER_RIGHT_A, RobotMap.DriveMap.DIO_ENCODER_RIGHT_B);
+	//leftEncoder = new Encoder(RobotMap.DriveMap.DIO_ENCODER_LEFT_A, RobotMap.DriveMap.DIO_ENCODER_LEFT_B);
+	//rightEncoder = new Encoder(RobotMap.DriveMap.DIO_ENCODER_RIGHT_A, RobotMap.DriveMap.DIO_ENCODER_RIGHT_B);
 
 	// Invert VictorSPs
 	leftFront.setInverted(RobotMap.DriveMap.INV_LEFT_FRONT);
@@ -79,19 +77,19 @@ public class Drive extends Subsystem {
 	// rightEncoder.setReverseDirection(RobotMap.DriveMap.INV_ENCODER_RIGHT);
 
 	// Set distance per pulse
-	leftEncoder.setDistancePerPulse(RobotMap.DriveMap.DISTANCE_PER_PULSE);
-	rightEncoder.setDistancePerPulse(RobotMap.DriveMap.DISTANCE_PER_PULSE);
+	//leftEncoder.setDistancePerPulse(RobotMap.DriveMap.DISTANCE_PER_PULSE);
+	//rightEncoder.setDistancePerPulse(RobotMap.DriveMap.DISTANCE_PER_PULSE);
 
 	// Instantiate solenoid
 	solenoid = new DoubleSolenoid(RobotMap.DriveMap.SOL_FORWARD, RobotMap.DriveMap.SOL_REVERSE);
 
 	// Instantiate drivesides
 
-	leftSide = new DriveSide(leftMotors, leftEncoder);
-	rightSide = new DriveSide(rightMotors, rightEncoder);
+	leftSide = new DriveSideEncoderless(leftMotors);
+	rightSide = new DriveSideEncoderless(rightMotors);
 
 	// Start NavX
-	navx = new AHRS(SPI.Port.kMXP);
+	//navx = new AHRS(SPI.Port.kMXP);
 
     }
 
@@ -118,18 +116,19 @@ public class Drive extends Subsystem {
     }
 
     public void zeroEncoders() {
-	leftEncoder.reset();
-	rightEncoder.reset();
+	//leftEncoder.reset();
+	//rightEncoder.reset();
     }
 
     public double getLeftDistance() {
-	return leftEncoder.getDistance();
+	return 512;
     }
 
     public double getRightDistance() {
-	return -rightEncoder.getDistance();
+	return 512;
     }
 
+    /*
     public Encoder getLeftEncoder() {
 	return leftEncoder;
     }
@@ -137,6 +136,7 @@ public class Drive extends Subsystem {
     public Encoder getRightEncoder() {
 	return rightEncoder;
     }
+    */
 
     /**
      * Set the solenoid forward or reverse.

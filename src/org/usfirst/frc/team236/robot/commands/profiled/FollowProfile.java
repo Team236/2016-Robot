@@ -4,9 +4,9 @@ import org.usfirst.frc.team236.robot.AutoMap;
 import org.usfirst.frc.team236.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import motionProfile.DriveSide;
+import motionProfile.DriveSideEncoderless;
 import motionProfile.Profile;
-import motionProfile.ProfileFollower;
+import motionProfile.ProfileFollowerNoFeedback;
 import updater.Updater;
 
 /**
@@ -15,8 +15,10 @@ import updater.Updater;
 public class FollowProfile extends Command {
 
     Profile leftProfile, rightProfile;
-    ProfileFollower leftFollower, rightFollower;
-    DriveSide leftSide, rightSide;
+    ProfileFollowerNoFeedback leftFollower;
+    ProfileFollowerNoFeedback rightFollower;
+    DriveSideEncoderless leftSide;
+    DriveSideEncoderless rightSide;
 
     public FollowProfile(Profile bothSides) {
 	this(bothSides, bothSides);
@@ -44,8 +46,8 @@ public class FollowProfile extends Command {
 	    System.out.println("Null profile(s)");
 	} else {
 	    Robot.drive.zeroEncoders();
-	    leftFollower = new ProfileFollower(leftProfile, leftSide, leftSide, AutoMap.params);
-	    rightFollower = new ProfileFollower(rightProfile, rightSide, rightSide, AutoMap.params);
+	    leftFollower = new ProfileFollowerNoFeedback(leftProfile, leftSide, AutoMap.params);
+	    rightFollower = new ProfileFollowerNoFeedback(rightProfile, rightSide, AutoMap.params);
 
 	    Updater.getInstance().addThreadedUpdatable(leftFollower);
 	    Updater.getInstance().addThreadedUpdatable(rightFollower);
