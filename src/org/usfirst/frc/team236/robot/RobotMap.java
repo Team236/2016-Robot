@@ -74,7 +74,7 @@ public class RobotMap {
 	public static final int DIO_LIMIT_BOTTOM = 7;
 
 	public static final double MIN_ANGLE = -10.5; // Lowest angle of arm
-	public static final double MAX_ANGLE = 77; // TODO Highest angle of arm
+	public static final double MAX_ANGLE = 83; // TODO Highest angle of arm
 
 	public static final double BATTER_HIGH_SHOT_ANGLE = 74.0;
 	public static final double DEFENSE_HIGH_SHOT_ANGLE = 37.948;
@@ -83,12 +83,13 @@ public class RobotMap {
 	// Numbers to find actuator side length
 	public static final boolean INV_ENCODER = false;
 	public static final double ACTUATOR_MIN_LENGTH = 10;
-	public static final double INCHES_PER_THREAD = (1 / 5);
+	public static final double INCHES_PER_THREAD = (1 / 2);
 	public static final double ROTATIONS_PER_PULSE = (1 / 512);
-	public static final double DISTANCE_PER_PULSE = ROTATIONS_PER_PULSE * INCHES_PER_THREAD;
+	public static final double SCALE_FACTOR = (36 / 34);
+	public static final double DISTANCE_PER_PULSE = SCALE_FACTOR * ROTATIONS_PER_PULSE * INCHES_PER_THREAD;
 
 	// Axle to pivot side length
-	public static final double AXLE_ACTUATOR_DISTANCE = 5;
+	public static final double AXLE_ACTUATOR_DISTANCE = 4.75;
 
 	// Axle to anchor side length
 	public static final double AXLE_ANCHOR_MID_DISTANCE = 10;
