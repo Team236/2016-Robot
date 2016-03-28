@@ -9,7 +9,6 @@ public class AutoMap {
 
     public static final FollowParameters params = new FollowParameters(0, 1 / 120, 1 / 120);
 
-    public static final ProfileParameters test = new ProfileParameters(10, 5, 4, 2);
     /*
      * Drives from the midfield to the position aligned with the left goal by
      * going under the low bar. // TODO add v, a, j
