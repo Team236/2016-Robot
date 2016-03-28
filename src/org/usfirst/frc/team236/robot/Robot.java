@@ -1,10 +1,10 @@
 
 package org.usfirst.frc.team236.robot;
 
-import java.util.ArrayList;
-
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
+import org.usfirst.frc.team236.robot.commands.autonomous.BackwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
+import org.usfirst.frc.team236.robot.commands.autonomous.ForwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.profiled.BumpyCross;
 import org.usfirst.frc.team236.robot.commands.profiled.CrossLowBar;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
@@ -26,7 +26,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 import motionProfile.Profile;
 import updater.TestUpdatable;
-import updater.Updatable;
 import updater.Updater;
 
 /**
@@ -89,19 +88,12 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("Rock Wall", new BumpyCross(bigCross));
 	chooser.addObject("Rough Terrain", new BumpyCross(bigCross));
 	chooser.addObject("Low Bar", new CrossLowBar(crossLowBar));
-	/*
-	chooser.addDefault("Do Nothing", new DoNothing());
 	chooser.addObject("Forward Rawto", new ForwardRawtonomous());
 	chooser.addObject("Backward Rawto", new BackwardRawtonomous());
-	chooser.addObject("Low Bar", new LowBarRawtonomous());
-	*/
 	SmartDashboard.putData("Auto mode", chooser);
 
 	// Run Updater stuff
 	Updater.getInstance().addUpdatable(updateTester);
-
-	// Start PDP
-	// pdp = new PowerDistributionPanel();
 
 	// Start Camera feed
 	camera = new USBCamera();
@@ -116,10 +108,6 @@ public class Robot extends IterativeRobot {
 
 	// Automatically set drive in high gear
 	new ShiftDown();
-	ArrayList<Updatable> updatables = Updater.getInstance().getUpdatables();
-	for (int i = 0; i < updatables.size() + 1; i++) {
-	    System.out.println(i + ". " + updatables.get(i).toString());
-	}
     }
 
     /**
@@ -171,7 +159,7 @@ public class Robot extends IterativeRobot {
 
 	Updater.getInstance().updateAll();
 
-	SmartDashboard.putData(Scheduler.getInstance());
+	SmartDashboard.putNumber("Velocity", Robot.drive.leftSide.getSpeed());
     }
 
     public void teleopInit() {
@@ -194,21 +182,14 @@ public class Robot extends IterativeRobot {
 	// SmartDashboard
 	SmartDashboard.putNumber("Match Time", DriverStation.getInstance().getMatchTime());
 	SmartDashboard.putNumber("Battery Voltage", DriverStation.getInstance().getBatteryVoltage());
-	// SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());
 
 	SmartDashboard.putNumber("Arm angle", Robot.arm.getAngle());
-
-	// SmartDashboard.putBoolean("PID enabled",
-	// Robot.arm.getPIDController().isEnabled());
 
 	SmartDashboard.putNumber("Left encoder", Robot.drive.getLeftDistance());
 	SmartDashboard.putNumber("Right encoder", Robot.drive.getRightDistance());
 
 	SmartDashboard.putBoolean("Bottom Limit", Robot.arm.getBottomLimit());
 	SmartDashboard.putBoolean("Upper Limit", Robot.arm.getUpperLimit());
-
-	// SmartDashboard.putNumber("PDP Voltage", pdp.getTotalCurrent());
-	// SmartDashboard.putNumber("Arm Current", pdp.getCurrent(9));
 
 	if (DriverStation.getInstance().getMatchTime() <= 1) {
 	    new ShiftDown();
