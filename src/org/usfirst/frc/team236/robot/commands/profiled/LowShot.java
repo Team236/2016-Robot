@@ -36,9 +36,9 @@ public class LowShot extends CommandGroup {
 	addSequential(new GoBottom());
 
 	addParallel(new Cock());
-	addSequential(new FollowProfile(toSpin));
+	addSequential(new FollowProfile(toSpin, false));
 	addSequential(new TurnWithGyro(AutoMap.turnForGoalDegrees));
-	addSequential(new FollowProfile(toLowGoal));
+	addSequential(new FollowProfile(toLowGoal, false));
 	addSequential(new Shoot());
     }
 }

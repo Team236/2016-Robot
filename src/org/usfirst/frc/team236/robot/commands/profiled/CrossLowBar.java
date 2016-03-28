@@ -33,6 +33,6 @@ public class CrossLowBar extends CommandGroup {
 	// addSequential(new GoBottom());
 
 	// Get going
-	addSequential(new FollowProfile(profile));
+	addSequential(new FollowProfile(profile,true));
     }
 }

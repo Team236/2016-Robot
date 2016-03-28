@@ -17,12 +17,13 @@ public class FollowProfile extends Command {
     Profile leftProfile, rightProfile;
     ProfileFollower leftFollower, rightFollower;
     DriveSide leftSide, rightSide;
+    boolean isInverted;
 
-    public FollowProfile(Profile bothSides) {
-	this(bothSides, bothSides);
+    public FollowProfile(Profile bothSides, boolean isInverted) {
+	this(bothSides, bothSides, isInverted);
     }
 
-    public FollowProfile(Profile _left, Profile _right) {
+    public FollowProfile(Profile _left, Profile _right, boolean _isInverted) {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	requires(Robot.drive);
@@ -32,6 +33,8 @@ public class FollowProfile extends Command {
 
 	this.leftSide = Robot.drive.leftSide;
 	this.rightSide = Robot.drive.rightSide;
+	
+	this.isInverted = _isInverted;
 
 	System.out.println("FollowProfile command created");
     }
@@ -44,8 +47,8 @@ public class FollowProfile extends Command {
 	    System.out.println("Null profile(s)");
 	} else {
 	    Robot.drive.zeroEncoders();
-	    leftFollower = new ProfileFollower(leftProfile, leftSide, leftSide, AutoMap.params);
-	    rightFollower = new ProfileFollower(rightProfile, rightSide, rightSide, AutoMap.params);
+	    leftFollower = new ProfileFollower(leftProfile, leftSide, leftSide, AutoMap.params, isInverted);
+	    rightFollower = new ProfileFollower(rightProfile, rightSide, rightSide, AutoMap.params, isInverted);
 
 	    Updater.getInstance().addThreadedUpdatable(leftFollower);
 	    Updater.getInstance().addThreadedUpdatable(rightFollower);

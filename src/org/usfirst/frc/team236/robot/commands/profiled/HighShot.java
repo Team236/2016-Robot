@@ -36,7 +36,7 @@ public class HighShot extends CommandGroup {
 	addSequential(new GoBottom());
 
 	addParallel(new Cock());
-	addSequential(new FollowProfile(profile));
+	addSequential(new FollowProfile(profile, false));
 	addSequential(new TurnWithGyro(AutoMap.turnForGoalDegrees));
 	addSequential(new Shoot());
     }

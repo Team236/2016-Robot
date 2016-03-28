@@ -31,6 +31,6 @@ public class Reach extends CommandGroup {
 	addParallel(new ShiftDown());
 	addSequential(new GoBottom());
 
-	addSequential(new FollowProfile(profile));
+	addSequential(new FollowProfile(profile, true));
     }
 }
