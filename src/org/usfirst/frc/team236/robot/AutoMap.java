@@ -19,7 +19,13 @@ public class AutoMap {
      * Drives from midfield line through the low goal into the opponent's
      * courtyard. // TODO testing
      */
-    public static final ProfileParameters cross = new ProfileParameters(72, 60, 120, 240);
+    public static final ProfileParameters crossLowBar = new ProfileParameters(72, 60, 120, 240);
+    
+    /*
+     * Drives from auto line over any bumpy defense into the courtyard, with a
+     * considerable buffer.
+     */
+    public static final ProfileParameters bigCross = new ProfileParameters(200, 60, 140, 240);
 
     /*
      * Drives from auto line onto the ramp of any defense. // TODO testing

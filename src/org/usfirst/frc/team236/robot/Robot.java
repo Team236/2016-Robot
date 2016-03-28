@@ -4,10 +4,9 @@ package org.usfirst.frc.team236.robot;
 import java.util.ArrayList;
 
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
-import org.usfirst.frc.team236.robot.commands.autonomous.BackwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
-import org.usfirst.frc.team236.robot.commands.autonomous.ForwardRawtonomous;
-import org.usfirst.frc.team236.robot.commands.autonomous.LowBarRawtonomous;
+import org.usfirst.frc.team236.robot.commands.profiled.BumpyCross;
+import org.usfirst.frc.team236.robot.commands.profiled.CrossLowBar;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
 import org.usfirst.frc.team236.robot.subsystems.Intake;
@@ -62,10 +61,11 @@ public class Robot extends IterativeRobot {
     // PowerDistributionPanel pdp;
 
     // Motion Profiles
-    public Profile crossLowGoal;
+    public Profile crossLowBar;
     public Profile reach;
     public Profile toShoot;
     public Profile toLowGoal;
+    public Profile bigCross;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -75,17 +75,26 @@ public class Robot extends IterativeRobot {
 	oi = new OI();
 
 	// Generate profiles
-	crossLowGoal = new Profile(AutoMap.cross);
+	crossLowBar = new Profile(AutoMap.crossLowBar);
 	reach = new Profile(AutoMap.reach);
 	toShoot = new Profile(AutoMap.toShoot);
 	toLowGoal = new Profile(AutoMap.toLowGoal);
+	bigCross = new Profile(AutoMap.bigCross);
 
 	// Choose auto mode
 	chooser = new SendableChooser();
 	chooser.addDefault("Do Nothing", new DoNothing());
+	chooser.addObject("Moat", new BumpyCross(bigCross));
+	chooser.addObject("Ramparts", new BumpyCross(bigCross));
+	chooser.addObject("Rock Wall", new BumpyCross(bigCross));
+	chooser.addObject("Rough Terrain", new BumpyCross(bigCross));
+	chooser.addObject("Low Bar", new CrossLowBar(crossLowBar));
+	/*
+	chooser.addDefault("Do Nothing", new DoNothing());
 	chooser.addObject("Forward Rawto", new ForwardRawtonomous());
 	chooser.addObject("Backward Rawto", new BackwardRawtonomous());
 	chooser.addObject("Low Bar", new LowBarRawtonomous());
+	*/
 	SmartDashboard.putData("Auto mode", chooser);
 
 	// Run Updater stuff
