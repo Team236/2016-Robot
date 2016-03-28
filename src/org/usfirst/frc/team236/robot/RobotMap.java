@@ -82,7 +82,7 @@ public class RobotMap {
 	// TODO Trig numbers
 	// Numbers to find actuator side length
 	public static final boolean INV_ENCODER = false;
-	public static final double ACTUATOR_MIN_LENGTH = 10;
+	public static final double ACTUATOR_MIN_LENGTH = 12.25;
 	public static final double INCHES_PER_THREAD = (1 / 2);
 	public static final double ROTATIONS_PER_PULSE = (1 / 512);
 	public static final double SCALE_FACTOR = (36 / 34);
@@ -92,8 +92,8 @@ public class RobotMap {
 	public static final double AXLE_ACTUATOR_DISTANCE = 4.75;
 
 	// Axle to anchor side length
-	public static final double AXLE_ANCHOR_MID_DISTANCE = 10;
-	public static final double MID_ANCHOR_DISTANCE = 4;
+	public static final double AXLE_ANCHOR_MID_DISTANCE = 15.5;
+	public static final double MID_ANCHOR_DISTANCE = 2.625;
 	public static final double MID_ANCHOR_ANGLE = Math.atan(MID_ANCHOR_DISTANCE / AXLE_ANCHOR_MID_DISTANCE);
 	public static final double AXLE_ANCHOR_DISTANCE = Math
 		.sqrt(Math.pow(AXLE_ANCHOR_MID_DISTANCE, 2) + Math.pow(MID_ANCHOR_DISTANCE, 2));
