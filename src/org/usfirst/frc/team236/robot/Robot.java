@@ -57,7 +57,6 @@ public class Robot extends IterativeRobot {
     public TestUpdatable updateTester;
 
     public static AHRS navx;
-    // PowerDistributionPanel pdp;
 
     // Motion Profiles
     public Profile crossLowBar;
