@@ -9,7 +9,6 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -62,7 +61,7 @@ public class Drive extends Subsystem {
 	leftMotors = new ArrayList<SpeedController>();
 	leftMotors.add(leftFront);
 	leftMotors.add(leftBack);
-	
+
 	rightMotors = new ArrayList<SpeedController>();
 	rightMotors.add(rightFront);
 	rightMotors.add(rightBack);
@@ -92,10 +91,6 @@ public class Drive extends Subsystem {
 
 	leftSide = new DriveSide(leftMotors, leftEncoder);
 	rightSide = new DriveSide(rightMotors, rightEncoder);
-
-	// Start NavX
-	navx = new AHRS(SPI.Port.kMXP);
-
     }
 
     public void setLeftSpeed(double speed) {

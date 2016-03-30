@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -38,10 +39,10 @@ import updater.Updater;
 public class Robot extends IterativeRobot {
 
     // Instantiate subsystems
-    public static final Drive drive = new Drive();
-    public static final Intake intake = new Intake();
-    public static final Arm arm = new Arm();
-    public static final Shooter shooter = new Shooter();
+    public static Drive drive;
+    public static Intake intake;
+    public static Arm arm;
+    public static Shooter shooter;
 
     public static OI oi;
 
@@ -70,6 +71,11 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+	drive = new Drive();
+	intake = new Intake();
+	arm = new Arm();
+	shooter = new Shooter();
+
 	oi = new OI();
 
 	// Generate profiles
@@ -105,8 +111,8 @@ public class Robot extends IterativeRobot {
 	compressor = new Compressor();
 	compressor.start();
 
-	// Automatically set drive in high gear
-	new ShiftDown();
+	// Start NavX
+	navx = new AHRS(SPI.Port.kMXP);
     }
 
     /**
@@ -121,7 +127,6 @@ public class Robot extends IterativeRobot {
     public void disabledPeriodic() {
 	Scheduler.getInstance().run();
 	Updater.getInstance().updateAll();
-	// SmartDashboard.putNumber("PDP Current", pdp.getTotalCurrent());
 	if (arm.getBottomLimit()) {
 	    arm.zeroEncoder();
 	}
