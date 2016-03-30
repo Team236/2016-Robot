@@ -26,7 +26,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 import motionProfile.Profile;
-import updater.TestUpdatable;
 import updater.Updater;
 
 /**
@@ -53,9 +52,6 @@ public class Robot extends IterativeRobot {
     USBCamera camera;
 
     Compressor compressor;
-
-    // Updatables
-    public TestUpdatable updateTester;
 
     public static AHRS navx;
 
@@ -97,9 +93,6 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("Backward Rawto", new BackwardRawtonomous());
 	SmartDashboard.putData("Auto mode", chooser);
 
-	// Run Updater stuff
-	Updater.getInstance().addUpdatable(updateTester);
-
 	// Start Camera feed
 	camera = new USBCamera();
 
@@ -126,7 +119,6 @@ public class Robot extends IterativeRobot {
 
     public void disabledPeriodic() {
 	Scheduler.getInstance().run();
-	Updater.getInstance().updateAll();
 	if (arm.getBottomLimit()) {
 	    arm.zeroEncoder();
 	}
