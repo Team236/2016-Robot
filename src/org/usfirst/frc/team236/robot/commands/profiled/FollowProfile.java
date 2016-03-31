@@ -33,7 +33,7 @@ public class FollowProfile extends Command {
 
 	this.leftSide = Robot.drive.leftSide;
 	this.rightSide = Robot.drive.rightSide;
-	
+
 	this.isInverted = _isInverted;
 
 	System.out.println("FollowProfile command created");
