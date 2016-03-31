@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ArmWithJoystick extends Command {
-    private final int scaleFactor = 3;
+    private final int scaleFactorUp = 2;
+    private final int scaleFactorDown = 4;
     private final int axis = RobotMap.ControlMap.AXIS_ARM;
 
     public ArmWithJoystick() {
@@ -25,7 +26,15 @@ public class ArmWithJoystick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-	Robot.arm.setSpeed(-Robot.oi.controller.getRawAxis(axis) / scaleFactor);
+	double joySpeed = -Robot.oi.controller.getRawAxis(axis);
+
+	if (joySpeed / joySpeed == 1) {
+	    // Arm is going up
+	    Robot.arm.setSpeed(joySpeed / scaleFactorUp);
+	} else {
+	    // Arm is going down
+	    Robot.arm.setSpeed(joySpeed / scaleFactorDown);
+	}
 
 	if (Robot.arm.getBottomLimit()) {
 	    Robot.arm.zeroEncoder();
@@ -46,7 +55,6 @@ public class ArmWithJoystick extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-	Robot.arm.setSetpointRelative(0); // Keep arm at this angle
-	Robot.arm.enable();
+	end();
     }
 }
