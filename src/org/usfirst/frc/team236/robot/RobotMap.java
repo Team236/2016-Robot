@@ -99,7 +99,7 @@ public class RobotMap {
 		.sqrt(Math.pow(AXLE_ANCHOR_MID_DISTANCE, 2) + Math.pow(MID_ANCHOR_DISTANCE, 2));
 
 	public class PID {
-	    public static final double kP = .05;
+	    public static final double kP = .5;
 	    public static final double kI = 0;
 	    public static final double kD = 0;
 	}
