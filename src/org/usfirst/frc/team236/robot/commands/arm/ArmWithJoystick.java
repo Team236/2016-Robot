@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ArmWithJoystick extends Command {
-    private final int scaleFactorUp = 2;
-    private final int scaleFactorDown = 4;
+    private final double scaleFactorUp = 2;
+    private final double scaleFactorDown = 4;
     private final int axis = RobotMap.ControlMap.AXIS_ARM;
 
     public ArmWithJoystick() {
