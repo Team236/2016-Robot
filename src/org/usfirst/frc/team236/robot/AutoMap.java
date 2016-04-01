@@ -7,7 +7,7 @@ public class AutoMap {
     // The distance we turn to shoot for the goal
     public static final double turnForGoalDegrees = 58;
 
-    public static final FollowParameters params = new FollowParameters(0, .01, .01);
+    public static final FollowParameters params = new FollowParameters(0, .05, .01);
 
     /*
      * Drives from the midfield to the position aligned with the left goal by
