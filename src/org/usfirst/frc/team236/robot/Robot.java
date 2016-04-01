@@ -122,7 +122,6 @@ public class Robot extends IterativeRobot {
 	if (arm.getBottomLimit()) {
 	    arm.zeroEncoder();
 	}
-	SmartDashboard.putNumber("Arm Angle", arm.getAngle());
     }
 
     /**
@@ -186,6 +185,8 @@ public class Robot extends IterativeRobot {
 
 	SmartDashboard.putBoolean("Bottom Limit", Robot.arm.getBottomLimit());
 	SmartDashboard.putBoolean("Upper Limit", Robot.arm.getUpperLimit());
+
+	SmartDashboard.putNumber("Velocity", Robot.drive.leftSide.getSpeed());
 
 	if (DriverStation.getInstance().getMatchTime() <= 1) {
 	    new ShiftDown();
