@@ -23,7 +23,7 @@ public class GoTop extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
 	Robot.arm.getPIDController().setPID(kP_up, kI_up, kD_up);
-	Robot.arm.setSetpoint(RobotMap.ArmMap.MAX_ANGLE);
+	Robot.arm.setSetpoint(RobotMap.ArmMap.MAX_COUNT);
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -1,6 +1,8 @@
 package org.usfirst.frc.team236.robot.commands.profiled;
 
+import org.usfirst.frc.team236.robot.commands.Intake;
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
+import org.usfirst.frc.team236.robot.commands.arm.RawArmDown;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import motionProfile.Profile;
@@ -30,9 +32,10 @@ public class CrossLowBar extends CommandGroup {
 
 	// Initials
 	addSequential(new ShiftDown());
-	// addSequential(new GoBottom());
+	addSequential(new RawArmDown());
 
 	// Get going
+	addParallel(new Intake());
 	addSequential(new FollowProfile(profile, true));
     }
 }

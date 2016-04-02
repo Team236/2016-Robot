@@ -7,6 +7,7 @@ import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team236.robot.commands.autonomous.ForwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.profiled.BumpyCross;
 import org.usfirst.frc.team236.robot.commands.profiled.CrossLowBar;
+import org.usfirst.frc.team236.robot.commands.profiled.Reach;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
 import org.usfirst.frc.team236.robot.subsystems.Intake;
@@ -89,6 +90,7 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("Rock Wall", new BumpyCross(bigCross));
 	chooser.addObject("Rough Terrain", new BumpyCross(bigCross));
 	chooser.addObject("Low Bar", new CrossLowBar(crossLowBar));
+	chooser.addObject("Reach", new Reach(reach));
 	chooser.addObject("Forward Rawto", new ForwardRawtonomous());
 	chooser.addObject("Backward Rawto", new BackwardRawtonomous());
 	SmartDashboard.putData("Auto mode", chooser);
@@ -136,6 +138,7 @@ public class Robot extends IterativeRobot {
      * to the switch structure below with additional strings & commands.
      */
     public void autonomousInit() {
+	drive.zeroEncoders();
 	arm.setSetpointRelative(0);
 	autonomousCommand = (Command) chooser.getSelected();
 
@@ -155,6 +158,7 @@ public class Robot extends IterativeRobot {
 	Updater.getInstance().updateAll();
 
 	SmartDashboard.putNumber("Velocity", Robot.drive.leftSide.getSpeed());
+	SmartDashboard.putNumber("Arm angle", Robot.arm.getRawEncoder());
     }
 
     public void teleopInit() {
@@ -178,7 +182,7 @@ public class Robot extends IterativeRobot {
 	SmartDashboard.putNumber("Match Time", DriverStation.getInstance().getMatchTime());
 	SmartDashboard.putNumber("Battery Voltage", DriverStation.getInstance().getBatteryVoltage());
 
-	SmartDashboard.putNumber("Arm angle", Robot.arm.getAngle());
+	SmartDashboard.putNumber("Arm angle", Robot.arm.getRawEncoder());
 
 	SmartDashboard.putNumber("Left encoder", Robot.drive.getLeftDistance());
 	SmartDashboard.putNumber("Right encoder", Robot.drive.getRightDistance());

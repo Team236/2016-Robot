@@ -8,58 +8,53 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GoBottomFromTop extends Command {
-    private int i;
-    private double startAngle;
-    private double currentAngle;
-    private double dAngle;
-    private double estimateAngle;
-    private double seconds;
+public class GoDefenseAngle extends Command {
 
-    public GoBottomFromTop() {
+    public boolean go;
+    public boolean done;
+
+    public GoDefenseAngle() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
-    // Called just before this Command runs the first time
     protected void initialize() {
-	startAngle = Robot.arm.getAngle();
-	i = 0;
-	Robot.arm.disable();
-	System.out.print("Arm coming down");
+	if (Robot.arm.getUpperLimit()) {
+	    go = true;
+	    Robot.arm.zeroEncoder();
+	} else {
+	    go = false;
+	}
+	done = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-	currentAngle = Robot.arm.getAngle(); // Get reported angle of the arm
-	dAngle = currentAngle - startAngle; // Calculate change in arm angle
-	estimateAngle = RobotMap.ArmMap.MAX_COUNT + dAngle; // Guess the angle
-
-	if (estimateAngle > 60) {
-	    Robot.arm.setSpeed(-0.50);
+	if (Robot.arm.getRawEncoder() < -4100) {
+	    Robot.arm.stop();
+	    done = true;
 	} else {
-	    Robot.arm.setSpeed(-0.1);
+	    Robot.arm.setSpeed(-0.3);
+	    done = false;
 	}
-	i++;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-	seconds = i / 50; // Calculate how many seconds the command has run for
-	return (estimateAngle < 10 && seconds > 3) || Robot.arm.getBottomLimit();
+	return done;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-	Robot.arm.stop();
 	Robot.arm.setSetpointRelative(0);
-	Robot.arm.enable();
+	Robot.arm.getPIDController().setPID(RobotMap.ArmMap.PID.kP, RobotMap.ArmMap.PID.kI, RobotMap.ArmMap.PID.kD);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+	end();
     }
 }

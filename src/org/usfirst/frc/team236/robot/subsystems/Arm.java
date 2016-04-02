@@ -21,13 +21,13 @@ public class Arm extends PIDSubsystem {
 
     private Relay flashlight;
 
-    private static final double kP_up = RobotMap.ArmMap.PID.kP;
-    private static final double kI_up = RobotMap.ArmMap.PID.kI;
-    private static final double kD_up = RobotMap.ArmMap.PID.kD;
+    private static final double kP = RobotMap.ArmMap.PID.kP;
+    private static final double kI = RobotMap.ArmMap.PID.kI;
+    private static final double kD = RobotMap.ArmMap.PID.kD;
 
     // Initialize your subsystem here
     public Arm() {
-	super("arm", kP_up, kI_up, kD_up);
+	super("arm", kP, kI, kD);
 
 	motor = new Talon(RobotMap.ArmMap.PWM_MOTOR);
 	motor.setInverted(RobotMap.ArmMap.INV_MOTOR);
@@ -60,7 +60,7 @@ public class Arm extends PIDSubsystem {
 	double angle = solveAngle(RobotMap.ArmMap.AXLE_ACTUATOR_DISTANCE, RobotMap.ArmMap.AXLE_ANCHOR_DISTANCE,
 		getActuatorLength());
 
-	angle += RobotMap.ArmMap.MIN_ANGLE;
+	angle += RobotMap.ArmMap.MIN_COUNT;
 	angle += RobotMap.ArmMap.MID_ANCHOR_ANGLE;
 
 	return angle;
@@ -98,7 +98,7 @@ public class Arm extends PIDSubsystem {
 	// Return your input value for the PID loop
 	// e.g. a sensor, like a potentiometer:
 	// yourPot.getAverageVoltage() / kYourMaxVoltage;
-	return getAngle();
+	return getRawEncoder();
     }
 
     protected void usePIDOutput(double output) {

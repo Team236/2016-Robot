@@ -73,8 +73,9 @@ public class RobotMap {
 	public static final int DIO_LIMIT_TOP = 6;
 	public static final int DIO_LIMIT_BOTTOM = 7;
 
-	public static final double MIN_ANGLE = -10.5; // Lowest angle of arm
-	public static final double MAX_ANGLE = 83; // TODO Highest angle of arm
+	public static final double MIN_COUNT = 0;
+	public static final double MAX_COUNT = 6600; // TODO Highest angle of
+						     // arm
 
 	public static final double BATTER_HIGH_SHOT_ANGLE = 74.0;
 	public static final double DEFENSE_HIGH_SHOT_ANGLE = 37.948;
@@ -99,7 +100,7 @@ public class RobotMap {
 		.sqrt(Math.pow(AXLE_ANCHOR_MID_DISTANCE, 2) + Math.pow(MID_ANCHOR_DISTANCE, 2));
 
 	public class PID {
-	    public static final double kP = .5;
+	    public static final double kP = .001;
 	    public static final double kI = 0;
 	    public static final double kD = 0;
 	}
