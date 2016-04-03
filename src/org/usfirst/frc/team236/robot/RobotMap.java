@@ -1,5 +1,7 @@
 package org.usfirst.frc.team236.robot;
 
+import standard.LogitechF310;
+
 public class RobotMap {
     public static final String MID_CAMERA_NAME = "cam3";
     public static final String INTAKE_CAMERA_NAME = "cam4";
@@ -35,6 +37,7 @@ public class RobotMap {
 	public static final int BUTTON_SHOOT_CONTROLLER = 6;
 	public static final int BUTTON_ARM_JOYSTICK = 9;
 	public static final int AXIS_ARM = 1;
+	public static final int BUTTON_TURN = LogitechF310.START;
 
 	public ControlMap() {
 	}
@@ -106,8 +109,5 @@ public class RobotMap {
 	public static final boolean INV_ENCODER_RIGHT = false;
 	public static final double CIRCUMFERENCE = 28.0D;
 	public static final double DISTANCE_PER_PULSE = 0.018229166666666668D;
-
-	public DriveMap() {
-	}
     }
 }

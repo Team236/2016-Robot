@@ -2,6 +2,7 @@ package org.usfirst.frc.team236.robot.commands.autonomous;
 
 import org.usfirst.frc.team236.robot.commands.Intake;
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
+import org.usfirst.frc.team236.robot.commands.Wait;
 import org.usfirst.frc.team236.robot.commands.arm.GoDefenseAngle;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -33,6 +34,10 @@ public class BackwardRawtonomous extends CommandGroup {
 	addSequential(new GoDefenseAngle());
 
 	addParallel(new Intake());
-	addSequential(new RawDrive(-1), 3);
+	addSequential(new RawDrive(-1), 2);
+
+	addSequential(new Wait(1));
+	addParallel(new Intake());
+	addSequential(new TurnWithGyro(180));
     }
 }

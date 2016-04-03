@@ -17,6 +17,7 @@ public class TurnWithGyro extends Command {
     private double distanceTurned;
     private int turnDirectionCoeff;
     private final double turnSpeed = 0.5;
+    private double goal;
 
     public TurnWithGyro(double degrees) {
 	// Use requires() here to declare subsystem dependencies
@@ -31,12 +32,13 @@ public class TurnWithGyro extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
 	Robot.drive.stop();
-	initialHeading = Robot.navx.getRawGyroY();
+	initialHeading = Robot.navx.getAngle();
+	goal = (initialHeading + degrees) % 360;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-	heading = Robot.navx.getRawGyroY();
+	heading = Robot.navx.getAngle();
 	distanceTurned = heading - initialHeading;
 	Robot.drive.setLeftSpeed(turnSpeed * turnDirectionCoeff);
 	Robot.drive.setRightSpeed(turnSpeed * -turnDirectionCoeff);
@@ -44,7 +46,7 @@ public class TurnWithGyro extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-	return (this.distanceTurned >= this.degrees);
+	return Math.abs(heading - goal) < 1;
     }
 
     // Called once after isFinished returns true

@@ -7,7 +7,7 @@ public class AutoMap {
     // The distance we turn to shoot for the goal
     public static final double turnForGoalDegrees = 58;
 
-    public static final FollowParameters params = new FollowParameters(0, .05, .01);
+    public static final FollowParameters params = new FollowParameters(0, .06, .01);
 
     /*
      * Drives from the midfield to the position aligned with the left goal by
@@ -19,7 +19,7 @@ public class AutoMap {
      * Drives from midfield line through the low goal into the opponent's
      * courtyard. // TODO testing
      */
-    public static final ProfileParameters crossLowBar = new ProfileParameters(72, 60, 120, 240);
+    public static final ProfileParameters crossLowBar = new ProfileParameters(72, 10, 120, 240);
 
     /*
      * Drives from auto line over any bumpy defense into the courtyard, with a

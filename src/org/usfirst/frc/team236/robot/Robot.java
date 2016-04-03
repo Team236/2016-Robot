@@ -1,11 +1,13 @@
 package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
+import org.usfirst.frc.team236.robot.commands.ShootCycle;
 import org.usfirst.frc.team236.robot.commands.autonomous.BackwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team236.robot.commands.autonomous.ForwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.LowBarRawtonomous;
 import org.usfirst.frc.team236.robot.commands.profiled.BumpyCross;
+import org.usfirst.frc.team236.robot.commands.profiled.CrossLowBar;
 import org.usfirst.frc.team236.robot.commands.profiled.Reach;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
@@ -29,17 +31,22 @@ import motionProfile.Profile;
 import updater.Updater;
 
 public class Robot extends IterativeRobot {
+
+    // Subsystems
     public static Drive drive;
     public static Intake intake;
     public static Arm arm;
     public static Shooter shooter;
     public static OI oi;
+
     Command autonomousCommand;
     SendableChooser chooser;
     CameraServer server;
     USBCamera camera;
     Compressor compressor;
     public static AHRS navx;
+
+    // Profiles
     public Profile crossLowBar;
     public Profile reach;
     public Profile toShoot;
@@ -67,6 +74,7 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("Rock Wall", new BumpyCross(bigCross));
 	chooser.addObject("Rough Terrain", new BumpyCross(bigCross));
 	chooser.addObject("Low Bar", new LowBarRawtonomous());
+	chooser.addObject("Low Bar (profile)", new CrossLowBar(crossLowBar));
 	chooser.addObject("Reach", new Reach(reach));
 	chooser.addObject("Forward Rawto", new ForwardRawtonomous());
 	chooser.addObject("Backward Rawto", new BackwardRawtonomous());
@@ -93,11 +101,14 @@ public class Robot extends IterativeRobot {
 	if (arm.getBottomLimit()) {
 	    arm.zeroEncoder();
 	}
+
+	SmartDashboard.putNumber("Left", drive.getLeftDistance());
+	SmartDashboard.putNumber("Right", drive.getRightDistance());
     }
 
     public void autonomousInit() {
 	drive.zeroEncoders();
-	arm.setSetpointRelative(0.0D);
+	arm.setSetpointRelative(0);
 	autonomousCommand = ((Command) chooser.getSelected());
 	if (autonomousCommand != null) {
 	    autonomousCommand.start();
@@ -111,6 +122,8 @@ public class Robot extends IterativeRobot {
 	Updater.getInstance().updateAll();
 
 	SmartDashboard.putNumber("Velocity", drive.leftSide.getSpeed());
+	SmartDashboard.putNumber("Left", drive.getLeftDistance());
+	SmartDashboard.putNumber("Right", drive.getRightDistance());
 	SmartDashboard.putNumber("Arm angle", arm.getRawEncoder());
     }
 
@@ -119,19 +132,18 @@ public class Robot extends IterativeRobot {
 	    autonomousCommand.cancel();
 	}
 	drive.zeroEncoders();
-	arm.setSetpointRelative(0.0D);
+	arm.setSetpointRelative(0);
     }
 
     public void teleopPeriodic() {
 	Scheduler.getInstance().run();
 
 	SmartDashboard.putNumber("Match Time", DriverStation.getInstance().getMatchTime());
-	SmartDashboard.putNumber("Battery Voltage", DriverStation.getInstance().getBatteryVoltage());
 
 	SmartDashboard.putNumber("Arm angle", arm.getRawEncoder());
 
-	SmartDashboard.putNumber("Left encoder", drive.getLeftDistance());
-	SmartDashboard.putNumber("Right encoder", drive.getRightDistance());
+	SmartDashboard.putNumber("Left", drive.getLeftDistance());
+	SmartDashboard.putNumber("Right", drive.getRightDistance());
 
 	SmartDashboard.putBoolean("Bottom Limit", arm.getBottomLimit());
 	SmartDashboard.putBoolean("Upper Limit", arm.getUpperLimit());
@@ -139,7 +151,14 @@ public class Robot extends IterativeRobot {
 	SmartDashboard.putNumber("Velocity", drive.leftSide.getSpeed());
 
 	SmartDashboard.putBoolean("Ball", intake.getLimit());
-	if (DriverStation.getInstance().getMatchTime() <= 1.0D) {
+
+	SmartDashboard.putNumber("Direction", navx.getAngle());
+
+	if (oi.leftStick.getRawButton(1) && oi.rightStick.getRawButton(1)) {
+	    new ShootCycle().start();
+	}
+
+	if (DriverStation.getInstance().getMatchTime() <= 1) {
 	    new ShiftDown();
 	}
     }
@@ -148,7 +167,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void testInit() {
-	arm.setSetpointRelative(0.0D);
+	arm.setSetpointRelative(0);
 	LiveWindow.addActuator("Arm", "Arm", arm.getPIDController());
     }
 }
