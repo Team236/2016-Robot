@@ -1,65 +1,49 @@
 package org.usfirst.frc.team236.robot.commands.arm;
 
 import org.usfirst.frc.team236.robot.Robot;
-import org.usfirst.frc.team236.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class GoBottomFromTop extends Command {
-    private int i;
-    private double startAngle;
-    private double currentAngle;
-    private double dAngle;
-    private double estimateAngle;
-    private double seconds;
+    public boolean go;
+    public boolean done;
 
     public GoBottomFromTop() {
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
 	requires(Robot.arm);
     }
 
-    // Called just before this Command runs the first time
-    // Called just before this Command runs the first time
     protected void initialize() {
-	startAngle = Robot.arm.getAngle();
-	i = 0;
-	Robot.arm.disable();
-	System.out.print("Arm coming down");
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-	currentAngle = Robot.arm.getAngle(); // Get reported angle of the arm
-	dAngle = currentAngle - startAngle; // Calculate change in arm angle
-	estimateAngle = RobotMap.ArmMap.MAX_COUNT + dAngle; // Guess the angle
-
-	if (estimateAngle > 60) {
-	    Robot.arm.setSpeed(-0.50);
+	if (Robot.arm.getUpperLimit()) {
+	    go = true;
+	    Robot.arm.zeroEncoder();
 	} else {
-	    Robot.arm.setSpeed(-0.1);
+	    go = false;
 	}
-	i++;
+	done = false;
+	Robot.arm.disable();
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    protected void execute() {
+	if (Robot.arm.getRawEncoder() < -6500.0D) {
+	    Robot.arm.stop();
+	    done = true;
+	} else {
+	    Robot.arm.setSpeed(-0.3D);
+	    done = false;
+	}
+    }
+
     protected boolean isFinished() {
-	seconds = i / 50; // Calculate how many seconds the command has run for
-	return (estimateAngle < 10 && seconds > 3) || Robot.arm.getBottomLimit();
+	return (done) || (Robot.arm.getBottomLimit());
     }
 
-    // Called once after isFinished returns true
     protected void end() {
 	Robot.arm.stop();
-	Robot.arm.setSetpointRelative(0);
+	Robot.arm.setSetpointRelative(0.0D);
 	Robot.arm.enable();
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
+	end();
     }
 }

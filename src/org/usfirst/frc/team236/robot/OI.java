@@ -2,145 +2,87 @@ package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.Cock;
 import org.usfirst.frc.team236.robot.commands.Eject;
-import org.usfirst.frc.team236.robot.commands.FlashlightOn;
 import org.usfirst.frc.team236.robot.commands.Intake;
-import org.usfirst.frc.team236.robot.commands.IntakeOverride;
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.ShiftUp;
 import org.usfirst.frc.team236.robot.commands.ShootCycle;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithJoystick;
-import org.usfirst.frc.team236.robot.commands.arm.GoBatterHighShotAngle;
 import org.usfirst.frc.team236.robot.commands.arm.GoBottomTrust;
-import org.usfirst.frc.team236.robot.commands.arm.GoDefenseHighShotAngle;
+import org.usfirst.frc.team236.robot.commands.arm.SetArmAngle;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
-/**
- * This class is the glue that binds the controls on the physical operator
- * interface to the commands and command groups that allow control of the robot.
- */
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
-    //// CREATING BUTTONS
-    // One type of button is a joystick button which is any button on a
-    //// joystick.
-    // You create one by telling it which joystick it's on and which button
-    // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
-
-    // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
-    // commands the same as any other Button.
-
-    //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
-
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-
-    // Start the command when the button is released and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
     public Joystick leftStick;
     public Joystick rightStick;
     public Joystick controller;
-
     public Button shiftUp;
     public Button shiftDown;
-
     public Button intake;
     public Button eject;
     public Button intakeoverride;
-
     public Button shoot;
     public Button cock;
-
     public Button manualArmUp;
     public Button manualArmDown;
-
     public Button armWithJoystick;
-
     public Button invertDrive;
     public Button normalDrive;
-
     public Button armWithPOV;
-
     public Button armPIDTest;
-
     public Button goBottom;
-    public Button goBatterHighShotAngle;
+    public Button goNearBatterHighShotAngle;
     public Button goDefenseHighShotAngle;
-
+    public Button goFarBatterHighShotAngle;
     public Button controllerShoot;
-
+    public Button controllerIntake;
     public Button flashlight;
 
     public OI() {
-	leftStick = new Joystick(RobotMap.ControlMap.PORT_STICK_LEFT);
-	rightStick = new Joystick(RobotMap.ControlMap.PORT_STICK_RIGHT);
-	controller = new Joystick(RobotMap.ControlMap.PORT_CONTROLLER);
+	leftStick = new Joystick(0);
+	rightStick = new Joystick(1);
+	controller = new Joystick(2);
 
-	// Right Stick
-	shiftDown = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_DOWN);
+	shiftDown = new JoystickButton(rightStick, 2);
 	shiftDown.whenPressed(new ShiftDown());
 
-	shiftUp = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_UP);
+	shiftUp = new JoystickButton(rightStick, 3);
 	shiftUp.whenPressed(new ShiftUp());
 
-	// Left Stick
-	shoot = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_SHOOT);
+	shoot = new JoystickButton(leftStick, 1);
 	shoot.whenPressed(new ShootCycle());
 
-	eject = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_EJECT);
+	eject = new JoystickButton(leftStick, 2);
 	eject.whileHeld(new Eject());
 
-	intake = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE);
+	intake = new JoystickButton(leftStick, 3);
 	intake.whileHeld(new Intake());
 
-	intakeoverride = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE_OVERRIDE);
-	intakeoverride.whileHeld(new IntakeOverride());
-
-	cock = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_COCK);
+	cock = new JoystickButton(leftStick, 4);
 	cock.whenPressed(new Cock());
 
-	// Controller
-	goBottom = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_BOTTOM);
+	goBottom = new JoystickButton(controller, 1);
 	goBottom.whenPressed(new GoBottomTrust());
 
-	goBatterHighShotAngle = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_HIGH_SHOT_BATTER);
-	goBatterHighShotAngle.whenPressed(new GoBatterHighShotAngle());
+	goNearBatterHighShotAngle = new JoystickButton(controller, 2);
 
-	goDefenseHighShotAngle = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_HIGH_SHOT_DEFENSE);
-	goBatterHighShotAngle.whenPressed(new GoDefenseHighShotAngle());
+	goNearBatterHighShotAngle.whenPressed(new SetArmAngle(6000.0D));
 
-	controllerShoot = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_SHOOT_CONTROLLER);
+	goFarBatterHighShotAngle = new JoystickButton(controller, 4);
+	goFarBatterHighShotAngle.whenPressed(new SetArmAngle(5500.0D));
+
+	goDefenseHighShotAngle = new JoystickButton(controller, 3);
+	goDefenseHighShotAngle.whenPressed(new SetArmAngle(4200.0D));
+
+	controllerShoot = new JoystickButton(controller, 6);
 	controllerShoot.whenPressed(new ShootCycle());
 
-	/*
-	 * manualArmUp = new JoystickButton(controller,
-	 * RobotMap.ControlMap.BUTTON_ARM_UP); manualArmUp.whileHeld(new
-	 * ManualArmUp());
-	 * 
-	 * manualArmDown = new JoystickButton(controller,
-	 * RobotMap.ControlMap.BUTTON_ARM_DOWN); manualArmDown.whileHeld(new
-	 * ManualArmDown());
-	 */
-	armWithJoystick = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_JOYSTICK);
+	armWithJoystick = new JoystickButton(controller, 9);
 	armWithJoystick.whileHeld(new ArmWithJoystick());
 
-	// armWithPOV = new JoystickButton(controller,
-	// RobotMap.ControlMap.BUTTON_ARM_WITH_POV);
-	// armWithPOV.whileHeld(new ArmWithPOV());
-
-	flashlight = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_FLASHLIGHT);
-	flashlight.whileHeld(new FlashlightOn());
+	controllerIntake = new JoystickButton(controller, 5);
+	controllerIntake.whileHeld(new Intake());
     }
 }
