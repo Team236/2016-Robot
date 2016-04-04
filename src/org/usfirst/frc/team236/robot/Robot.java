@@ -152,8 +152,6 @@ public class Robot extends IterativeRobot {
 
 	SmartDashboard.putBoolean("Ball", intake.getLimit());
 
-	SmartDashboard.putNumber("Direction", navx.getAngle());
-
 	if (oi.leftStick.getRawButton(1) && oi.rightStick.getRawButton(1)) {
 	    new ShootCycle().start();
 	}

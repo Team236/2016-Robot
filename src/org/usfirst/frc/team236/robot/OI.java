@@ -38,7 +38,6 @@ public class OI {
     public Button goFarBatterHighShotAngle;
     public Button controllerShoot;
     public Button controllerIntake;
-    public Button turnTest;
 
     public OI() {
 	leftStick = new Joystick(0);
