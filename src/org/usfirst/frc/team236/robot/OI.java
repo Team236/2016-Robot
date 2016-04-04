@@ -40,48 +40,48 @@ public class OI {
     public Button controllerIntake;
 
     public OI() {
-	leftStick = new Joystick(0);
-	rightStick = new Joystick(1);
-	controller = new Joystick(2);
+	leftStick = new Joystick(RobotMap.ControlMap.PORT_STICK_LEFT);
+	rightStick = new Joystick(RobotMap.ControlMap.PORT_STICK_RIGHT);
+	controller = new Joystick(RobotMap.ControlMap.PORT_CONTROLLER);
 
-	shiftDown = new JoystickButton(rightStick, 2);
+	shiftDown = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_DOWN);
 	shiftDown.whenPressed(new ShiftDown());
 
-	shiftUp = new JoystickButton(rightStick, 3);
+	shiftUp = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_UP);
 	shiftUp.whenPressed(new ShiftUp());
 
-	shoot = new JoystickButton(leftStick, 1);
+	shoot = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_SHOOT);
 	// shoot.whenPressed(new ShootCycle());
 
-	eject = new JoystickButton(leftStick, 2);
+	eject = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_EJECT);
 	eject.whileHeld(new Eject());
 
-	intake = new JoystickButton(leftStick, 3);
+	intake = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE);
 	intake.whileHeld(new Intake());
 
-	cock = new JoystickButton(leftStick, 4);
+	cock = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_COCK);
 	cock.whenPressed(new Cock());
 
-	goBottom = new JoystickButton(controller, 1);
+	goBottom = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_BOTTOM);
 	goBottom.whenPressed(new GoBottomTrust());
 
-	goNearBatterHighShotAngle = new JoystickButton(controller, 2);
+	goNearBatterHighShotAngle = new JoystickButton(controller,
+		RobotMap.ControlMap.BUTTON_ARM_HIGH_SHOT_NEAR_BATTER);
+	goNearBatterHighShotAngle.whenPressed(new SetArmAngle(6000));
 
-	goNearBatterHighShotAngle.whenPressed(new SetArmAngle(6000.0D));
+	goFarBatterHighShotAngle = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_HIGH_SHOT_FAR_BATTER);
+	goFarBatterHighShotAngle.whenPressed(new SetArmAngle(5500));
 
-	goFarBatterHighShotAngle = new JoystickButton(controller, 4);
-	goFarBatterHighShotAngle.whenPressed(new SetArmAngle(5500.0D));
+	goDefenseHighShotAngle = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_HIGH_SHOT_DEFENSE);
+	goDefenseHighShotAngle.whenPressed(new SetArmAngle(4200));
 
-	goDefenseHighShotAngle = new JoystickButton(controller, 3);
-	goDefenseHighShotAngle.whenPressed(new SetArmAngle(4200.0D));
-
-	controllerShoot = new JoystickButton(controller, 6);
+	controllerShoot = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_SHOOT_CONTROLLER);
 	controllerShoot.whenPressed(new ShootCycle());
 
-	armWithJoystick = new JoystickButton(controller, 9);
+	armWithJoystick = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_JOYSTICK);
 	armWithJoystick.whileHeld(new ArmWithJoystick());
 
-	controllerIntake = new JoystickButton(controller, 5);
+	controllerIntake = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_INTAKE_CONTROLLER);
 	controllerIntake.whileHeld(new Intake());
     }
 }
