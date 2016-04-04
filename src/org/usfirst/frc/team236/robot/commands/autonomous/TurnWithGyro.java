@@ -14,7 +14,6 @@ public class TurnWithGyro extends Command {
     private double degrees;
     private double heading;
     private double initialHeading;
-    private double distanceTurned;
     private int turnDirectionCoeff;
     private final double turnSpeed = 0.5;
     private double goal;
@@ -39,7 +38,6 @@ public class TurnWithGyro extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 	heading = Robot.navx.getAngle();
-	distanceTurned = heading - initialHeading;
 	Robot.drive.setLeftSpeed(turnSpeed * turnDirectionCoeff);
 	Robot.drive.setRightSpeed(turnSpeed * -turnDirectionCoeff);
     }
