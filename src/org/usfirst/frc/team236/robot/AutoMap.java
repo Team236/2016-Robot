@@ -13,7 +13,7 @@ public class AutoMap {
      * Drives from the midfield to the position aligned with the left goal by
      * going under the low bar. // TODO add v, a, j
      */
-    public static final ProfileParameters toShoot = new ProfileParameters(223, 60, 48, 24);
+    public static final ProfileParameters toShoot = new ProfileParameters(223, 60, 48, 50);
 
     /*
      * Drives from midfield line through the low goal into the opponent's
