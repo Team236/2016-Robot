@@ -25,7 +25,7 @@ public class GoBottomTrust extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-	if (Robot.arm.getAngle() > 60) {
+	if (Robot.arm.getRawEncoder() > 60) {
 	    Robot.arm.setSpeed(-0.25);
 	} else {
 	    Robot.arm.setSpeed(-0.1);
@@ -36,7 +36,7 @@ public class GoBottomTrust extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
 	int seconds = i / 50;
-	return (Robot.arm.getAngle() < 10 && seconds > 3) || Robot.arm.getBottomLimit();
+	return (Robot.arm.getRawEncoder() < 10 && seconds > 3) || Robot.arm.getBottomLimit();
     }
 
     // Called once after isFinished returns true

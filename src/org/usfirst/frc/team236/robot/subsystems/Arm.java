@@ -4,7 +4,6 @@ import org.usfirst.frc.team236.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -18,8 +17,6 @@ public class Arm extends PIDSubsystem {
     private Encoder encoder;
     public DigitalInput upperLimit;
     public DigitalInput bottomLimit;
-
-    private Relay flashlight;
 
     private static final double kP = RobotMap.ArmMap.PID.kP;
     private static final double kI = RobotMap.ArmMap.PID.kI;
@@ -39,8 +36,6 @@ public class Arm extends PIDSubsystem {
 	upperLimit = new DigitalInput(RobotMap.ArmMap.DIO_LIMIT_TOP);
 	bottomLimit = new DigitalInput(RobotMap.ArmMap.DIO_LIMIT_BOTTOM);
 
-	flashlight = new Relay(RobotMap.ArmMap.FLASHLIGHT_RELAY);
-
 	setAbsoluteTolerance(0.05);
 	getPIDController().setContinuous(false);
     }
@@ -53,35 +48,6 @@ public class Arm extends PIDSubsystem {
 	} else {
 	    motor.set(speed);
 	}
-    }
-
-    public double getAngle() {
-	// This adjusts for bottom limit at some angle (-11) less than zero.
-	double angle = solveAngle(RobotMap.ArmMap.AXLE_ACTUATOR_DISTANCE, RobotMap.ArmMap.AXLE_ANCHOR_DISTANCE,
-		getActuatorLength());
-
-	angle += RobotMap.ArmMap.MIN_COUNT;
-	angle += RobotMap.ArmMap.MID_ANCHOR_ANGLE;
-
-	return angle;
-    }
-
-    public void flashlightOn() {
-	flashlight.set(Relay.Value.kOn);
-    }
-
-    public void flashlightOff() {
-	flashlight.set(Relay.Value.kOff);
-    }
-
-    private double getActuatorLength() {
-	return RobotMap.ArmMap.ACTUATOR_MIN_LENGTH + encoder.getDistance();
-    }
-
-    private double solveAngle(double a, double b, double opp) {
-	double radians = Math.acos((a * a + b * b - opp * opp) / 2 * a * b);
-	double degrees = Math.toDegrees(radians);
-	return degrees;
     }
 
     public void stop() {

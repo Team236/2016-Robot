@@ -147,7 +147,7 @@ public class AimWithVision extends Command {
 		double bloby = targetNum.get(1);
 
 		// Compute firing angle
-		double baseCameraAngle = Robot.arm.getAngle();
+		double baseCameraAngle = Robot.arm.getRawEncoder();
 		double targetInclineAngle = baseCameraAngle + vFoV * (bloby - ImageH / 2) * ImageH;
 
 		double cameraHeight = CameraPivotHeight + CameraArmLength * Math.sin(Math.toRadians(baseCameraAngle));
@@ -194,7 +194,7 @@ public class AimWithVision extends Command {
     }
 
     private void Elevate(double firingAngle) {
-	currentElevation = Robot.arm.getAngle();
+	currentElevation = Robot.arm.getRawEncoder();
 	targetElevation = firingAngle;
     }
 
