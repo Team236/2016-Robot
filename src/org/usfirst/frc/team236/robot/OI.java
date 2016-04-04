@@ -9,7 +9,6 @@ import org.usfirst.frc.team236.robot.commands.ShootCycle;
 import org.usfirst.frc.team236.robot.commands.arm.ArmWithJoystick;
 import org.usfirst.frc.team236.robot.commands.arm.GoBottomTrust;
 import org.usfirst.frc.team236.robot.commands.arm.SetArmAngle;
-import org.usfirst.frc.team236.robot.commands.autonomous.TurnWithGyro;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -85,8 +84,5 @@ public class OI {
 
 	controllerIntake = new JoystickButton(controller, 5);
 	controllerIntake.whileHeld(new Intake());
-
-	turnTest = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_TURN);
-	turnTest.whenPressed(new TurnWithGyro(180));
     }
 }
