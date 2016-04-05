@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
+
     public Joystick leftStick;
     public Joystick rightStick;
     public Joystick controller;
@@ -40,48 +41,49 @@ public class OI {
     public Button controllerIntake;
 
     public OI() {
-	leftStick = new Joystick(RobotMap.ControlMap.PORT_STICK_LEFT);
-	rightStick = new Joystick(RobotMap.ControlMap.PORT_STICK_RIGHT);
-	controller = new Joystick(RobotMap.ControlMap.PORT_CONTROLLER);
 
-	shiftDown = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_DOWN);
+	// Ports
+	leftStick = new Joystick(ControlMap.PORT_STICK_LEFT);
+	rightStick = new Joystick(ControlMap.PORT_STICK_RIGHT);
+	controller = new Joystick(ControlMap.PORT_CONTROLLER);
+
+	// Right Stick
+	shiftDown = new JoystickButton(rightStick, ControlMap.RightStick.SHIFT_DOWN);
 	shiftDown.whenPressed(new ShiftDown());
 
-	shiftUp = new JoystickButton(rightStick, RobotMap.ControlMap.BUTTON_SHIFT_UP);
+	shiftUp = new JoystickButton(rightStick, ControlMap.RightStick.SHIFT_UP);
 	shiftUp.whenPressed(new ShiftUp());
 
-	shoot = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_SHOOT);
-	// shoot.whenPressed(new ShootCycle());
-
-	eject = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_EJECT);
+	// Left Stick
+	eject = new JoystickButton(leftStick, ControlMap.LeftStick.EJECT);
 	eject.whileHeld(new Eject());
 
-	intake = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_INTAKE);
+	intake = new JoystickButton(leftStick, ControlMap.LeftStick.INTAKE);
 	intake.whileHeld(new Intake());
 
-	cock = new JoystickButton(leftStick, RobotMap.ControlMap.BUTTON_COCK);
+	cock = new JoystickButton(leftStick, ControlMap.LeftStick.COCK);
 	cock.whenPressed(new Cock());
 
-	goBottom = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_BOTTOM);
+	// Controller
+	goBottom = new JoystickButton(controller, ControlMap.Controller.ARM_BOTTOM);
 	goBottom.whenPressed(new GoBottomTrust());
 
-	goNearBatterHighShotAngle = new JoystickButton(controller,
-		RobotMap.ControlMap.BUTTON_ARM_HIGH_SHOT_NEAR_BATTER);
+	goNearBatterHighShotAngle = new JoystickButton(controller, ControlMap.Controller.ARM_HIGH_SHOT_NEAR_BATTER);
 	goNearBatterHighShotAngle.whenPressed(new SetArmAngle(6000));
 
-	goFarBatterHighShotAngle = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_HIGH_SHOT_FAR_BATTER);
+	goFarBatterHighShotAngle = new JoystickButton(controller, ControlMap.Controller.ARM_HIGH_SHOT_FAR_BATTER);
 	goFarBatterHighShotAngle.whenPressed(new SetArmAngle(5500));
 
-	goDefenseHighShotAngle = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_HIGH_SHOT_DEFENSE);
+	goDefenseHighShotAngle = new JoystickButton(controller, ControlMap.Controller.ARM_HIGH_SHOT_DEFENSE);
 	goDefenseHighShotAngle.whenPressed(new SetArmAngle(4200));
 
-	controllerShoot = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_SHOOT_CONTROLLER);
+	controllerShoot = new JoystickButton(controller, ControlMap.Controller.SHOOT);
 	controllerShoot.whenPressed(new ShootCycle());
 
-	armWithJoystick = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_ARM_JOYSTICK);
+	armWithJoystick = new JoystickButton(controller, ControlMap.Controller.ARM_JOYSTICK);
 	armWithJoystick.whileHeld(new ArmWithJoystick());
 
-	controllerIntake = new JoystickButton(controller, RobotMap.ControlMap.BUTTON_INTAKE_CONTROLLER);
+	controllerIntake = new JoystickButton(controller, ControlMap.Controller.INTAKE_CONTROLLER);
 	controllerIntake.whileHeld(new Intake());
     }
 }

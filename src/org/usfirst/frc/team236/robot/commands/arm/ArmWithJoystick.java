@@ -1,7 +1,7 @@
 package org.usfirst.frc.team236.robot.commands.arm;
 
+import org.usfirst.frc.team236.robot.ControlMap;
 import org.usfirst.frc.team236.robot.Robot;
-import org.usfirst.frc.team236.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ArmWithJoystick extends Command {
     private final double scaleFactorUp = 1.5;
     private final double scaleFactorDown = 4;
-    private final int axis = RobotMap.ControlMap.AXIS_ARM;
+    private final int axis = ControlMap.Controller.AXIS_ARM;
 
     public ArmWithJoystick() {
 	// Use requires() here to declare subsystem dependencies
