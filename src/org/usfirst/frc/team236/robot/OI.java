@@ -3,6 +3,7 @@ package org.usfirst.frc.team236.robot;
 import org.usfirst.frc.team236.robot.commands.Cock;
 import org.usfirst.frc.team236.robot.commands.Eject;
 import org.usfirst.frc.team236.robot.commands.Intake;
+import org.usfirst.frc.team236.robot.commands.IntakeOverride;
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.ShiftUp;
 import org.usfirst.frc.team236.robot.commands.ShootCycle;
@@ -23,7 +24,6 @@ public class OI {
     public Button shiftDown;
     public Button intake;
     public Button eject;
-    public Button intakeoverride;
     public Button shoot;
     public Button cock;
     public Button manualArmUp;
@@ -39,6 +39,7 @@ public class OI {
     public Button goFarBatterHighShotAngle;
     public Button controllerShoot;
     public Button controllerIntake;
+    public Button intakeOverride;
 
     public OI() {
 
@@ -63,6 +64,9 @@ public class OI {
 
 	cock = new JoystickButton(leftStick, ControlMap.LeftStick.COCK);
 	cock.whenPressed(new Cock());
+
+	intakeOverride = new JoystickButton(leftStick, ControlMap.LeftStick.INTAKE_OVERRIDE);
+	intakeOverride.whileHeld(new IntakeOverride());
 
 	// Controller
 	goBottom = new JoystickButton(controller, ControlMap.Controller.ARM_BOTTOM);
