@@ -30,6 +30,7 @@ public class RobotMap {
 	public static final double DEFENSE_HIGH_SHOT_ANGLE = 4200;
 	public static final double CROSSING_ANGLE = -4100;
 	public static final double AUTO_HIGH_SHOT_ANGLE = 4200; // TODO
+	public static final double CORNER_HIGH_SHOT_ANGLE = 4200; // TODO
 	public static final double DISTANCE_PER_PULSE = 1;
 
 	public class PID {

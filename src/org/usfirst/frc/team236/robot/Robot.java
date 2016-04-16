@@ -2,6 +2,7 @@ package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
 import org.usfirst.frc.team236.robot.commands.ShootCycle;
+import org.usfirst.frc.team236.robot.commands.autonomous.AutoShoot;
 import org.usfirst.frc.team236.robot.commands.autonomous.BackwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team236.robot.commands.autonomous.ForwardRawtonomous;
@@ -78,6 +79,7 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("Reach", new Reach(reach));
 	chooser.addObject("Forward Rawto", new ForwardRawtonomous());
 	chooser.addObject("Backward Rawto", new BackwardRawtonomous());
+	chooser.addObject("Shoot", new AutoShoot());
 	SmartDashboard.putData("Auto mode", chooser);
 
 	// Start camera stream
