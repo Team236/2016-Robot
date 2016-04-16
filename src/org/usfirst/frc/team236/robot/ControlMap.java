@@ -29,6 +29,6 @@ public class ControlMap {
 	public static final int SHOOT = LogitechF310.RB;
 	public static final int ARM_JOYSTICK = LogitechF310.LEFT_PRESS;
 	public static final int AXIS_ARM = LogitechF310.Axes.LEFT_Y;
-
+	public static final int FIX_DRIVE = LogitechF310.START;
     }
 }

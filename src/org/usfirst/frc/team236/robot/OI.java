@@ -1,6 +1,7 @@
 package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.Cock;
+import org.usfirst.frc.team236.robot.commands.DriveWithJoysticks;
 import org.usfirst.frc.team236.robot.commands.Eject;
 import org.usfirst.frc.team236.robot.commands.HangerUp;
 import org.usfirst.frc.team236.robot.commands.Intake;
@@ -42,6 +43,7 @@ public class OI {
     public Button controllerIntake;
     public Button intakeOverride;
     public Button hangerUp;
+    public Button fixDrive;
 
     public OI() {
 
@@ -91,5 +93,8 @@ public class OI {
 
 	hangerUp = new JoystickButton(controller, ControlMap.Controller.HANGER_UP);
 	hangerUp.whileHeld(new HangerUp());
+
+	fixDrive = new JoystickButton(controller, ControlMap.Controller.FIX_DRIVE);
+	fixDrive.whenPressed(new DriveWithJoysticks());
     }
 }
