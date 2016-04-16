@@ -2,6 +2,7 @@ package org.usfirst.frc.team236.robot;
 
 import org.usfirst.frc.team236.robot.commands.Cock;
 import org.usfirst.frc.team236.robot.commands.Eject;
+import org.usfirst.frc.team236.robot.commands.HangerUp;
 import org.usfirst.frc.team236.robot.commands.Intake;
 import org.usfirst.frc.team236.robot.commands.IntakeOverride;
 import org.usfirst.frc.team236.robot.commands.ShiftDown;
@@ -40,6 +41,7 @@ public class OI {
     public Button controllerShoot;
     public Button controllerIntake;
     public Button intakeOverride;
+    public Button hangerUp;
 
     public OI() {
 
@@ -87,7 +89,7 @@ public class OI {
 	armWithJoystick = new JoystickButton(controller, ControlMap.Controller.ARM_JOYSTICK);
 	armWithJoystick.whileHeld(new ArmWithJoystick());
 
-	controllerIntake = new JoystickButton(controller, ControlMap.Controller.INTAKE_CONTROLLER);
-	controllerIntake.whileHeld(new Intake());
+	hangerUp = new JoystickButton(controller, ControlMap.Controller.HANGER_UP);
+	hangerUp.whileHeld(new HangerUp());
     }
 }

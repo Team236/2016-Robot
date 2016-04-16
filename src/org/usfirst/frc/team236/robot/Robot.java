@@ -11,6 +11,7 @@ import org.usfirst.frc.team236.robot.commands.profiled.CrossLowBar;
 import org.usfirst.frc.team236.robot.commands.profiled.Reach;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
 import org.usfirst.frc.team236.robot.subsystems.Drive;
+import org.usfirst.frc.team236.robot.subsystems.Hanger;
 import org.usfirst.frc.team236.robot.subsystems.Intake;
 import org.usfirst.frc.team236.robot.subsystems.Shooter;
 
@@ -37,6 +38,7 @@ public class Robot extends IterativeRobot {
     public static Intake intake;
     public static Arm arm;
     public static Shooter shooter;
+    public static Hanger hanger;
     public static OI oi;
 
     Command autonomousCommand;

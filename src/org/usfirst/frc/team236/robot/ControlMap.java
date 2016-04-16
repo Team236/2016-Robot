@@ -25,7 +25,7 @@ public class ControlMap {
 	public static final int ARM_HIGH_SHOT_NEAR_BATTER = LogitechF310.B;
 	public static final int ARM_HIGH_SHOT_FAR_BATTER = LogitechF310.Y;
 	public static final int ARM_HIGH_SHOT_DEFENSE = LogitechF310.X;
-	public static final int INTAKE_CONTROLLER = LogitechF310.LB;
+	public static final int HANGER_UP = LogitechF310.LB;
 	public static final int SHOOT = LogitechF310.RB;
 	public static final int ARM_JOYSTICK = LogitechF310.LEFT_PRESS;
 	public static final int AXIS_ARM = LogitechF310.Axes.LEFT_Y;

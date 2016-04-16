@@ -69,4 +69,9 @@ public class RobotMap {
 	public static final double CIRCUMFERENCE = 28;
 	public static final double DISTANCE_PER_PULSE = CIRCUMFERENCE / (3 * 512);
     }
+
+    public class HangerMap {
+	public static final int PWM_MOTOR = 8;
+	public static final boolean INV_MOTOR = false;
+    }
 }
