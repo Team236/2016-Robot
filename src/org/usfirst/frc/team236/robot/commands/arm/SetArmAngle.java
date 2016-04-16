@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SetArmAngle extends Command {
     private double goal;
+    private final double margin = 20;
 
     public SetArmAngle(double _goal) {
 	// Use requires() here to declare subsystem dependencies
@@ -30,7 +31,8 @@ public class SetArmAngle extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-	return false;
+	// TODO ask for low speed
+	return Math.abs(Robot.arm.getPIDController().getError()) < margin;
     }
 
     // Called once after isFinished returns true

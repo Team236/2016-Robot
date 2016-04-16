@@ -24,11 +24,11 @@ public class GoBottomFromTop extends Command {
     }
 
     protected void execute() {
-	if (Robot.arm.getRawEncoder() < -6500.0D) {
+	if (Robot.arm.getRawEncoder() < -6500) {
 	    Robot.arm.stop();
 	    done = true;
 	} else {
-	    Robot.arm.setSpeed(-0.3D);
+	    Robot.arm.setSpeed(-0.3);
 	    done = false;
 	}
     }
@@ -39,7 +39,7 @@ public class GoBottomFromTop extends Command {
 
     protected void end() {
 	Robot.arm.stop();
-	Robot.arm.setSetpointRelative(0.0D);
+	Robot.arm.setSetpointRelative(0);
 	Robot.arm.enable();
     }
 
