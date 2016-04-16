@@ -6,7 +6,6 @@ import org.usfirst.frc.team236.robot.commands.autonomous.BackwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team236.robot.commands.autonomous.ForwardRawtonomous;
 import org.usfirst.frc.team236.robot.commands.autonomous.LowBarRawtonomous;
-import org.usfirst.frc.team236.robot.commands.profiled.BumpyCross;
 import org.usfirst.frc.team236.robot.commands.profiled.CrossLowBar;
 import org.usfirst.frc.team236.robot.commands.profiled.Reach;
 import org.usfirst.frc.team236.robot.subsystems.Arm;
@@ -56,6 +55,8 @@ public class Robot extends IterativeRobot {
     public Profile bigCross;
 
     public void robotInit() {
+
+	// Create subsystems
 	drive = new Drive();
 	intake = new Intake();
 	arm = new Arm();
@@ -63,18 +64,15 @@ public class Robot extends IterativeRobot {
 
 	oi = new OI();
 
+	// Create motion profiles
 	crossLowBar = new Profile(AutoMap.crossLowBar);
 	reach = new Profile(AutoMap.reach);
 	toShoot = new Profile(AutoMap.toShoot);
 	toLowGoal = new Profile(AutoMap.toLowGoal);
-	bigCross = new Profile(AutoMap.bigCross);
 
+	// Pick an auto
 	chooser = new SendableChooser();
 	chooser.addDefault("Do Nothing", new DoNothing());
-	chooser.addObject("Moat", new BumpyCross(bigCross));
-	chooser.addObject("Ramparts", new BumpyCross(bigCross));
-	chooser.addObject("Rock Wall", new BumpyCross(bigCross));
-	chooser.addObject("Rough Terrain", new BumpyCross(bigCross));
 	chooser.addObject("Low Bar", new LowBarRawtonomous());
 	chooser.addObject("Low Bar (profile)", new CrossLowBar(crossLowBar));
 	chooser.addObject("Reach", new Reach(reach));
@@ -82,12 +80,13 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("Backward Rawto", new BackwardRawtonomous());
 	SmartDashboard.putData("Auto mode", chooser);
 
+	// Start camera stream
 	camera = new USBCamera();
-
 	server = CameraServer.getInstance();
 	server.setQuality(40);
 	server.startAutomaticCapture(camera);
 
+	// Start compressor
 	compressor = new Compressor();
 	compressor.start();
 
@@ -154,12 +153,14 @@ public class Robot extends IterativeRobot {
 
 	SmartDashboard.putBoolean("Ball", intake.getLimit());
 
+	// Hackish way to shoot with both triggers
 	if (oi.leftStick.getRawButton(1) && oi.rightStick.getRawButton(1)) {
 	    new ShootCycle().start();
 	}
 
+	// Hackish way to ensure we end in low gear
 	if (DriverStation.getInstance().getMatchTime() <= 1) {
-	    new ShiftDown();
+	    new ShiftDown().start();
 	}
     }
 
