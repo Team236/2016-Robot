@@ -62,6 +62,7 @@ public class Robot extends IterativeRobot {
 	intake = new Intake();
 	arm = new Arm();
 	shooter = new Shooter();
+	hanger = new Hanger();
 
 	oi = new OI();
 

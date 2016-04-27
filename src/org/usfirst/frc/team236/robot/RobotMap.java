@@ -73,7 +73,7 @@ public class RobotMap {
     }
 
     public class HangerMap {
-	public static final int PWM_MOTOR = 8;
+	public static final int PWM_MOTOR = 6;
 	public static final boolean INV_MOTOR = false;
     }
 }
