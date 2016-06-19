@@ -1,3 +1,5 @@
+## THIS REPO IS NOW OUT OF DATE. GO [HERE](https://github.com/Team236/2016-Robot-Final) INSTEAD.
+
 ![Build Status](http://dev.imjac.in/travis/Team236/2016-Robot)
 
 Team 236's 2016 bot for FRC Stronghold
